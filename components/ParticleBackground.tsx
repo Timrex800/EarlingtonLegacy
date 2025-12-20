@@ -13,13 +13,13 @@ const ParticleBackground: React.FC = () => {
 
     let particles: Particle[] = [];
     let animationFrameId: number;
-    const pCount = 300; // Significantly reduced for better visibility of individual interaction
-    const baseSpeed = 2.8; // Increased speed for more dynamic movement
-    const trail = 0.25; // Higher value = less trail, cleaner for fast particles
-    const mouseRadius = 250; // Larger area of influence
-    const mouseInfluence = 1.5; // Stronger push/pull force
+    const pCount = 300; // Fixed at 300
+    const baseSpeed = 4.5; // Increased speed for "haster" movement
+    const trail = 0.3; // Clean movement at high speeds
+    const mouseRadius = 300; // Large interaction area
+    const mouseInfluence = 2.5; // Stronger physical-feeling repulsion
 
-    const pointer = { x: -1000, y: -1000 };
+    const pointer = { x: -2000, y: -2000 };
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -34,35 +34,31 @@ const ParticleBackground: React.FC = () => {
       vy: number;
       color: string;
       borderColor: string;
-      baseX: number;
-      baseY: number;
       opacity: number;
 
       constructor() {
         this.x = Math.random() * canvas!.width;
         this.y = Math.random() * canvas!.height;
-        this.baseX = this.x;
-        this.baseY = this.y;
-        this.size = Math.random() * 5 + 2; // Slightly larger for better visibility with fewer particles
+        this.size = Math.random() * 6 + 2; // Noticeable bubble size
         
         const angle = Math.random() * Math.PI * 2;
-        const speedMultiplier = Math.random() * 0.8 + 0.5;
+        const speedMultiplier = Math.random() * 1.2 + 0.8;
         this.vx = Math.cos(angle) * baseSpeed * speedMultiplier;
         this.vy = Math.sin(angle) * baseSpeed * speedMultiplier;
         
-        // Soft tones: Amber (primary) and Slate (secondary)
+        // Brand palette: Amber (Legacy) and Slate (Modernity)
         const isAmber = Math.random() > 0.6;
         if (isAmber) {
           const r = 217;
-          const g = Math.floor(Math.random() * 50 + 119);
+          const g = Math.floor(Math.random() * 50 + 119); // Variants of primary amber
           const b = 6;
-          this.opacity = Math.random() * 0.4 + 0.2;
+          this.opacity = Math.random() * 0.4 + 0.3;
           this.color = `rgba(${r}, ${g}, ${b}, ${this.opacity})`;
           this.borderColor = `rgba(${r}, ${g}, ${b}, ${this.opacity + 0.2})`;
         } else {
-          const r = Math.floor(Math.random() * 50 + 40);
-          const g = Math.floor(Math.random() * 50 + 50);
-          const b = Math.floor(Math.random() * 50 + 70);
+          const r = Math.floor(Math.random() * 40 + 30);
+          const g = Math.floor(Math.random() * 40 + 40);
+          const b = Math.floor(Math.random() * 60 + 80);
           this.opacity = Math.random() * 0.3 + 0.2;
           this.color = `rgba(${r}, ${g}, ${b}, ${this.opacity})`;
           this.borderColor = `rgba(${r}, ${g}, ${b}, ${this.opacity + 0.1})`;
@@ -70,26 +66,25 @@ const ParticleBackground: React.FC = () => {
       }
 
       update() {
-        // Natural movement
+        // Base kinetic movement
         this.x += this.vx;
         this.y += this.vy;
 
-        // Interactive mouse repulsion logic
+        // Dynamic Mouse Repulsion
         const dx = pointer.x - this.x;
         const dy = pointer.y - this.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         if (distance < mouseRadius) {
           const force = (mouseRadius - distance) / mouseRadius;
-          // Calculate movement away from mouse
-          const moveX = (dx / distance) * force * mouseInfluence * 5;
-          const moveY = (dy / distance) * force * mouseInfluence * 5;
+          const moveX = (dx / distance) * force * mouseInfluence * 8;
+          const moveY = (dy / distance) * force * mouseInfluence * 8;
           
           this.x -= moveX;
           this.y -= moveY;
         }
 
-        // Boundary wrap
+        // Seamless Boundary Wrap
         if (this.x > canvas!.width) this.x = 0;
         else if (this.x < 0) this.x = canvas!.width;
         if (this.y > canvas!.height) this.y = 0;
@@ -102,9 +97,11 @@ const ParticleBackground: React.FC = () => {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         
+        // Translucent fill for bubble effect
         ctx.fillStyle = this.color;
         ctx.fill();
         
+        // Soft border for definition
         ctx.strokeStyle = this.borderColor;
         ctx.lineWidth = 1;
         ctx.stroke();
@@ -120,6 +117,7 @@ const ParticleBackground: React.FC = () => {
 
     const animate = () => {
       const isDark = document.documentElement.classList.contains('dark');
+      // Clearing the canvas with a trail for motion blur
       ctx.fillStyle = isDark ? `rgba(15, 15, 15, ${trail})` : `rgba(253, 251, 247, ${trail})`;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -136,8 +134,8 @@ const ParticleBackground: React.FC = () => {
     };
 
     const handleMouseLeave = () => {
-      pointer.x = -1000;
-      pointer.y = -1000;
+      pointer.x = -2000;
+      pointer.y = -2000;
     };
 
     window.addEventListener('resize', resize);
@@ -159,7 +157,7 @@ const ParticleBackground: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0 opacity-70 transition-opacity duration-1000"
+      className="fixed inset-0 pointer-events-none z-0 opacity-80 transition-opacity duration-1000 bg-transparent"
     />
   );
 };
