@@ -1,5 +1,6 @@
 import React from 'react';
 import { Menu, Sun, Moon } from 'lucide-react';
+import { GOOGLE_AI_STUDIO_URL } from '../constants';
 
 interface HeaderProps {
   darkMode: boolean;
@@ -38,6 +39,10 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleTheme, onNavigate }) =>
               </a>
             ))}
             <a href="#" className="text-sm font-medium hover:text-primary transition-colors">Board of Directors</a>
+            
+            <a href={GOOGLE_AI_STUDIO_URL} target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-primary hover:text-secondary transition-colors uppercase tracking-wider">
+              AI Lab
+            </a>
             
             <button className="bg-primary hover:bg-opacity-90 text-white px-5 py-2 rounded-full text-sm font-bold transition-all transform hover:scale-105 shadow-lg shadow-primary/30">
               Get Involved

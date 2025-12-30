@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Facebook, Mail, Phone } from 'lucide-react';
+import { GOOGLE_AI_STUDIO_URL } from '../constants';
 
 const Footer: React.FC = () => {
   return (
@@ -39,6 +40,7 @@ const Footer: React.FC = () => {
               <li><a href="#" className="hover:text-primary transition-colors">Board of Directors</a></li>
               <li><a href="#events" className="hover:text-primary transition-colors">Earlington Day 2026</a></li>
               <li><a href="#phases" className="hover:text-primary transition-colors">Project Phases</a></li>
+              <li><a href={GOOGLE_AI_STUDIO_URL} target="_blank" rel="noopener noreferrer" className="text-primary font-bold hover:text-secondary transition-colors italic">AI Lab (Google Studio)</a></li>
               <li><a href="#" className="hover:text-primary transition-colors">Section 18A Donations</a></li>
             </ul>
           </div>

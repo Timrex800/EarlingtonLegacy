@@ -3,6 +3,7 @@ import { AuditItem } from './types';
 
 export const NPC_STATUS = "NPC Registration: 2023/894210/08";
 export const EARLINGTON_DAY = "April 18, 2026";
+export const GOOGLE_AI_STUDIO_URL = "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221XyzbQ8xUqInykIu-GiqVoVZIG3YZmao0%22%5D,%22action%22:%22open%22,%22userId%22:%22117947360650694935977%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing";
 
 export const ADS_SCRIPT = `/**
  * Title: Automated Quality Score Manager

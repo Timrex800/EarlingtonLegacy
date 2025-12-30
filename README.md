@@ -2,19 +2,45 @@
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
 
-# Run and deploy your AI Studio app
 
-This contains everything you need to run your app locally.
+## EarlingtonLegacy
 
-View your app in AI Studio: https://ai.studio/apps/drive/1XyzbQ8xUqInykIu-GiqVoVZIG3YZmao0
+A project for [brief description of your project].
 
-## Run Locally
+## Getting Started
 
-**Prerequisites:**  Node.js
+### Prerequisites
+- Node.js (LTS recommended)
 
+### Installation
+1. Clone the repository
+2. Install dependencies:
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```bash
+npm install
+```
+
+3. Set up environment variables (create `.env` or `.env.local` as needed)
+4. Run the app in development:
+
+```bash
+npm run dev
+```
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+The production build output will be placed in the `dist/` directory.
+
+### Deployment
+See [DEPLOYMENT.md](DEPLOYMENT.md) for deployment instructions and Afrihost (Apache) configuration.
+
+### License
+Add your license information here.
+
+---
+
+Last updated: 2025-12-29
