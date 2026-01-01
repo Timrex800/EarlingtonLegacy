@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Earlington Legacy Institute (ELI)
 
 The Earlington Legacy Institute is built on a "Zero-G" (Zero-Gravity) infrastructure—a lightweight, highly resilient, and globally distributed serverless mesh topology designed to ensure the institute's legacy is never offline.
@@ -47,3 +48,6 @@ Automated deployment to Afrihost is set up via GitHub Actions:
 ## Deployment Guide
 
 For complete deployment details, see [DEPLOYMENT.md](DEPLOYMENT.md).
+=======
+
+>>>>>>> 97d0cb32bf83ef67f52538ec043427f559b40359
