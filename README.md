@@ -1,46 +1,49 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Earlington Legacy Institute (ELI)
 
+The Earlington Legacy Institute is built on a "Zero-G" (Zero-Gravity) infrastructure—a lightweight, highly resilient, and globally distributed serverless mesh topology designed to ensure the institute's legacy is never offline.
 
-## EarlingtonLegacy
-
-A project for [brief description of your project].
+For a detailed breakdown of our cloud architecture, see [ARCHITECTURE.md](ARCHITECTURE.md).
 
 ## Getting Started
 
-### Prerequisites
-- Node.js (LTS recommended)
-
-### Installation
-1. Clone the repository
-2. Install dependencies:
-
-```bash
-npm install
-```
-
-3. Set up environment variables (create `.env` or `.env.local` as needed)
-4. Run the app in development:
+To run the development server:
 
 ```bash
 npm run dev
 ```
 
-### Build for Production
+Open [http://localhost:9002](http://localhost:9002) with your browser to see the result.
 
-```bash
-npm run build
-```
+The main page `src/app/page.tsx` contains the dashboard layout with various audit tools.
 
-The production build output will be placed in the `dist/` directory.
+## AI & Utility Tools
 
-### Deployment
-See [DEPLOYMENT.md](DEPLOYMENT.md) for deployment instructions and Afrihost (Apache) configuration.
+### Generative AI Audit Tool
 
-### License
-Add your license information here.
+We use the latest Google Gemini models for deep auditing and content generation.
 
----
+- **Script**: `scripts/genai_audit.py` (Python)
+- **Setup**:
+  1. `pip install --upgrade google-genai`
+  2. Set environment variable: `$env:GOOGLE_CLOUD_API_KEY="your-key-here"`
+- **Usage**: `python scripts/genai_audit.py`
 
-Last updated: 2025-12-29
+## Configuration & Deployment
+
+### 1. Firebase & Google Cloud
+
+The project is linked to the Firebase project `studio-6933832787`.
+
+- **Config**: `.firebaserc` and `firebase.json` are pre-configured.
+- **Experimental Features**: `authInterrupts` is enabled in `next.config.mjs`.
+
+### 2. Afrihost (Automated Deployment)
+
+Automated deployment to Afrihost is set up via GitHub Actions:
+
+- **Workflow**: `.github/workflows/deploy.yml`
+- **Action**: Build and sync to Afrihost FTP on every push to `main`.
+
+## Deployment Guide
+
+For complete deployment details, see [DEPLOYMENT.md](DEPLOYMENT.md).
