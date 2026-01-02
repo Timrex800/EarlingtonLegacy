@@ -25,6 +25,10 @@ export default (phase) => {
 
     // Recommended for Apache/Afrihost URL consistency
     trailingSlash: true,
+
+    images: {
+      unoptimized: true,
+    },
   };
 
   return nextConfig;
