@@ -158,12 +158,32 @@ Reference in code: `import.meta.env.VITE_API_URL`
 
 The project is now configured to automatically deploy to Afrihost whenever you push to the `main` branch.
 
+#### A. SSH Deployment (Recommended)
+
+- **Configuration**: `.github/workflows/deploy-ssh.yml`
+- **Setup**: Add the following Secrets to GitHub:
+  - `AFRIHOST_HOST`: Server IP/Hostname
+  - `AFRIHOST_USERNAME`: `earlinv8y7c3`
+  - `AFRIHOST_SSH_KEY`: Your Private SSH Key
+
+#### B. FTP Deployment (Legacy)
+
 - **Configuration**: `.github/workflows/deploy.yml`
 - **Setup**: In your GitHub Repository, go to **Settings > Secrets and variables > Actions** and add:
   - `FTP_HOST`
   - `FTP_USER`
   - `FTP_PASSWORD`
   - `FTP_REMOTE_DIR` (e.g., `/public_html/`)
+
+### 2. Server-Side Sync Mechanisms
+
+#### A. Manual Deploy Script
+
+Run `./deploy.sh` on the server to pull, build, and deploy manually with a backup.
+
+#### B. Git Post-Receive Hook
+
+A template is provided in `server-config/git-post-receive.sh`. Install this on the server at `~/.git/hooks/post-receive` to trigger builds on every push to the server's repository.
 
 ### 2. Firebase Handshake
 
