@@ -39,10 +39,18 @@ The project is linked to the Firebase project `studio-6933832787`.
 
 ### 2. Afrihost (Automated Deployment)
 
-Automated deployment to Afrihost is set up via GitHub Actions:
+Automated deployment to Afrihost is set up via GitHub Actions and Server-side hooks:
 
-- **Workflow**: `.github/workflows/deploy.yml`
-- **Action**: Build and sync to Afrihost FTP on every push to `main`.
+- **SSH Workflow**: `.github/workflows/deploy-ssh.yml` (Primary)
+- **FTP Workflow**: `.github/workflows/deploy.yml` (Legacy)
+- **Manual Script**: `deploy.sh` (Server-side)
+- **Git Hook**: `server-config/git-post-receive.sh` (Trigger on push)
+
+To sync changes, simply push to the `main` branch:
+
+```bash
+git push origin main
+```
 
 ## Deployment Guide
 
