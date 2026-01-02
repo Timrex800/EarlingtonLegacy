@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && npm run export:afrihost",
+    "export:afrihost": "cp -r out/* dist/ || cp -r dist/* ../public_html/",
+    "deploy": "npm run build && ./deploy.sh",
     "start": "next start",
     "lint": "next lint"
   },
