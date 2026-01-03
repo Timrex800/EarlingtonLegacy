@@ -25,7 +25,7 @@ export default (phase) => {
 
     // Recommended for Apache/Afrihost URL consistency
     trailingSlash: true,
-
+    basePath: process.env.BASE_PATH || "",
     images: {
       unoptimized: true,
     },

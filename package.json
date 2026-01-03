@@ -1,15 +1,16 @@
 {
   "name": "earlington-legacy-initiative---enhanced-landing-page",
+  "homepage": "https://Timrex800.github.io/EarlingtonLegacy",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "next dev",
     "spa:dev": "vite",
-    "build": "next build && npm run export:afrihost",
+    "build": "next build",
     "spa:build": "vite build",
     "spa:preview": "vite preview",
-    "export:afrihost": "cp -r out/* dist/ || cp -r dist/* ../public_html/",
+    "export:afrihost": "echo 'Build completed in dist/'",
     "deploy": "npm run build && ./deploy.sh",
     "start": "next start",
     "lint": "next lint"
