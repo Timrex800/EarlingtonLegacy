@@ -10,7 +10,6 @@
     "build": "next build",
     "spa:build": "vite build",
     "spa:preview": "vite preview",
-    "export:afrihost": "echo 'Build completed in dist/'",
     "deploy": "npm run build && ./deploy.sh",
     "start": "next start",
     "lint": "next lint"
