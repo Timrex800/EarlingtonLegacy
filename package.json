@@ -5,7 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
+    "spa:dev": "vite",
     "build": "next build && npm run export:afrihost",
+    "spa:build": "vite build",
+    "spa:preview": "vite preview",
     "export:afrihost": "cp -r out/* dist/ || cp -r dist/* ../public_html/",
     "deploy": "npm run build && ./deploy.sh",
     "start": "next start",
@@ -17,12 +20,16 @@
     "lucide-react": "^0.561.0",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "react-router-dom": "^7.11.0"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
     "@types/react": "latest",
     "@types/react-dom": "latest",
-    "typescript": "~5.8.2"
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.39.2",
+    "typescript": "~5.8.2",
+    "vite": "^6.0.7"
   }
 }
