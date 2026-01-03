@@ -12,7 +12,7 @@ export default (phase) => {
    */
   const nextConfig = {
     output: "export",
-    distDir: "dist",
+    distDir: isDev ? ".next" : "dist",
     // assetPrefix allows you to use a CDN in production
     assetPrefix: isDev ? undefined : undefined,
 
