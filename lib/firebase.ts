@@ -4,13 +4,33 @@ import { getFirestore } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "YOUR_API_KEY",
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "YOUR_PROJECT.firebaseapp.com",
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "YOUR_PROJECT_ID",
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "YOUR_PROJECT.appspot.com",
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "YOUR_SENDER_ID",
-  appId: import.meta.env.VITE_FIREBASE_APP_ID || "YOUR_APP_ID",
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
+  apiKey:
+    process.env.NEXT_PUBLIC_FIREBASE_API_KEY ||
+    process.env.VITE_FIREBASE_API_KEY ||
+    "YOUR_API_KEY",
+  authDomain:
+    process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN ||
+    process.env.VITE_FIREBASE_AUTH_DOMAIN ||
+    "YOUR_PROJECT.firebaseapp.com",
+  projectId:
+    process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID ||
+    process.env.VITE_FIREBASE_PROJECT_ID ||
+    "YOUR_PROJECT_ID",
+  storageBucket:
+    process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET ||
+    process.env.VITE_FIREBASE_STORAGE_BUCKET ||
+    "YOUR_PROJECT.appspot.com",
+  messagingSenderId:
+    process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID ||
+    process.env.VITE_FIREBASE_MESSAGING_SENDER_ID ||
+    "YOUR_SENDER_ID",
+  appId:
+    process.env.NEXT_PUBLIC_FIREBASE_APP_ID ||
+    process.env.VITE_FIREBASE_APP_ID ||
+    "YOUR_APP_ID",
+  measurementId:
+    process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID ||
+    process.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase

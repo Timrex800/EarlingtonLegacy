@@ -1,17 +1,17 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import Header from '../components/Header';
-import Hero from '../components/Hero';
-import InfoSection from '../components/InfoSection'; 
-import PartnersSection from '../components/PartnersSection';
-import CtaSection from '../components/CtaSection'; 
-import ValueSection from '../components/ValueSection';
-import EducationSection from '../components/EducationSection'; 
+import Header from '../../components/Header';
+import Hero from '../../components/Hero';
+import InfoSection from '../../components/InfoSection'; 
+import PartnersSection from '../../components/PartnersSection';
+import CtaSection from '../../components/CtaSection'; 
+import ValueSection from '../../components/ValueSection';
+import EducationSection from '../../components/EducationSection'; 
 import LegacySearch from '../components/LegacySearch';
-import Footer from '../components/Footer';
-import AuditDashboard from '../components/AuditDashboard';
-import ParticleBackground from '../components/ParticleBackground';
+import Footer from '../../components/Footer';
+import AuditDashboard from '../../components/AuditDashboard';
+import ParticleBackground from '../../components/ParticleBackground';
 import { ShieldCheck } from 'lucide-react';
 
 export default function Home() {

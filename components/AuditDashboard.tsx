@@ -135,7 +135,7 @@ const AuditDashboard: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                   <h4 className="text-white font-bold mb-2">How to Install</h4>
                   <ol className="text-sm text-gray-400 space-y-2 list-decimal list-inside">
                     <li>Open Google Ads Dashboard</li>
-                    <li>Go to Tools & Settings > Scripts</li>
+                    <li>Go to Tools &amp; Settings &gt; Scripts</li>
                     <li>Click + New Script</li>
                     <li>Paste the code above</li>
                     <li>Authorize and Schedule Daily at 3 AM</li>

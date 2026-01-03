@@ -12,8 +12,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "latest",
+    "@google/generative-ai": "^0.24.1",
+    "firebase": "^12.7.0",
     "lucide-react": "^0.561.0",
+    "next": "latest",
     "react": "latest",
     "react-dom": "latest"
   },
