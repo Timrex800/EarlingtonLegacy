@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Earlington Legacy Initiative | Transforming Education",
-  description: "Transforming Earlington Secondary School into a center of advanced learning and innovation. Bridging the digital divide.",
+  title: "Earlington Legacy Initiative | Official NPC Site",
+  description: "Transforming Earlington Secondary School into a center of advanced learning and innovation. Bridging the digital divide via https://www.earlingtonlegacy.org.za/",
 };
 
 export default function RootLayout({
@@ -14,6 +14,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        <link rel="canonical" href="https://www.earlingtonlegacy.org.za/" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&family=Space+Mono&display=swap" rel="stylesheet" />
