@@ -146,8 +146,11 @@ const LandingPage: React.FC = () => {
 };
 
 const App: React.FC = () => {
+  // Ensure basename is set correctly for deployment, fallback to '/'
+  const basename = process.env.BASE_PATH || '/';
+
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/:section" element={<LandingPage />} />

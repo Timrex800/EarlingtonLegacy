@@ -33,6 +33,20 @@ const firebaseConfig = {
     process.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
+// Warn if any placeholder values are still present (i.e., env vars not set)
+const placeholderValues = [
+  "YOUR_API_KEY",
+  "YOUR_PROJECT.firebaseapp.com",
+  "YOUR_PROJECT_ID",
+  "YOUR_PROJECT.appspot.com",
+  "YOUR_SENDER_ID",
+  "YOUR_APP_ID",
+];
+if (placeholderValues.some(val => Object.values(firebaseConfig).includes(val))) {
+  console.warn("Firebase configuration contains placeholder values. Ensure environment variables are set for production.");
+}
+
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 

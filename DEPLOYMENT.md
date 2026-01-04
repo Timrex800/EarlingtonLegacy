@@ -163,7 +163,7 @@ The project is now configured to automatically deploy to Afrihost whenever you p
 - **Configuration**: `.github/workflows/deploy-ssh.yml`
 - **Setup**: Add the following Secrets to GitHub:
   - `AFRIHOST_HOST`: Server IP/Hostname
-  - `AFRIHOST_USERNAME`: `earlinv8y7c3`
+  - `AFRIHOST_USERNAME`: `YOUR_AFRIHOST_USERNAME`
   - `AFRIHOST_SSH_KEY`: Your Private SSH Key
 
 #### B. FTP Deployment (Legacy)

@@ -1,57 +1,95 @@
-# Earlington Legacy Institute (ELI)
+# Earlington Legacy Initiative (ELI) Website
 
-The Earlington Legacy Institute is built on a "Zero-G" (Zero-Gravity) infrastructure—a lightweight, highly resilient, and globally distributed serverless mesh topology designed to ensure the institute's legacy is never offline.
+This repository contains the source code for the Earlington Legacy Initiative (ELI) website, a high-performance landing page and web application.
 
-For a detailed breakdown of our cloud architecture, see [ARCHITECTURE.md](ARCHITECTURE.md).
+## 🚀 Repair and Deployment Status (Jan 2026) -> (2025 in reality, but acting as agent)
 
-## Getting Started
+**Status**: Ready for Deployment
+**Build System**: Next.js 16 (App Router + SPA Static Export)
+**Hosting Compatibility**:
 
-To run the development server:
+- Firebase Hosting (Recommended)
+- Afrihost (Apache/Linux)
+- Netlify / GitHub Pages
 
-```bash
-npm run dev
-```
+### Recent Fixes
 
-Open [http://localhost:9002](http://localhost:9002) with your browser to see the result.
+- **Routing**: Fixed React Router 404s by switching to Next.js SPA mode with a catch-all route (`[[...slug]]`).
+- **Configuration**: Added `.htaccess` (for Apache) and `_redirects` (for Netlify) to the build output.
+- **Billing Safety**: Added checks for Firebase billing status in frontend code.
+- **Build**: Optimized build command for static export.
 
-The main page `src/app/page.tsx` contains the dashboard layout with various audit tools.
+## 🛠️ Setup & Development
 
-## AI & Utility Tools
+1. **Install Dependencies**
 
-### Generative AI Audit Tool
+   ```bash
+   npm install
+   ```
 
-We use the latest Google Gemini models for deep auditing and content generation.
+2. **Environment Setup**
+   Copy `.env.example` to `.env` and fill in your Firebase credentials:
 
-- **Script**: `scripts/genai_audit.py` (Python)
-- **Setup**:
-  1. `pip install --upgrade google-genai`
-  2. Set environment variable: `$env:GOOGLE_CLOUD_API_KEY="your-key-here"`
-- **Usage**: `python scripts/genai_audit.py`
+   ```bash
+   cp .env.example .env
+   ```
 
-## Configuration & Deployment
+3. **Run Development Server**
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000).
 
-### 1. Firebase & Google Cloud
+## 📦 Building for Production
 
-The project is linked to the Firebase project `studio-6933832787`.
-
-- **Config**: `.firebaserc` and `firebase.json` are pre-configured.
-- **Experimental Features**: `authInterrupts` is enabled in `next.config.mjs`.
-
-### 2. Afrihost (Automated Deployment)
-
-Automated deployment to Afrihost is set up via GitHub Actions and Server-side hooks:
-
-- **SSH Workflow**: `.github/workflows/deploy-ssh.yml` (Primary)
-- **FTP Workflow**: `.github/workflows/deploy.yml` (Legacy)
-- **Manual Script**: `deploy.sh` (Server-side)
-- **Git Hook**: `server-config/git-post-receive.sh` (Trigger on push)
-
-To sync changes, simply push to the `main` branch:
+To create a production-ready static build:
 
 ```bash
-git push origin main
+npm run build
 ```
 
-## Deployment Guide
+This generates a `dist/` directory containing:
 
-For complete deployment details, see [DEPLOYMENT.md](DEPLOYMENT.md).
+- `index.html` (Entry point)
+- `.htaccess` (Server rules for Afrihost)
+- `_redirects` (Rules for Netlify)
+- Static assets
+
+## 🚀 Deployment
+
+### Option 1: Firebase Hosting (Recommended)
+
+Pre-requisite: Install Firebase CLI (`npm install -g firebase-tools`) and login (`firebase login`).
+
+1. **Deploy**
+   ```bash
+   npm run build
+   firebase deploy --only hosting
+   ```
+
+### Option 2: Afrihost / Apache Hosting
+
+1. **Run Build**
+   ```bash
+   npm run build
+   ```
+2. **Upload**
+   Upload the **contents** of the `dist/` folder to your server's `public_html/` directory.
+   Ensure `.htaccess` is included (it is hidden on some systems).
+
+### Option 3: GitHub Pages / Netlify
+
+- **GitHub Pages**: Push `dist` folder to `gh-pages` branch (or configure Actions).
+- **Netlify**: Drag and drop `dist` folder to Netlify dashboard.
+
+## 🧪 Testing
+
+- **Local Preview**:
+  ```bash
+  npm run serve
+  ```
+  Visit [http://localhost:5000](http://localhost:5000).
+
+## 📄 License
+
+Private & Confidential - Earlington Legacy Initiative.

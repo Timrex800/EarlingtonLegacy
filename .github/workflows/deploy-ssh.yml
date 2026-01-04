@@ -33,7 +33,7 @@ jobs:
         key: ${{ secrets.AFRIHOST_SSH_KEY }}
         port: 22
         script: |
-          cd /home/earlinv8y7c3/repositories/EarlingtonLegacy
+          cd /home/YOUR_USERNAME/repositories/EarlingtonLegacy
           git pull origin main
           npm ci
           npm run build

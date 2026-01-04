@@ -17,7 +17,6 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&family=Space+Mono&display=swap" rel="stylesheet" />
-        <script src="https://cdn.tailwindcss.com"></script>
       </head>
       <body className="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 font-body antialiased transition-colors duration-300">
         {children}
