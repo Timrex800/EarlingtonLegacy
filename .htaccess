@@ -30,10 +30,15 @@
     RewriteCond %{HTTP_HOST} ^earlingtonlegacy\.org\.za$ [NC]
     RewriteRule ^(.*)$ https://www.earlingtonlegacy.org.za/$1 [L,R=301]
     
-    # Rewrite requests to index.html for React Router (SPA)
+# Rewrite requests to index.html for React Router (SPA)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    RewriteRule ^index\.html$ - [L]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)$ index.html [QSA,L]
+    RewriteCond %{REQUEST_FILENAME} !-l
+    RewriteRule . /index.html [L]
 </IfModule>
 
 # Security headers for SEO and security

@@ -1,6 +1,5 @@
-
-import React from 'react';
 import { Facebook, Mail, Phone } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { GOOGLE_AI_STUDIO_URL } from '../constants';
 
 const Footer: React.FC = () => {
@@ -20,7 +19,7 @@ const Footer: React.FC = () => {
               NPC Reg No: 2025/931583/08
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-slate-200 dark:bg-white/10 flex items-center justify-center text-npc-blue dark:text-slate-200 hover:bg-primary hover:text-white transition-all duration-300">
+              <a href="https://facebook.com/earlingtonlegacy" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-200 dark:bg-white/10 flex items-center justify-center text-npc-blue dark:text-slate-200 hover:bg-primary hover:text-white transition-all duration-300">
                 <Facebook size={16} />
               </a>
               <a href="mailto:info@earlingtonlegacy.org.za" className="w-10 h-10 rounded-full bg-slate-200 dark:bg-white/10 flex items-center justify-center text-npc-blue dark:text-slate-200 hover:bg-primary hover:text-white transition-all duration-300">
@@ -36,12 +35,12 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-npc-blue dark:text-slate-100 font-bold mb-4 uppercase text-[10px] tracking-[0.2em] border-b border-slate-300 dark:border-white/10 pb-1 inline-block">Quick Links</h4>
             <ul className="space-y-2 text-sm font-bold">
-              <li><a href="#about" className="hover:text-primary transition-colors">Mission & Vision</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Board of Directors</a></li>
-              <li><a href="#events" className="hover:text-primary transition-colors">Earlington Day 2026</a></li>
-              <li><a href="#phases" className="hover:text-primary transition-colors">Project Phases</a></li>
+              <li><Link to="/about" className="hover:text-primary transition-colors">Mission & Vision</Link></li>
+              <li><Link to="/directors" className="hover:text-primary transition-colors">Board of Directors</Link></li>
+              <li><Link to="/events" className="hover:text-primary transition-colors">Earlington Day 2026</Link></li>
+              <li><Link to="/phases" className="hover:text-primary transition-colors">Project Phases</Link></li>
               <li><a href={GOOGLE_AI_STUDIO_URL} target="_blank" rel="noopener noreferrer" className="text-primary font-bold hover:text-secondary transition-colors italic">AI Lab (Google Studio)</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Section 18A Donations</a></li>
+              <li><Link to="/donations" className="hover:text-primary transition-colors">Section 18A Donations</Link></li>
             </ul>
           </div>
 
@@ -51,8 +50,8 @@ const Footer: React.FC = () => {
             <ul className="space-y-2 text-sm font-bold">
               <li className="flex items-center gap-2"><Phone size={14} className="text-primary" /> +27 83 657 3397</li>
               <li className="flex items-center gap-2"><Mail size={14} className="text-primary" /> info@earlingtonlegacy.org.za</li>
-              <li className="pt-4 border-t border-slate-300 dark:border-white/10 mt-4 font-bold"><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
-              <li className="font-bold"><a href="#" className="hover:text-primary transition-colors">Terms of Use</a></li>
+              <li className="pt-4 border-t border-slate-300 dark:border-white/10 mt-4 font-bold"><Link to="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
+              <li className="font-bold"><Link to="/terms" className="hover:text-primary transition-colors">Terms of Use</Link></li>
             </ul>
           </div>
         </div>

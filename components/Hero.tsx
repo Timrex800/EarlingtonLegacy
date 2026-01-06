@@ -1,5 +1,4 @@
-
-import React from 'react';
+import { Link } from 'react-router-dom';
 import { GOOGLE_AI_STUDIO_URL } from '../constants';
 
 const Hero: React.FC = () => {
@@ -22,7 +21,7 @@ const Hero: React.FC = () => {
           </span>
         </div>
         
-        <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
+        <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight hero-title">
           BUILDING A <br/>
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-600">
             FUTURE
@@ -34,12 +33,12 @@ const Hero: React.FC = () => {
         </p>
 
         <div className="pt-12 flex flex-col md:flex-row items-center justify-center gap-6">
-          <a href="#about" className="group relative inline-flex items-center justify-center px-8 py-4 text-sm font-mono uppercase tracking-widest text-white transition-all duration-200 bg-transparent border border-slate-300 dark:border-white/20 hover:border-primary hover:bg-primary/10 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary text-slate-900 dark:text-white">
+          <Link to="/about" className="group relative inline-flex items-center justify-center px-8 py-4 text-sm font-mono uppercase tracking-widest transition-all duration-200 bg-transparent border border-slate-300 dark:border-white/20 hover:border-primary hover:bg-primary/10 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary text-slate-900 dark:text-white">
             <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-700"></span>
             <span className="relative group-hover:text-primary transition-colors">Start the Journey</span>
-          </a>
+          </Link>
           
-          <a href={GOOGLE_AI_STUDIO_URL} target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center justify-center px-8 py-4 text-sm font-mono uppercase tracking-widest text-white transition-all duration-200 bg-primary/20 border-2 border-primary hover:bg-primary/30 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary text-slate-900 dark:text-white shadow-[0_0_20px_rgba(217,119,6,0.2)]">
+          <a href={GOOGLE_AI_STUDIO_URL} target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center justify-center px-8 py-4 text-sm font-mono uppercase tracking-widest transition-all duration-200 bg-primary/20 border-2 border-primary hover:bg-primary/30 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary text-slate-900 dark:text-white shadow-[0_0_20px_rgba(217,119,6,0.2)]">
             <span className="relative text-primary font-bold">Launch AI Lab</span>
           </a>
         </div>
