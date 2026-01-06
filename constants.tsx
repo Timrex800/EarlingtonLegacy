@@ -85,3 +85,10 @@ export const AUDIT_DATA: AuditItem[] = [
     section: 'Section 4.1'
   }
 ];
+
+export const TOPOLOGY_DETAILS = {
+  hosting: "Google Firebase Edge",
+  database: "Firestore Multi-Region",
+  intelligence: "Gemini 1.5 Pro/Flash",
+  dns: "Afrihost Anycast"
+};

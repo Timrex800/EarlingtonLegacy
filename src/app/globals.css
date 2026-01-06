@@ -1,20 +1,39 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@source "../../../App.tsx";
+@source "../../../components/**/*.tsx";
+@source "../../../constants.tsx";
+
+@theme {
+  --color-primary: #D97706;
+  --color-secondary: #78350F;
+  --color-npc-blue: #003366;
+  --color-background-light: #FDFBF7;
+  --color-background-dark: #0F0F0F;
+  --color-surface-light: #FFFFFF;
+  --color-surface-dark: #1A1A1A;
+
+  --font-display: "Cinzel", serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "Space Mono", monospace;
+
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-spin-slow: spin 20s linear infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+}
 
 @layer base {
-  :root {
-    --background-light: #FDFBF7;
-    --background-dark: #0F0F0F;
-    --primary: #D97706;
-  }
-
   body {
     @apply antialiased text-slate-800 dark:text-slate-200 bg-background-light dark:bg-background-dark;
     overflow-x: hidden;
   }
 
-  /* Fix unstyled lists */
+  /* Fix unstyled lists globally */
   ul {
     @apply list-none p-0 m-0;
   }
@@ -26,10 +45,10 @@
   .prose ol {
     @apply list-decimal ml-5 mb-4;
   }
-
-  /* Responsive Containers */
-  .container-custom {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  
+  /* Reset link highlights */
+  a {
+    @apply no-underline text-inherit;
   }
 }
 
@@ -41,14 +60,23 @@
   .section-padding {
     @apply py-16 md:py-24;
   }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Fix Hero clipping & misalignment */
+  .hero-title {
+    @apply leading-tight tracking-tighter;
+  }
+
+  /* Fix stat alignment */
+  .stat-container {
+    @apply flex flex-col md:flex-row items-center md:items-start gap-2;
+  }
 }
 
-/* Fix Hero clipping & misalignment */
-.hero-title {
-  @apply leading-tight tracking-tighter;
-}
-
-/* Fix stat alignment */
-.stat-container {
-  @apply flex flex-col md:flex-row items-center md:items-start gap-2;
+/* Ensure hidden elements are actually hidden */
+[hidden] {
+  display: none !important;
 }

@@ -31,9 +31,15 @@
     RewriteRule ^(.*)$ https://www.earlingtonlegacy.org.za/$1 [L,R=301]
     
     # Rewrite requests to index.html for React Router (SPA)
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)$ index.html [QSA,L]
+    <IfModule mod_rewrite.c>
+        RewriteEngine On
+        RewriteBase /
+        RewriteRule ^index\.html$ - [L]
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteCond %{REQUEST_FILENAME} !-l
+        RewriteRule . /index.html [L]
+    </IfModule>
 </IfModule>
 
 # Security headers for SEO and security

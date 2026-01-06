@@ -122,7 +122,7 @@ const LandingPage: React.FC = () => {
       <Header darkMode={darkMode} toggleTheme={toggleTheme} onNavigate={handleNavigate} />
       
       <main className="relative z-10">
-        <Hero />
+        <Hero onNavigate={handleNavigate} />
         <InfoSection />
         <PartnersSection />
         <CtaSection />
