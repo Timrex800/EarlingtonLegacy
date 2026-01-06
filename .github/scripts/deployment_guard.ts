@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const DEPLOY_YML_PATH = path.join(process.cwd(), '.github', 'workflows', 'deploy.yml');
+const DEPLOY_YML_PATH = path.join(process.cwd(), '.github', 'workflows', 'deploy-afrihost.yml');
 
 interface ConfigRule {
   description: string;
@@ -10,11 +10,12 @@ interface ConfigRule {
 
 const rules: ConfigRule[] = [
   {
-    description: "No hardcoded passwords in deploy.yml",
+    description: "No hardcoded passwords in deployment config",
     check: (content) => {
       // Look for 'password:' followed by anything that ISN'T using ${{ secrets... }}
-      const match = content.match(/password:\s*(?!\$\{\{\s*secrets\.)(.*)/i);
-      if (match) {
+      // Improved regex to handle spaces and ensure it doesn't match the secret placeholder itself
+      const match = content.match(/password:\s+(?!\$\{\{\s*secrets\.)(.*)/i);
+      if (match && match[1].trim()) {
         return `Found potential hardcoded password: "${match[1].trim()}". Please use \${{ secrets.AFRIHOST_PASSWORD }}`;
       }
       return true;
