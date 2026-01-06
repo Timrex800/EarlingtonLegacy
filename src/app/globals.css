@@ -2,16 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background-light: #FDFBF7;
-  --background-dark: #0F0F0F;
+@layer base {
+  :root {
+    --background-light: #FDFBF7;
+    --background-dark: #0F0F0F;
+    --primary: #D97706;
+  }
+
+  body {
+    @apply antialiased text-slate-800 dark:text-slate-200 bg-background-light dark:bg-background-dark;
+    overflow-x: hidden;
+  }
+
+  /* Fix unstyled lists */
+  ul {
+    @apply list-none p-0 m-0;
+  }
+
+  .prose ul {
+    @apply list-disc ml-5 mb-4;
+  }
+
+  .prose ol {
+    @apply list-decimal ml-5 mb-4;
+  }
+
+  /* Responsive Containers */
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
 }
 
-body {
-  overflow-x: hidden;
+@layer components {
+  .glass-panel {
+    @apply backdrop-blur-md bg-white/70 dark:bg-black/70 border border-white/20 dark:border-white/10;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
 }
 
-.glass-panel {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+/* Fix Hero clipping & misalignment */
+.hero-title {
+  @apply leading-tight tracking-tighter;
+}
+
+/* Fix stat alignment */
+.stat-container {
+  @apply flex flex-col md:flex-row items-center md:items-start gap-2;
 }

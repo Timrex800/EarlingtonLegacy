@@ -4,6 +4,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Earlington Legacy Initiative | Official NPC Site",
   description: "Transforming Earlington Secondary School into a center of advanced learning and innovation. Bridging the digital divide via https://www.earlingtonlegacy.org.za/",
+  verification: {
+    google: "2fq0gBV2QLpvhVLUPulFLCIG0Un2CjO2pKPR7vP7mTM",
+  },
 };
 
 export default function RootLayout({
