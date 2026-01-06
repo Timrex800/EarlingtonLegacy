@@ -1,6 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Menu, Sun, Moon } from 'lucide-react';
-import { GOOGLE_AI_STUDIO_URL } from '../constants';
 
 interface HeaderProps {
   darkMode: boolean;
@@ -46,10 +45,6 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleTheme, onNavigate }) =>
               </Link>
             ))}
             <Link to="/directors" className="text-sm font-medium hover:text-primary transition-colors">Board of Directors</Link>
-            
-            <a href={GOOGLE_AI_STUDIO_URL} target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-primary hover:text-secondary transition-colors uppercase tracking-wider">
-              AI Lab
-            </a>
             
             <button 
               onClick={() => onNavigate('events')}

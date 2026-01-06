@@ -1,6 +1,5 @@
 import { Facebook, Mail, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { GOOGLE_AI_STUDIO_URL } from '../constants';
 
 const Footer: React.FC = () => {
   return (
@@ -39,7 +38,6 @@ const Footer: React.FC = () => {
               <li><Link to="/directors" className="hover:text-primary transition-colors">Board of Directors</Link></li>
               <li><Link to="/events" className="hover:text-primary transition-colors">Earlington Day 2026</Link></li>
               <li><Link to="/phases" className="hover:text-primary transition-colors">Project Phases</Link></li>
-              <li><a href={GOOGLE_AI_STUDIO_URL} target="_blank" rel="noopener noreferrer" className="text-primary font-bold hover:text-secondary transition-colors italic">AI Lab (Google Studio)</a></li>
               <li><Link to="/donations" className="hover:text-primary transition-colors">Section 18A Donations</Link></li>
             </ul>
           </div>

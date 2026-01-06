@@ -39,7 +39,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
         </h1>
         
         <p className="font-body text-lg md:text-2xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed animate-fade-in" style={{ animationDelay: '0.4s' }}>
-          Architecting the future of Earlington Secondary through 1GBPS serverless infrastructure and Gemini-driven education.
+          Architecting the future of Earlington Secondary through high-speed digital infrastructure and advanced learning methodologies.
         </p>
 
         <div className="pt-16 flex flex-col items-center gap-8 animate-fade-in" style={{ animationDelay: '0.8s' }}>
