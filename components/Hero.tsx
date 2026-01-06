@@ -1,61 +1,83 @@
-import { Link } from 'react-router-dom';
-import { GOOGLE_AI_STUDIO_URL } from '../constants';
+import React from 'react';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  onNavigate: (id: string) => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    onNavigate(id);
+  };
+
   return (
     <header className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden pt-20">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-[300px] h-[400px] bg-[radial-gradient(circle_at_30%_30%,rgba(217,119,6,0.4),transparent_60%)] blur-[40px] animate-float opacity-60"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-[300px] h-[400px] bg-[radial-gradient(circle_at_30%_30%,rgba(120,53,15,0.3),transparent_60%)] blur-[40px] animate-float opacity-60" style={{ animationDelay: '2s' }}></div>
+        {/* Glowing Orbs */}
+        <div className="absolute top-1/4 left-1/4 w-[400px] h-[500px] bg-[radial-gradient(circle_at_30%_30%,rgba(217,119,6,0.3),transparent_60%)] blur-[60px] animate-float opacity-50"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[500px] bg-[radial-gradient(circle_at_30%_30%,rgba(0,51,102,0.2),transparent_60%)] blur-[60px] animate-float opacity-40" style={{ animationDelay: '3s' }}></div>
         
-        {/* Geometric Circles */}
-        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-slate-200/20 dark:border-white/5 rounded-full animate-pulse-slow"></div>
-        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-primary/20 rounded-full animate-spin-slow"></div>
+        {/* Floating Architectural Rings */}
+        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-slate-200/10 dark:border-white/5 rounded-full animate-pulse-slow"></div>
+        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-primary/10 rounded-full animate-spin-slow"></div>
+        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-npc-blue/20 rounded-full animate-float"></div>
       </div>
 
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto space-y-8">
-        <div className="inline-block mb-4">
-          <span className="font-mono text-xs uppercase tracking-[0.2em] text-primary/80 border-b border-primary/30 pb-1">
-            Est. 2025
+      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto space-y-12">
+        <div className="inline-block mb-4 animate-fade-in">
+          <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary font-black bg-primary/5 border border-primary/20 px-4 py-1.5 rounded-full">
+            Zero-G Cloud Framework • Est. 2025
           </span>
         </div>
         
-        <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight hero-title">
-          BUILDING A <br/>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-600">
-            FUTURE
+        <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight animate-slide-up">
+          Earlington Legacy Initiative
+          <span className="block text-xl md:text-3xl lg:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-primary via-yellow-500 to-amber-700 mt-4 font-mono tracking-[0.3em] font-black uppercase">
+            NPC
           </span>
         </h1>
         
-        <p className="font-body text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-          Transforming Earlington Secondary School into a center of advanced learning and innovation to bridge the digital divide.
+        <p className="font-body text-lg md:text-2xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed animate-fade-in" style={{ animationDelay: '0.4s' }}>
+          Architecting the future of Earlington Secondary through 1GBPS serverless infrastructure and Gemini-driven education.
         </p>
 
-        <div className="pt-12 flex flex-col md:flex-row items-center justify-center gap-6">
-          <Link to="/about" className="group relative inline-flex items-center justify-center px-8 py-4 text-sm font-mono uppercase tracking-widest transition-all duration-200 bg-transparent border border-slate-300 dark:border-white/20 hover:border-primary hover:bg-primary/10 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary text-slate-900 dark:text-white">
-            <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-700"></span>
-            <span className="relative group-hover:text-primary transition-colors">Start the Journey</span>
-          </Link>
+        <div className="pt-16 flex flex-col items-center gap-8 animate-fade-in" style={{ animationDelay: '0.8s' }}>
+          <div className="flex flex-wrap justify-center gap-6">
+            <a 
+              href="#about" 
+              onClick={(e) => handleLinkClick(e, 'about')}
+              className="group relative inline-flex items-center justify-center px-10 py-5 text-xs font-black uppercase tracking-[0.3em] text-white transition-all duration-300 bg-primary rounded-full hover:shadow-[0_0_30px_rgba(217,119,6,0.5)] transform hover:-translate-y-1"
+            >
+              Start Transformation
+            </a>
+            <a 
+              href="#phases" 
+              onClick={(e) => handleLinkClick(e, 'phases')}
+              className="group inline-flex items-center justify-center px-10 py-5 text-xs font-black uppercase tracking-[0.3em] text-slate-900 dark:text-white transition-all duration-300 bg-transparent border-2 border-slate-200 dark:border-white/10 rounded-full hover:border-primary"
+            >
+              View Roadmap
+            </a>
+          </div>
           
-          <a href={GOOGLE_AI_STUDIO_URL} target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center justify-center px-8 py-4 text-sm font-mono uppercase tracking-widest transition-all duration-200 bg-primary/20 border-2 border-primary hover:bg-primary/30 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary text-slate-900 dark:text-white shadow-[0_0_20px_rgba(217,119,6,0.2)]">
-            <span className="relative text-primary font-bold">Launch AI Lab</span>
-          </a>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <span className="font-mono text-xs text-slate-400 dark:text-slate-600 animate-pulse">
-            Scroll to explore or visit our AI ecosystem
-          </span>
+          <div className="flex flex-col items-center gap-2">
+            <span className="font-mono text-[10px] text-slate-400 dark:text-slate-500 uppercase tracking-widest">
+              Descend into our vision
+            </span>
+            <div className="w-px h-12 bg-gradient-to-b from-primary to-transparent animate-pulse"></div>
+          </div>
         </div>
       </div>
 
-      <div className="absolute top-24 right-8 max-w-xs text-right hidden lg:block">
-        <p className="text-xs text-slate-500 dark:text-slate-500 font-mono">
-          A non-profit initiative by the<br/>
-          <a href="#" className="underline decoration-slate-600 underline-offset-2 hover:text-primary transition-colors">
-            Earlington Legacy Initiative NPC
-          </a>
-        </p>
+      {/* Floating Status Indicator */}
+      <div className="absolute top-24 right-12 hidden xl:flex items-center gap-4 bg-white/5 backdrop-blur-md border border-white/10 p-4 rounded-3xl animate-fade-in" style={{ animationDelay: '1.2s' }}>
+        <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center">
+          <div className="w-4 h-4 bg-primary rounded-full animate-ping"></div>
+        </div>
+        <div className="text-right">
+          <p className="text-[10px] font-black text-white uppercase tracking-widest">Live Node: ELI-01</p>
+          <p className="text-[10px] text-primary font-bold">1GBPS Fibre Link Active</p>
+        </div>
       </div>
     </header>
   );
