@@ -8,10 +8,6 @@
     # Set the base path for rewrites
     RewriteBase /
     
-    # Redirect to Google AI Studio
-    RewriteRule ^ai-studio$ https://aistudio.google.com/app/prompts?state=\%7B\%22ids\%22:\%5B\%221XyzbQ8xUqInykIu-GiqVoVZIG3YZmao0\%22\%5D,\%22action\%22:\%22open\%22,\%22userId\%22:\%22117947360650694935977\%22,\%22resourceKeys\%22:\%7B\%7D\%7D&usp=sharing [L,R=301]
-    RewriteRule ^ai$ https://aistudio.google.com/app/prompts?state=\%7B\%22ids\%22:\%5B\%221XyzbQ8xUqInykIu-GiqVoVZIG3YZmao0\%22\%5D,\%22action\%22:\%22open\%22,\%22userId\%22:\%22117947360650694935977\%22,\%22resourceKeys\%22:\%7B\%7D\%7D&usp=sharing [L,R=301]
-    
     # Redirect HTTP to HTTPS
     RewriteCond %{HTTPS} off
     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

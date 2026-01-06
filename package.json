@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "serve": "npx serve -s dist",
+    "serve": "npx serve -s out",
     "verify-deploy": "npx tsx .github/scripts/deployment_guard.ts"
   },
   "dependencies": {

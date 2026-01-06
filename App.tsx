@@ -11,7 +11,6 @@ import EducationSection from './components/EducationSection'; // Now Phases Sect
 import Footer from './components/Footer';
 import AuditDashboard from './components/AuditDashboard';
 import ParticleBackground from './components/ParticleBackground';
-import AIAssistant from './components/AIAssistant';
 import SitemapView from './components/SitemapView';
 import { ShieldCheck, Map } from 'lucide-react';
 
@@ -150,7 +149,6 @@ const LandingPage: React.FC = () => {
         </button>
       </div>
 
-      <AIAssistant />
 
       {showSitemap && <SitemapView onClose={() => setShowSitemap(false)} />}
       {showAudit && <AuditDashboard onClose={() => setShowAudit(false)} />}
