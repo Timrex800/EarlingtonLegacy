@@ -1,12 +1,9 @@
-import React from 'react';
-
 interface HeroProps {
   onNavigate: (id: string) => void;
 }
 
 const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
-  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    e.preventDefault();
+  const handleLinkClick = (e: React.MouseEvent<HTMLElement>, id: string) => {
     onNavigate(id);
   };
 
@@ -25,39 +22,39 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
       </div>
 
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto space-y-12">
-        <div className="inline-block mb-4 animate-fade-in">
+        <div className="inline-block mb-4 animate-fade-in opacity-0">
           <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary font-black bg-primary/5 border border-primary/20 px-4 py-1.5 rounded-full">
-            Zero-G Cloud Framework • Est. 2025
+            Zero-G Cloud Framework • Est. 2023
           </span>
         </div>
         
-        <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight animate-slide-up">
+        <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight animate-slide-up opacity-0">
           Earlington Legacy Initiative
           <span className="block text-xl md:text-3xl lg:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-primary via-yellow-500 to-amber-700 mt-4 font-mono tracking-[0.3em] font-black uppercase">
             NPC
           </span>
         </h1>
         
-        <p className="font-body text-lg md:text-2xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed animate-fade-in" style={{ animationDelay: '0.4s' }}>
+        <p className="font-body text-lg md:text-2xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed animate-fade-in opacity-0" style={{ animationDelay: '0.4s' }}>
           Architecting the future of Earlington Secondary through high-speed digital infrastructure and advanced learning methodologies.
         </p>
 
-        <div className="pt-16 flex flex-col items-center gap-8 animate-fade-in" style={{ animationDelay: '0.8s' }}>
+        <div className="pt-16 flex flex-col items-center gap-8 animate-fade-in opacity-0" style={{ animationDelay: '0.8s' }}>
           <div className="flex flex-wrap justify-center gap-6">
-            <a 
-              href="#about" 
+            <button 
+              type="button"
               onClick={(e) => handleLinkClick(e, 'about')}
               className="group relative inline-flex items-center justify-center px-10 py-5 text-xs font-black uppercase tracking-[0.3em] text-white transition-all duration-300 bg-primary rounded-full hover:shadow-[0_0_30px_rgba(217,119,6,0.5)] transform hover:-translate-y-1"
             >
               Start Transformation
-            </a>
-            <a 
-              href="#phases" 
+            </button>
+            <button 
+              type="button"
               onClick={(e) => handleLinkClick(e, 'phases')}
               className="group inline-flex items-center justify-center px-10 py-5 text-xs font-black uppercase tracking-[0.3em] text-slate-900 dark:text-white transition-all duration-300 bg-transparent border-2 border-slate-200 dark:border-white/10 rounded-full hover:border-primary"
             >
               View Roadmap
-            </a>
+            </button>
           </div>
           
           <div className="flex flex-col items-center gap-2">
