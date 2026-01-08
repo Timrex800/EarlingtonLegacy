@@ -13,13 +13,18 @@ const ParticleBackground: React.FC = () => {
 
     let particles: Particle[] = [];
     let animationFrameId: number;
-    const pCount = 300; // Fixed at 300
-    const baseSpeed = 4.5; // Increased speed for "haster" movement
-    const trail = 0.3; // Clean movement at high speeds
-    const mouseRadius = 300; // Large interaction area
-    const mouseInfluence = 2.5; // Stronger physical-feeling repulsion
+    
+    // Updated configuration based on request
+    const pCount = 100; 
+    const baseSpeed = 0.5; 
+    const trail = 0.3; 
+    const mouseRadius = 100; 
+    const mouseInfluence = 2.5; 
 
     const pointer = { x: -2000, y: -2000 };
+
+    // Log for verification
+    console.log(`[System] Particle Background Reloaded: ${pCount} entities active (Squares).`);
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -32,33 +37,33 @@ const ParticleBackground: React.FC = () => {
       size: number;
       vx: number;
       vy: number;
+      opacity: number;
       color: string;
       borderColor: string;
-      opacity: number;
 
       constructor() {
         this.x = Math.random() * canvas!.width;
         this.y = Math.random() * canvas!.height;
-        this.size = Math.random() * 6 + 2; // Noticeable bubble size
+        this.size = Math.random() * 6 + 2; 
         
         const angle = Math.random() * Math.PI * 2;
         const speedMultiplier = Math.random() * 1.2 + 0.8;
         this.vx = Math.cos(angle) * baseSpeed * speedMultiplier;
         this.vy = Math.sin(angle) * baseSpeed * speedMultiplier;
         
-        // Brand palette: Amber (Legacy) and Slate (Modernity)
+        // Updated Color Palette
         const isAmber = Math.random() > 0.6;
         if (isAmber) {
-          const r = 217;
-          const g = Math.floor(Math.random() * 50 + 119); // Variants of primary amber
-          const b = 6;
+          const r = 255;
+          const g = 234;
+          const b = 167;
           this.opacity = Math.random() * 0.4 + 0.3;
           this.color = `rgba(${r}, ${g}, ${b}, ${this.opacity})`;
           this.borderColor = `rgba(${r}, ${g}, ${b}, ${this.opacity + 0.2})`;
         } else {
-          const r = Math.floor(Math.random() * 40 + 30);
-          const g = Math.floor(Math.random() * 40 + 40);
-          const b = Math.floor(Math.random() * 60 + 80);
+          const r = 201;
+          const g = 147;
+          const b = 135;
           this.opacity = Math.random() * 0.3 + 0.2;
           this.color = `rgba(${r}, ${g}, ${b}, ${this.opacity})`;
           this.borderColor = `rgba(${r}, ${g}, ${b}, ${this.opacity + 0.1})`;
@@ -66,11 +71,9 @@ const ParticleBackground: React.FC = () => {
       }
 
       update() {
-        // Base kinetic movement
         this.x += this.vx;
         this.y += this.vy;
 
-        // Dynamic Mouse Repulsion
         const dx = pointer.x - this.x;
         const dy = pointer.y - this.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
@@ -84,7 +87,7 @@ const ParticleBackground: React.FC = () => {
           this.y -= moveY;
         }
 
-        // Seamless Boundary Wrap
+        // Wrap around screen
         if (this.x > canvas!.width) this.x = 0;
         else if (this.x < 0) this.x = canvas!.width;
         if (this.y > canvas!.height) this.y = 0;
@@ -94,17 +97,19 @@ const ParticleBackground: React.FC = () => {
       draw() {
         if (!ctx) return;
         
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(Math.atan2(this.vy, this.vx));
         
-        // Translucent fill for bubble effect
+        // Square shape
         ctx.fillStyle = this.color;
-        ctx.fill();
+        ctx.fillRect(-this.size, -this.size, this.size * 2, this.size * 2);
         
-        // Soft border for definition
         ctx.strokeStyle = this.borderColor;
         ctx.lineWidth = 1;
-        ctx.stroke();
+        ctx.strokeRect(-this.size, -this.size, this.size * 2, this.size * 2);
+        
+        ctx.restore();
       }
     }
 
@@ -116,9 +121,12 @@ const ParticleBackground: React.FC = () => {
     };
 
     const animate = () => {
+      if (!ctx || !canvas) return;
+      
       const isDark = document.documentElement.classList.contains('dark');
-      // Clearing the canvas with a trail for motion blur
-      ctx.fillStyle = isDark ? `rgba(15, 15, 15, ${trail})` : `rgba(253, 251, 247, ${trail})`;
+      // Using colors consistent with existing theme but applying trail
+      const bgColor = isDark ? `rgba(15, 15, 15, ${trail})` : `rgba(253, 251, 247, ${trail})`;
+      ctx.fillStyle = bgColor;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach((p) => {
