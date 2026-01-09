@@ -1,90 +1,43 @@
 
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation, useNavigate, useParams } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import InfoSection from './components/InfoSection'; // Now About Section
+import InfoSection from './components/InfoSection';
 import PartnersSection from './components/PartnersSection';
-import CtaSection from './components/CtaSection'; // Now Events Section
+import CtaSection from './components/CtaSection';
 import ValueSection from './components/ValueSection';
-import EducationSection from './components/EducationSection'; // Now Phases Section
+import EducationSection from './components/EducationSection';
+import FounderSection from './components/FounderSection';
+import DirectorsPage from './components/DirectorsPage';
 import Footer from './components/Footer';
 import AuditDashboard from './components/AuditDashboard';
-import ParticleBackground from './components/ParticleBackground';
 import SitemapView from './components/SitemapView';
-import { ShieldCheck, Map } from 'lucide-react';
+import AIAssistant from './components/AIAssistant';
+import ParticleBackground from './components/ParticleBackground';
+import { ShieldCheck } from 'lucide-react';
 
-type SectionKey = 'about' | 'partners' | 'events' | 'phases';
-
-const SECTION_PATHS: Record<SectionKey, `/${SectionKey}`> = {
-  about: '/about',
-  partners: '/partners',
-  events: '/events',
-  phases: '/phases',
-};
-
-const isSectionKey = (value: string): value is SectionKey => {
-  return value === 'about' || value === 'partners' || value === 'events' || value === 'phases';
-};
-
-const scrollToSection = (id?: string) => {
-  if (!id) {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    return;
-  }
-
-  const element = document.getElementById(id);
-  if (!element) return;
-
-  const yOffset = 88;
-  const y = element.getBoundingClientRect().top + window.scrollY - yOffset;
-  window.scrollTo({ top: y, behavior: 'smooth' });
-};
-
-const NotFound: React.FC = () => {
-  return (
-    <div className="min-h-screen flex items-center justify-center p-6">
-      <div className="max-w-xl text-center">
-        <h1 className="font-display text-4xl font-bold">Page not found</h1>
-        <p className="mt-4 text-slate-600 dark:text-slate-300">
-          The page you’re looking for doesn’t exist.
-        </p>
-      </div>
-    </div>
-  );
-};
-
-const LandingPage: React.FC = () => {
+const App: React.FC = () => {
   const [showAudit, setShowAudit] = useState(false);
   const [showSitemap, setShowSitemap] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
-  const location = useLocation();
-  const navigate = useNavigate();
-  const params = useParams<{ section?: string }>();
-
-  const sectionFromPath: SectionKey | undefined =
-    params.section && isSectionKey(params.section) ? params.section : undefined;
-
-  const isInvalidSection = Boolean(params.section) && !sectionFromPath;
+  const [currentRoute, setCurrentRoute] = useState<'landing' | 'directors'>('landing');
 
   // Initialize Dark Mode based on preference or system
   useEffect(() => {
-    const isDark =
-      localStorage.getItem('theme') === 'dark' ||
-      (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    const isDark = localStorage.getItem('theme') === 'dark' || 
+                  (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
     setDarkMode(isDark);
     if (isDark) {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
     }
-  }, []);
 
-  useEffect(() => {
-    if (isInvalidSection) return;
-    const id = sectionFromPath;
-    requestAnimationFrame(() => scrollToSection(id));
-  }, [location.pathname, isInvalidSection, sectionFromPath]);
+    // Handle initial hash routing
+    if (window.location.pathname === '/directors') {
+      setCurrentRoute('directors');
+    }
+  }, []);
 
   const toggleTheme = () => {
     const newMode = !darkMode;
@@ -98,25 +51,40 @@ const LandingPage: React.FC = () => {
   };
 
   const handleNavigate = (id: string) => {
-    if (isSectionKey(id)) {
-      const targetPath = SECTION_PATHS[id];
-      if (location.pathname === targetPath) {
-        scrollToSection(id);
-        return;
-      }
-      navigate(targetPath);
+    if (id === 'directors') {
+      setCurrentRoute('directors');
+      window.scrollTo(0, 0);
       return;
     }
-
-    scrollToSection(id);
+    
+    if (currentRoute !== 'landing') {
+      setCurrentRoute('landing');
+      // Delay scroll to allow render
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) element.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
   };
 
-  if (isInvalidSection) {
-    return <NotFound />;
+  if (currentRoute === 'directors') {
+    return (
+      <div className="min-h-screen relative">
+        <DirectorsPage onBack={() => setCurrentRoute('landing')} />
+        <AIAssistant />
+        <Footer onSitemapClick={() => setShowSitemap(true)} />
+        {showSitemap && <SitemapView onClose={() => setShowSitemap(false)} />}
+      </div>
+    );
   }
 
   return (
-    <div className="min-h-screen relative">
+    <div className={`min-h-screen relative transition-all duration-500 ${showSitemap ? 'blur-md brightness-50' : ''}`}>
       <ParticleBackground />
       <Header darkMode={darkMode} toggleTheme={toggleTheme} onNavigate={handleNavigate} />
       
@@ -127,19 +95,13 @@ const LandingPage: React.FC = () => {
         <CtaSection />
         <ValueSection />
         <EducationSection />
+        <FounderSection onExplore={() => handleNavigate('directors')} />
       </main>
 
-      <Footer />
+      <Footer onSitemapClick={() => setShowSitemap(true)} />
 
-      {/* Interactive Floating Utilities */}
+      {/* Floating UI Containers */}
       <div className="fixed bottom-6 left-6 z-[60] flex flex-col gap-3">
-        <button 
-          onClick={() => setShowSitemap(true)}
-          className="p-3 bg-npc-blue/90 text-white rounded-full hover:scale-110 transition-transform shadow-lg border border-white/10"
-          title="Site Map"
-        >
-          <Map size={20} />
-        </button>
         <button 
           onClick={() => setShowAudit(true)}
           className="p-3 bg-black/80 dark:bg-white/10 text-white rounded-full hover:scale-110 transition-transform shadow-lg border border-white/10"
@@ -149,24 +111,11 @@ const LandingPage: React.FC = () => {
         </button>
       </div>
 
+      <AIAssistant />
 
-      {showSitemap && <SitemapView onClose={() => setShowSitemap(false)} />}
       {showAudit && <AuditDashboard onClose={() => setShowAudit(false)} />}
+      {showSitemap && <SitemapView onClose={() => setShowSitemap(false)} />}
     </div>
-  );
-};
-
-const App: React.FC = () => {
-  // Ensure basename is set correctly for deployment, fallback to '/'
-  const basename = process.env.BASE_PATH || '/';
-
-  return (
-    <BrowserRouter basename={basename}>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/:section" element={<LandingPage />} />
-      </Routes>
-    </BrowserRouter>
   );
 };
 

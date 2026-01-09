@@ -1,4 +1,5 @@
-import { Link, useNavigate } from 'react-router-dom';
+
+import React from 'react';
 import { Menu, Sun, Moon } from 'lucide-react';
 
 interface HeaderProps {
@@ -8,8 +9,6 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ darkMode, toggleTheme, onNavigate }) => {
-  const navigate = useNavigate();
-  
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     onNavigate(id);
@@ -19,37 +18,35 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleTheme, onNavigate }) =>
     <nav className="fixed w-full z-50 top-0 transition-all duration-300 glass-panel bg-background-light/80 dark:bg-background-dark/80 border-b border-gray-200 dark:border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20 items-center">
-          <div 
-            className="flex-shrink-0 flex flex-col justify-center cursor-pointer group" 
-            onClick={() => {
-              navigate('/');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-          >
+          <a href="https://www.earlingtonlegacy.org.za/" className="flex-shrink-0 flex flex-col justify-center cursor-pointer group">
             <span className="font-display font-bold text-lg md:text-xl tracking-wider text-npc-blue dark:text-primary transition-colors group-hover:text-primary dark:group-hover:text-white">
               EARLINGTON LEGACY INITIATIVE NPC
             </span>
             <span className="font-mono text-[10px] text-slate-500 dark:text-slate-400 tracking-wider">
               REG: 2025/931583/08
             </span>
-          </div>
+          </a>
 
           <div className="hidden md:flex space-x-6 lg:space-x-8 items-center">
             {['about', 'partners', 'events', 'phases'].map((item) => (
-              <Link 
+              <a 
                 key={item}
-                to={`/${item}`}
+                href={`#${item}`}
+                onClick={(e) => handleLinkClick(e, item)}
                 className="text-sm font-medium hover:text-primary transition-colors capitalize"
               >
                 {item}
-              </Link>
+              </a>
             ))}
-            <Link to="/directors" className="text-sm font-medium hover:text-primary transition-colors">Board of Directors</Link>
-            
-            <button 
-              onClick={() => onNavigate('events')}
-              className="bg-primary hover:bg-opacity-90 text-white px-5 py-2 rounded-full text-sm font-bold transition-all transform hover:scale-105 shadow-lg shadow-primary/30"
+            <a 
+              href="#directors" 
+              onClick={(e) => handleLinkClick(e, 'directors')}
+              className="text-sm font-medium hover:text-primary transition-colors"
             >
+              Board of Directors
+            </a>
+            
+            <button className="bg-primary hover:bg-opacity-90 text-white px-5 py-2 rounded-full text-sm font-bold transition-all transform hover:scale-105 shadow-lg shadow-primary/30">
               Get Involved
             </button>
             

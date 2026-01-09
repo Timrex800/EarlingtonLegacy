@@ -1,67 +1,89 @@
-import { Facebook, Mail, Phone } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
-const Footer: React.FC = () => {
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Mail, ShieldCheck, MapPin, ExternalLink, Globe } from 'lucide-react';
+
+interface FooterProps {
+  onSitemapClick: () => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onSitemapClick }) => {
   return (
-    <footer className="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-200 py-16 border-t border-slate-300 dark:border-white/10 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          {/* Brand Column */}
-          <div className="col-span-1 md:col-span-2">
-            <h2 className="font-display text-2xl text-npc-blue dark:text-primary font-bold mb-4">
-              Earlington Legacy Initiative NPC
-            </h2>
-            <p className="text-sm max-w-sm mb-2 leading-relaxed font-medium">
+    <footer className="relative z-10 bg-background-light dark:bg-background-dark border-t border-slate-200 dark:border-white/10 py-16 px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
+          {/* Brand Identity */}
+          <div className="space-y-6">
+            <div className="flex flex-col">
+              <span className="font-display font-bold text-xl tracking-wider text-npc-blue dark:text-primary">
+                EARLINGTON LEGACY INITIATIVE NPC
+              </span>
+              <span className="font-mono text-[10px] text-slate-500 uppercase tracking-widest mt-1">
+                REG: 2025/931583/08
+              </span>
+            </div>
+            <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-sm">
               Dedicated to transforming Earlington Secondary School into a center of innovation. Join us in creating a brighter future for our students through technology and heritage.
             </p>
-            <p className="text-xs font-mono text-slate-700 dark:text-slate-400 mb-6 uppercase tracking-widest font-bold">
-              NPC Reg No: 2025/931583/08
-            </p>
-            <div className="flex space-x-4">
-              <a href="https://facebook.com/earlingtonlegacy" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-200 dark:bg-white/10 flex items-center justify-center text-npc-blue dark:text-slate-200 hover:bg-primary hover:text-white transition-all duration-300">
-                <Facebook size={16} />
-              </a>
-              <a href="mailto:info@earlingtonlegacy.org.za" className="w-10 h-10 rounded-full bg-slate-200 dark:bg-white/10 flex items-center justify-center text-npc-blue dark:text-slate-200 hover:bg-primary hover:text-white transition-all duration-300">
-                <Mail size={16} />
-              </a>
-              <a href="tel:+27836573397" className="w-10 h-10 rounded-full bg-slate-200 dark:bg-white/10 flex items-center justify-center text-npc-blue dark:text-slate-200 hover:bg-primary hover:text-white transition-all duration-300">
-                <Phone size={16} />
-              </a>
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/20 rounded-full">
+              <ShieldCheck size={14} className="text-primary" />
+              <span className="text-[9px] font-black uppercase tracking-widest text-primary">Approved by Google Non-Profit</span>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-npc-blue dark:text-slate-100 font-bold mb-4 uppercase text-[10px] tracking-[0.2em] border-b border-slate-300 dark:border-white/10 pb-1 inline-block">Quick Links</h4>
-            <ul className="space-y-2 text-sm font-bold">
-              <li><Link to="/about" className="hover:text-primary transition-colors">Mission & Vision</Link></li>
-              <li><Link to="/directors" className="hover:text-primary transition-colors">Board of Directors</Link></li>
-              <li><Link to="/events" className="hover:text-primary transition-colors">Earlington Day 2026</Link></li>
-              <li><Link to="/phases" className="hover:text-primary transition-colors">Project Phases</Link></li>
-              <li><Link to="/donations" className="hover:text-primary transition-colors">Section 18A Donations</Link></li>
-            </ul>
+          {/* Contact Details */}
+          <div className="space-y-6">
+            <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 dark:text-slate-500">Contact Terminal</h4>
+            <div className="space-y-4">
+              <div className="flex items-center gap-4 group">
+                <div className="p-2.5 bg-slate-100 dark:bg-white/5 rounded-xl text-primary">
+                  <Mail size={18} />
+                </div>
+                <a href="mailto:info@earlingtonlegacy.org.za" className="text-sm font-bold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors">
+                  info@earlingtonlegacy.org.za
+                </a>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="p-2.5 bg-slate-100 dark:bg-white/5 rounded-xl text-primary">
+                  <MapPin size={18} />
+                </div>
+                <span className="text-sm font-bold text-slate-700 dark:text-slate-300">
+                  Phoenix, KwaZulu-Natal, South Africa
+                </span>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="p-2.5 bg-slate-100 dark:bg-white/5 rounded-xl text-primary">
+                  <Globe size={18} />
+                </div>
+                <a href="https://www.earlingtonlegacy.org.za" target="_blank" className="text-sm font-bold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors">
+                  www.earlingtonlegacy.org.za
+                </a>
+              </div>
+            </div>
           </div>
 
-          {/* Contact */}
-          <div>
-            <h4 className="text-npc-blue dark:text-slate-100 font-bold mb-4 uppercase text-[10px] tracking-[0.2em] border-b border-slate-300 dark:border-white/10 pb-1 inline-block">Contact</h4>
-            <ul className="space-y-2 text-sm font-bold">
-              <li className="flex items-center gap-2"><Phone size={14} className="text-primary" /> +27 83 657 3397</li>
-              <li className="flex items-center gap-2"><Mail size={14} className="text-primary" /> info@earlingtonlegacy.org.za</li>
-              <li className="pt-4 border-t border-slate-300 dark:border-white/10 mt-4 font-bold"><Link to="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
-              <li className="font-bold"><Link to="/terms" className="hover:text-primary transition-colors">Terms of Use</Link></li>
-            </ul>
+          {/* Quick Links / Sitemap */}
+          <div className="space-y-6">
+            <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 dark:text-slate-500">Governance</h4>
+            <div className="grid grid-cols-1 gap-3">
+              <button onClick={onSitemapClick} className="text-left text-xs font-bold text-slate-500 hover:text-primary transition-colors flex items-center gap-2">
+                <ExternalLink size={12} /> View Directory Tree
+              </button>
+              <a href="#" className="text-xs font-bold text-slate-500 hover:text-primary transition-colors">Section 18A Compliance</a>
+              <a href="#" className="text-xs font-bold text-slate-500 hover:text-primary transition-colors">Board Minutes</a>
+              <a href="#" className="text-xs font-bold text-slate-500 hover:text-primary transition-colors">Privacy Policy</a>
+            </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-slate-300 dark:border-white/10 pt-8 flex flex-col items-center text-center text-[11px] font-mono tracking-tight text-slate-800 dark:text-slate-300">
-          <p className="font-black uppercase tracking-wider">© 2025 Earlington Legacy Initiative NPC | Registration: 2025/931583/08</p>
-          <p className="mt-1 font-bold">A Non-Profit Company supporting Earlington Secondary School. Approved by Google Non Profit.</p>
-          <div className="mt-6 flex items-center gap-4 transition-all duration-500">
-             <span className="h-px w-12 bg-slate-400 dark:bg-slate-600"></span>
-             <span className="text-[10px] uppercase tracking-[0.25em] font-black text-npc-blue dark:text-primary">Built for the students</span>
-             <span className="h-px w-12 bg-slate-400 dark:bg-slate-600"></span>
+        {/* Legal & Signature */}
+        <div className="pt-8 border-t border-slate-200 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-[10px] font-mono text-slate-400 uppercase tracking-widest">
+            © 2025 Earlington Legacy Initiative NPC | Non-Profit Organization
+          </p>
+          <div className="flex items-center gap-3">
+            <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Built for the students</span>
+            <div className="w-1 h-1 bg-primary rounded-full animate-pulse"></div>
           </div>
         </div>
       </div>

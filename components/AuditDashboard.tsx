@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { AUDIT_DATA, ADS_SCRIPT, TOPOLOGY_DETAILS } from '../constants';
 import { CheckCircle, AlertTriangle, ShieldCheck, Target, Zap, Copy, Code, Network, Database, Cpu, Globe } from 'lucide-react';
@@ -17,7 +18,7 @@ const AuditDashboard: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               </div>
               <div>
                 <h2 className="text-2xl font-display font-bold text-white tracking-tight">
-                  Compliance & Quality Console
+                  Compliance & Intelligence Console
                 </h2>
                 <p className="text-primary text-[10px] mt-1 uppercase tracking-[0.3em] font-black">
                   Zero-G Cloud Topology • v2.0
@@ -119,7 +120,7 @@ const AuditDashboard: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                   {[
                     { title: "CDN & Edge", value: TOPOLOGY_DETAILS.hosting, icon: Globe, detail: "Firebase Global PoPs" },
                     { title: "Persistence", value: TOPOLOGY_DETAILS.database, icon: Database, detail: "Firestore Real-time Sync" },
-                    { title: "Application", value: TOPOLOGY_DETAILS.logic, icon: Cpu, detail: "Secure Logic Layer" },
+                    { title: "Intelligence", value: TOPOLOGY_DETAILS.intelligence, icon: Cpu, detail: "Gemini 3 Integration" },
                     { title: "Routing", value: TOPOLOGY_DETAILS.dns, icon: Network, detail: "Anycast Latency Routing" }
                   ].map((item, i) => (
                     <div key={i} className="flex gap-4 p-5 bg-black/40 border border-white/5 rounded-2xl hover:border-primary/30 transition-all group">
