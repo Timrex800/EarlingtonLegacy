@@ -46,11 +46,24 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleTheme, onNavigate }) =>
               Board of Directors
             </a>
             
-            <button className="bg-primary hover:bg-gold-dark text-white px-5 py-2 rounded-full text-sm font-bold transition-all transform hover:scale-105 shadow-lg shadow-primary/30">
+            <button 
+              type="button"
+              className="bg-primary hover:bg-gold-dark text-white px-5 py-2 rounded-full text-sm font-bold transition-all transform hover:scale-105 shadow-lg shadow-primary/30"
+            >
               Get Involved
             </button>
             
             <button 
+              type="button"
+              className="border border-primary text-primary hover:bg-primary/10 px-5 py-2 rounded-full text-sm font-bold transition-all transform hover:scale-105"
+              title="Member Portal Coming Soon"
+              disabled
+            >
+              Portal
+            </button>
+            
+            <button 
+              type="button"
               onClick={toggleTheme}
               className="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-white/10 transition-colors text-slate-700 dark:text-white"
             >
@@ -59,7 +72,10 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleTheme, onNavigate }) =>
           </div>
 
           <div className="md:hidden flex items-center">
-            <button className="text-slate-800 dark:text-slate-200 hover:text-primary">
+            <button 
+              type="button"
+              className="text-slate-800 dark:text-slate-200 hover:text-primary"
+            >
               <Menu size={28} />
             </button>
           </div>
