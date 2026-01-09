@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 const CtaSection: React.FC = () => {
@@ -17,8 +18,8 @@ const CtaSection: React.FC = () => {
           <div className="group bg-background-light dark:bg-background-dark rounded-xl overflow-hidden border border-slate-200 dark:border-white/10 hover:border-primary/50 transition-all duration-300 shadow-sm hover:shadow-xl">
             <div className="h-48 overflow-hidden relative">
               <img 
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAm7O9gAEjn9F4wdB1u_970VgaXejDW1xC04AQcabq21K1iW5fyO9uZx9_mgk12uaXOLhMdNxD200Jvc31GNT4Pl_IH-hpUGVO_jPSlFl7KARqzh_T87R9SrdXlz16vphimuUQXchmLHJJdnsWskEiXZi3Hi9apNMDF2L3vZBiQzRbouhPgBUR8uFq1u9JGQapsvNjRCiknMhbOfpKaUwGegBVrU5etdpUOLCfCi95dOwZVcc2RrrMiFl1JNbG1dBa6_HjZm0wHTrM" 
-                alt="Community picnic" 
+                src="https://res.cloudinary.com/drj03twbh/image/upload/v1767568674/earlington_secondary_45th_birthday_pop_1_t78phm.png" 
+                alt="Earlington Secondary 45th Birthday Celebration" 
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
               />
               <div className="absolute top-4 right-4 bg-white/90 dark:bg-black/80 backdrop-blur px-3 py-1 rounded text-xs font-mono font-bold">

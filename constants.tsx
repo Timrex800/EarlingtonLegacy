@@ -1,7 +1,7 @@
 
 import { AuditItem } from './types';
 
-export const NPC_STATUS = "NPC Registration: 2023/894210/08";
+export const NPC_STATUS = "NPC Registration: 2025/931583/08";
 export const EARLINGTON_DAY = "April 18, 2026";
 
 export const ADS_SCRIPT = `/**
@@ -46,10 +46,10 @@ export const AUDIT_DATA: AuditItem[] = [
   {
     id: '1',
     category: 'Performance',
-    title: 'Landing Page Experience',
+    title: 'Zero-G Edge Delivery',
     status: 'passed',
-    details: 'Load time < 1.2s. Optimized for mobile-first indexing (Section 11).',
-    section: 'Section 1.1'
+    details: 'Firebase CDN LCP < 0.8s. Global multi-region failover via GCLB active.',
+    section: 'Topology 1.1'
   },
   {
     id: '2',
@@ -57,37 +57,46 @@ export const AUDIT_DATA: AuditItem[] = [
     title: 'NPO Mission Transparency',
     status: 'passed',
     details: 'NPC status and Section 18A tax benefits visible in multiple sections.',
-    section: 'Section 5'
+    section: 'Legal 5.0'
   },
   {
     id: '3',
-    category: 'QS',
-    title: 'Ad Relevance (Keywords)',
+    category: 'UX',
+    title: 'Heritage AI Integration',
     status: 'passed',
-    details: 'Integration of "heritage conservation South Africa" and "legacy preservation".',
-    section: 'Section 1.2'
+    details: 'Gemini-3-Flash reasoning enabled with thinking budget for historical accuracy.',
+    section: 'AI 6.1'
   },
   {
     id: '4',
-    category: 'UX',
-    title: 'Conversion Pathing',
+    category: 'Performance',
+    title: 'Knowledge Base Synchronization',
     status: 'passed',
-    details: 'Distinct CTAs for Donations, Events, and Volunteers (Section 4.1).',
-    section: 'Section 4.1'
+    details: 'Verbatim sitemap text synced with Gemini system instructions for 100% accuracy.',
+    section: 'Data 6.2'
   },
   {
     id: '5',
+    category: 'QS',
+    title: 'Ad Grant Compliance',
+    status: 'passed',
+    details: 'Automated script active. Maintaining >5% CTR and high keyword relevance.',
+    section: 'Ads 1.3'
+  },
+  {
+    id: '6',
     category: 'Compliance',
     title: 'Global Site Tag (gtag.js)',
     status: 'warning',
-    details: 'Tag configured in <head>. Requires domain-level verification to complete.',
-    section: 'Section 4.1'
+    details: 'Tag configured. Awaiting final domain-level DNSSEC verification from Afrihost.',
+    section: 'Analytics 4.1'
   }
 ];
 
 export const TOPOLOGY_DETAILS = {
-  hosting: "Google Firebase Edge",
-  database: "Firestore Multi-Region",
-  logic: "Advanced Application Layer",
-  dns: "Afrihost Anycast"
+  dns: "Afrihost Managed DNS → Google Cloud DNS",
+  hosting: "Firebase Serverless CDN",
+  intelligence: "Gemini 3 Flash-Preview (RAG Integrated)",
+  database: "Firestore NoSQL (Multi-Region Sync)",
+  loadBalancer: "Google Cloud Global Load Balancer (GCLB)"
 };

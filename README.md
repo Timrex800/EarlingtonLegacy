@@ -1,25 +1,20 @@
-# Earlington Legacy Initiative (ELI)
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+</div>
 
-Official website repository for the Earlington Legacy Initiative NPC.
+# Run and deploy your AI Studio app
 
-Established December 1, 2025 (NPC No: 2025/931583/08), ELI transforms Earlington Secondary School into an advanced learning center via digital infrastructure and innovative methods.
+This contains everything you need to run your app locally.
 
-Mission: Integrate Google Non-Profit sponsored tools to bridge digital divide, build digital literacy, critical thinking, problem-solving, and job-ready skills for grades 8-12.
+View your app in AI Studio: https://ai.studio/apps/drive/1XyzbQ8xUqInykIu-GiqVoVZIG3YZmao0
 
-### Programs:
+## Run Locally
 
-- **Digital training and Google Skills.**
-- **Robotics and drone training.**
-- **High-speed 1GBPS fibre connectivity.**
-- **Media center with interactive boards and projectors.**
-- **Planned:** Tablets per class and secure WiFi mesh with firewall.
+**Prerequisites:**  Node.js
 
-### Phases:
 
-- **Phase 1:** Connectivity (complete).
-- **Phase 2:** Media Center (in progress).
-- **Phase 3:** Devices (planned).
-
-**Partnerships:** Google Non-Profit, Afrihost, Vumatel Fibre.
-
-Visit: https://www.earlingtonlegacy.org.za
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`
