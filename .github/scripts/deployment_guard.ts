@@ -44,8 +44,12 @@ const rules: ConfigRule[] = [
     check: (content) => content.includes('port: 21') || "Port should be explicitly set to 21 for FTP",
   },
   {
-      description: "Verify Site URL",
-      check: (content) => content.includes('NEXT_PUBLIC_SITE_URL: https://www.earlingtonlegacy.org.za') || "NEXT_PUBLIC_SITE_URL should be https://www.earlingtonlegacy.org.za",
+      description: "Verify Site URL use of secrets",
+      check: (content) => content.includes('NEXT_PUBLIC_SITE_URL: "${{ secrets.SITE_URL }}"') || "NEXT_PUBLIC_SITE_URL should use ${{ secrets.SITE_URL }}",
+  },
+  {
+      description: "Verify Firebase Project ID use of secrets",
+      check: (content) => content.includes('projectId: "${{ secrets.FIREBASE_PROJECT_ID }}"') || "projectId should use ${{ secrets.FIREBASE_PROJECT_ID }}",
   }
 ];
 
