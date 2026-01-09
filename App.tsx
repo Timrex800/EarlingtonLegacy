@@ -9,6 +9,7 @@ import ValueSection from './components/ValueSection';
 import EducationSection from './components/EducationSection';
 import FounderSection from './components/FounderSection';
 import DirectorsPage from './components/DirectorsPage';
+import EventsSection from './components/EventsSection';
 import Footer from './components/Footer';
 import AuditDashboard from './components/AuditDashboard';
 import SitemapView from './components/SitemapView';
@@ -102,6 +103,7 @@ const App: FC = () => {
         <Hero onNavigate={handleNavigate} />
         <InfoSection />
         <PartnersSection />
+        <EventsSection />
         <CtaSection />
         <ValueSection />
         <EducationSection />
