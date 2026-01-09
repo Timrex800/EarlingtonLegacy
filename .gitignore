@@ -8,8 +8,14 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+# Build outputs
 dist
 dist-ssr
+.next
+out
+web-app
+earlington-legacy-react
+CascadeProjects
 *.local
 
 # Editor directories and files

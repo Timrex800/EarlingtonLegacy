@@ -11,7 +11,7 @@ const ValueSection: React.FC = () => {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           <div className="lg:w-1/2 text-white">
             <h2 className="font-display text-4xl lg:text-5xl font-bold mb-6">Value to Families</h2>
-            <p className="text-white/80 text-lg mb-8 leading-relaxed">
+            <p className="text-slate-100 dark:text-slate-300 text-lg mb-8 leading-relaxed">
               To concerned parents: this initiative offers free training courses, access to advanced learning tools, and the development of future-ready skills like critical thinking, problem-solving, and digital literacy. These opportunities are crucial for your child's future career and personal growth.
             </p>
             <div className="flex flex-wrap gap-4">

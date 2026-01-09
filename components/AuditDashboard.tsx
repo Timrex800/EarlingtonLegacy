@@ -7,17 +7,17 @@ const AuditDashboard: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [activeTab, setActiveTab] = useState<'audit' | 'scripts' | 'topology'>('audit');
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/95 backdrop-blur-xl animate-fade-in overflow-hidden">
-      <div className="bg-[#0a0a0a] border border-white/10 rounded-[2.5rem] w-full max-w-5xl max-h-[94vh] overflow-hidden flex flex-col shadow-[0_0_120px_rgba(217,119,6,0.15)] transition-all">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-background-dark/90 dark:bg-black/95 backdrop-blur-xl animate-fade-in overflow-hidden">
+      <div className="bg-surface-light dark:bg-surface-dark border border-slate-200 dark:border-white/10 rounded-[2.5rem] w-full max-w-5xl max-h-[94vh] overflow-hidden flex flex-col shadow-2xl transition-all">
         {/* Header */}
-        <div className="p-8 border-b border-white/10 flex justify-between items-center bg-gradient-to-br from-white/5 to-transparent">
+        <div className="p-8 border-b border-slate-200 dark:border-white/10 flex justify-between items-center bg-gradient-to-br from-primary/5 to-transparent">
           <div>
             <div className="flex items-center gap-3">
               <div className="p-2.5 bg-emerald-500/20 rounded-2xl">
                 <ShieldCheck className="text-emerald-500" size={24} />
               </div>
               <div>
-                <h2 className="text-2xl font-display font-bold text-white tracking-tight">
+                <h2 className="text-2xl font-display font-bold text-slate-900 dark:text-white tracking-tight">
                   Compliance & Intelligence Console
                 </h2>
                 <p className="text-primary text-[10px] mt-1 uppercase tracking-[0.3em] font-black">
@@ -28,7 +28,7 @@ const AuditDashboard: React.FC<{ onClose: () => void }> = ({ onClose }) => {
           </div>
           <button 
             onClick={onClose}
-            className="p-3 bg-white/5 hover:bg-white/10 rounded-2xl transition-all text-gray-400 hover:text-white border border-white/10"
+            className="p-3 bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 rounded-2xl transition-all text-slate-500 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-white/10"
           >
             <span className="sr-only">Close</span>
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -38,22 +38,22 @@ const AuditDashboard: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex border-b border-white/10 px-8 bg-black/40">
+        <div className="flex border-b border-slate-200 dark:border-white/10 px-8 bg-slate-50 dark:bg-black/40">
           <button 
             onClick={() => setActiveTab('audit')}
-            className={`px-8 py-5 text-xs font-black tracking-[0.2em] transition-all border-b-2 uppercase ${activeTab === 'audit' ? 'border-primary text-white bg-primary/5' : 'border-transparent text-gray-500 hover:text-gray-300'}`}
+            className={`px-8 py-5 text-xs font-black tracking-[0.2em] transition-all border-b-2 uppercase ${activeTab === 'audit' ? 'border-primary text-slate-900 dark:text-white bg-primary/5' : 'text-slate-500 hover:text-slate-900 dark:hover:text-gray-300 border-transparent'}`}
           >
             Audit Logs
           </button>
           <button 
             onClick={() => setActiveTab('topology')}
-            className={`px-8 py-5 text-xs font-black tracking-[0.2em] transition-all border-b-2 uppercase ${activeTab === 'topology' ? 'border-primary text-white bg-primary/5' : 'border-transparent text-gray-500 hover:text-gray-300'}`}
+            className={`px-8 py-5 text-xs font-black tracking-[0.2em] transition-all border-b-2 uppercase ${activeTab === 'topology' ? 'border-primary text-slate-900 dark:text-white bg-primary/5' : 'text-slate-500 hover:text-slate-900 dark:hover:text-gray-300 border-transparent'}`}
           >
             Zero-G Topology
           </button>
           <button 
             onClick={() => setActiveTab('scripts')}
-            className={`px-8 py-5 text-xs font-black tracking-[0.2em] transition-all border-b-2 uppercase ${activeTab === 'scripts' ? 'border-primary text-white bg-primary/5' : 'border-transparent text-gray-500 hover:text-gray-300'}`}
+            className={`px-8 py-5 text-xs font-black tracking-[0.2em] transition-all border-b-2 uppercase ${activeTab === 'scripts' ? 'border-primary text-slate-900 dark:text-white bg-primary/5' : 'text-slate-500 hover:text-slate-900 dark:hover:text-gray-300 border-transparent'}`}
           >
             Automation
           </button>
@@ -69,15 +69,15 @@ const AuditDashboard: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                   { label: 'Edge Latency', value: '0.74s', icon: Zap, color: 'text-blue-500', desc: 'TTFB (Global PoPs)' },
                   { label: 'Compliance', value: 'PASS', icon: ShieldCheck, color: 'text-primary', desc: 'Google Grant Approved' },
                 ].map((stat, i) => (
-                  <div key={i} className="bg-white/[0.02] border border-white/10 p-6 rounded-3xl relative overflow-hidden group hover:border-white/20 transition-all">
+                  <div key={i} className="bg-slate-50 dark:bg-white/[0.02] border border-slate-200 dark:border-white/10 p-6 rounded-3xl relative overflow-hidden group hover:border-primary/30 transition-all">
                     <div className="absolute -top-4 -right-4 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
                       <stat.icon size={60} className={stat.color} />
                     </div>
                     <div className={`flex items-center gap-2 ${stat.color} mb-3 font-black tracking-widest text-[10px] uppercase`}>
                       {stat.label}
                     </div>
-                    <div className="text-4xl font-black text-white">{stat.value}</div>
-                    <p className="text-[10px] text-gray-500 mt-2 font-mono">{stat.desc}</p>
+                    <div className="text-4xl font-black text-slate-900 dark:text-white">{stat.value}</div>
+                    <p className="text-[10px] text-slate-500 dark:text-gray-500 mt-2 font-mono">{stat.desc}</p>
                   </div>
                 ))}
               </div>

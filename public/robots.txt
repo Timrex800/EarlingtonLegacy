@@ -1,0 +1,18 @@
+# Earlington Legacy - robots.txt
+# Google, Bing, and other search engine crawlers
+
+User-agent: *
+Allow: /
+
+# Disallow sensitive paths (if any)
+# Disallow: /admin
+# Disallow: /private
+
+# Sitemap location for search engines
+Sitemap: https://www.earlingtonlegacy.org.za/sitemap.xml
+
+# Crawl delay (optional - allow aggressive crawling)
+# Crawl-delay: 1
+
+# Request rate (optional)
+# Request-rate: 10/1s
