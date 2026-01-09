@@ -106,38 +106,38 @@ const SITEMAP_DATA = [
 
 const SitemapView: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-background-dark/95 backdrop-blur-xl animate-fade-in overflow-hidden">
-      <div className="bg-surface-dark border border-white/10 rounded-3xl w-full max-w-5xl h-full flex flex-col shadow-2xl">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-background-dark/90 dark:bg-black/95 backdrop-blur-xl animate-fade-in overflow-hidden">
+      <div className="bg-surface-light dark:bg-surface-dark border border-slate-200 dark:border-white/10 rounded-3xl w-full max-w-5xl h-full flex flex-col shadow-2xl">
         {/* Header */}
-        <div className="p-6 border-b border-white/10 flex justify-between items-center">
+        <div className="p-6 border-b border-slate-200 dark:border-white/10 flex justify-between items-center">
           <div className="flex items-center gap-4">
             <div className="p-3 bg-primary/20 rounded-2xl text-primary">
               <FolderTree size={24} />
             </div>
             <div>
-              <h2 className="text-xl font-display font-bold text-white tracking-tight">Full Directory Tree & Sitemap</h2>
+              <h2 className="text-xl font-display font-bold text-slate-900 dark:text-white tracking-tight">Full Directory Tree & Sitemap</h2>
               <p className="text-xs font-mono text-slate-500 uppercase tracking-widest mt-1">Verbatim Content Audit • Earlington Legacy v1.0</p>
             </div>
           </div>
           <button 
             onClick={onClose}
-            className="p-2 hover:bg-white/10 rounded-full transition-colors text-slate-400 hover:text-white"
+            className="p-2 hover:bg-slate-100 dark:hover:bg-white/10 rounded-full transition-colors text-slate-400 hover:text-slate-900 dark:hover:text-white"
           >
             <X size={24} />
           </button>
         </div>
 
         {/* Content */}
-        <div className="flex-1 overflow-y-auto p-6 md:p-10 custom-scrollbar">
+        <div className="flex-1 overflow-y-auto p-6 md:p-10 custom-scrollbar bg-slate-50/50 dark:bg-transparent">
           <div className="space-y-12">
             {SITEMAP_DATA.map((section, idx) => (
               <div key={idx} className="relative pl-8 border-l border-white/10">
                 <div className="absolute top-0 -left-1.5 w-3 h-3 rounded-full bg-primary border-4 border-surface-dark shadow-[0_0_10px_rgba(217,119,6,0.5)]"></div>
                 
                 <div className="mb-6">
-                  <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
                     {section.section}
-                    <span className="text-[10px] font-mono bg-white/5 text-slate-500 px-2 py-0.5 rounded uppercase tracking-tighter">
+                    <span className="text-[10px] font-mono bg-slate-100 dark:bg-white/5 text-slate-500 px-2 py-0.5 rounded uppercase tracking-tighter">
                       Location: {section.placement}
                     </span>
                   </h3>
@@ -145,14 +145,14 @@ const SitemapView: React.FC<{ onClose: () => void }> = ({ onClose }) => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {section.items.map((item, itemIdx) => (
-                    <div key={itemIdx} className="p-4 bg-white/5 rounded-xl border border-white/5 hover:bg-white/10 transition-colors group">
+                    <div key={itemIdx} className="p-4 bg-white dark:bg-white/5 rounded-xl border border-slate-200 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/10 transition-colors group">
                       <div className="flex items-start gap-3">
                         <TextCursor size={14} className="text-primary mt-1 shrink-0" />
                         <div>
                           <p className="text-[9px] font-mono text-slate-500 uppercase tracking-widest mb-1 group-hover:text-primary transition-colors">
                             {item.key}
                           </p>
-                          <p className="text-sm text-slate-200 leading-relaxed font-body italic">
+                          <p className="text-sm text-slate-700 dark:text-slate-200 leading-relaxed font-body italic">
                             "{item.text}"
                           </p>
                         </div>
@@ -166,7 +166,7 @@ const SitemapView: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         </div>
 
         {/* Footer */}
-        <div className="p-6 border-t border-white/10 bg-black/20 flex justify-between items-center text-[10px] font-mono text-slate-500">
+        <div className="p-6 border-t border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-black/20 flex justify-between items-center text-[10px] font-mono text-slate-500">
           <div className="flex items-center gap-2">
             <MapPin size={12} />
             <span>Verbatim Strings Mapped to DOM Hierarchy</span>

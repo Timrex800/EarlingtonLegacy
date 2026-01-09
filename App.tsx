@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, type FC } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import InfoSection from './components/InfoSection';
@@ -16,7 +16,7 @@ import AIAssistant from './components/AIAssistant';
 import ParticleBackground from './components/ParticleBackground';
 import { ShieldCheck } from 'lucide-react';
 
-const App: React.FC = () => {
+const App: FC = () => {
   const [showAudit, setShowAudit] = useState(false);
   const [showSitemap, setShowSitemap] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
@@ -33,10 +33,18 @@ const App: React.FC = () => {
       document.documentElement.classList.remove('dark');
     }
 
-    // Handle initial hash routing
-    if (window.location.pathname === '/directors') {
-      setCurrentRoute('directors');
-    }
+    // Handle initial routing and back button
+    const handleInitialRouting = () => {
+      if (window.location.pathname === '/directors') {
+        setCurrentRoute('directors');
+      } else {
+        setCurrentRoute('landing');
+      }
+    };
+
+    handleInitialRouting();
+    window.addEventListener('popstate', handleInitialRouting);
+    return () => window.removeEventListener('popstate', handleInitialRouting);
   }, []);
 
   const toggleTheme = () => {
@@ -54,11 +62,13 @@ const App: React.FC = () => {
     if (id === 'directors') {
       setCurrentRoute('directors');
       window.scrollTo(0, 0);
+      window.history.pushState({}, '', '/directors');
       return;
     }
     
     if (currentRoute !== 'landing') {
       setCurrentRoute('landing');
+      window.history.pushState({}, '', '/');
       // Delay scroll to allow render
       setTimeout(() => {
         const element = document.getElementById(id);
@@ -103,8 +113,9 @@ const App: React.FC = () => {
       {/* Floating UI Containers */}
       <div className="fixed bottom-6 left-6 z-[60] flex flex-col gap-3">
         <button 
+          type="button"
           onClick={() => setShowAudit(true)}
-          className="p-3 bg-black/80 dark:bg-white/10 text-white rounded-full hover:scale-110 transition-transform shadow-lg border border-white/10"
+          className="p-3 bg-npc-blue dark:bg-primary text-white rounded-full hover:scale-110 transition-transform shadow-lg border border-white/10"
           title="Compliance Dashboard"
         >
           <ShieldCheck size={20} />

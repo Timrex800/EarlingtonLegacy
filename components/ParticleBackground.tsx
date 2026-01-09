@@ -125,7 +125,7 @@ const ParticleBackground: React.FC = () => {
       
       const isDark = document.documentElement.classList.contains('dark');
       // Using colors consistent with existing theme but applying trail
-      const bgColor = isDark ? `rgba(15, 15, 15, ${trail})` : `rgba(253, 251, 247, ${trail})`;
+      const bgColor = isDark ? `rgba(10, 10, 10, ${trail})` : `rgba(253, 251, 247, ${trail})`;
       ctx.fillStyle = bgColor;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 

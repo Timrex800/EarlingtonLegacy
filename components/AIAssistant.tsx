@@ -79,12 +79,12 @@ const AIAssistant: React.FC = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="bg-white dark:bg-[#0f0f0f] border border-slate-200 dark:border-white/10 w-[92vw] md:w-[420px] h-[600px] rounded-[2.5rem] shadow-[0_30px_100px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden animate-fade-in glass-panel transition-all">
+        <div className="bg-white dark:bg-surface-dark border border-slate-200 dark:border-white/10 w-[92vw] md:w-[420px] h-[600px] rounded-[2.5rem] shadow-[0_30px_100px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden animate-fade-in glass-panel transition-all">
           {/* Header */}
-          <div className="p-6 bg-gradient-to-r from-npc-blue to-blue-900 flex justify-between items-center border-b border-white/5">
+          <div className="p-6 bg-gradient-to-r from-npc-blue to-blue-900 dark:from-gold-dark dark:to-gold flex justify-between items-center border-b border-white/5">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center backdrop-blur-md border border-white/10">
-                <Bot size={24} className="text-primary animate-pulse-slow" />
+                <Bot size={24} className="text-primary dark:text-white animate-pulse-slow" />
               </div>
               <div>
                 <h3 className="text-sm font-black text-white leading-none uppercase tracking-widest">Heritage AI Assistant</h3>
