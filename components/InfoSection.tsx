@@ -30,7 +30,7 @@ const InfoSection: React.FC = () => {
             <h2 className="font-display text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white leading-tight">
               A New Era of <span className="text-primary italic">Innovation</span>
             </h2>
-            <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed font-body">
+            <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-body">
               The Earlington Legacy Initiative NPC, established on December 1st, 2025, is a non-profit organization dedicated to transforming Earlington Secondary School into a center of advanced learning and innovation. Our vision is to integrate cutting-edge tools, especially those sponsored by Google Non-Profit, along with other advanced learning technologies into the school's curriculum to bridge the digital divide and equip students for the modern world.
             </p>
             
@@ -41,7 +41,7 @@ const InfoSection: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-slate-900 dark:text-white">Infrastructure</h3>
-                  <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-1 leading-snug">1GBPS Fibre installed via Afrihost & Vumatel.</p>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-snug">1GBPS Fibre installed via Afrihost & Vumatel.</p>
                 </div>
               </div>
               <div className="flex items-start gap-4 p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/5 hover:border-primary/30 transition-all">
@@ -50,7 +50,7 @@ const InfoSection: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-slate-900 dark:text-white">Advanced Skills</h3>
-                  <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-1 leading-snug">AI training & Google Skills for Grades 8-12.</p>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-snug">AI training & Google Skills for Grades 8-12.</p>
                 </div>
               </div>
             </div>

@@ -1,27 +1,24 @@
 {
-  "name": "earlington-legacy-initiative---enhanced-landing-page",
+  "name": "earlingtonlegacy---11/01/26",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "verify-deploy": "tsx .github/scripts/deployment_guard.ts"
+    "preview": "vite preview"
   },
   "dependencies": {
     "lucide-react": "^0.561.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "@google/genai": "^1.34.0",
-    "framer-motion": "^12.24.7",
-    "firebase": "^11.4.0"
+    "framer-motion": "^12.24.7"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
     "@vitejs/plugin-react": "^5.0.0",
     "typescript": "~5.8.2",
-    "vite": "^6.2.0",
-    "tsx": "^4.19.2"
+    "vite": "^6.2.0"
   }
 }

@@ -21,7 +21,7 @@ const EducationSection: React.FC = () => {
               <span className="text-xs font-mono text-green-500 border border-green-500 px-2 py-0.5 rounded">DONE</span>
             </div>
             <h4 className="font-bold text-slate-900 dark:text-white mb-1">Phase 1: Connectivity</h4>
-            <p className="text-sm text-slate-600 dark:text-slate-400 leading-snug">Installation of 1GBPS fibre line in the Teacher Conference area, providing high-speed internet foundation for technological initiatives.</p>
+            <p className="text-sm text-slate-500 leading-snug">Installation of 1GBPS fibre line in the Teacher Conference area, providing high-speed internet foundation for technological initiatives.</p>
           </div>
 
           {/* Phase 2 */}
@@ -31,7 +31,7 @@ const EducationSection: React.FC = () => {
               <span className="text-xs font-mono text-primary border border-primary px-2 py-0.5 rounded">IN PROGRESS</span>
             </div>
             <h4 className="font-bold text-slate-900 dark:text-white mb-1">Phase 2: Media Center</h4>
-            <p className="text-sm text-slate-600 dark:text-slate-400 leading-snug">Extending fibre to Media Room. Installing Interactive Learning Boards, Projectors, and introduction of Robotics & Drone training.</p>
+            <p className="text-sm text-slate-500 leading-snug">Extending fibre to Media Room. Installing Interactive Learning Boards, Projectors, and introduction of Robotics & Drone training.</p>
           </div>
 
           {/* Phase 3 */}
@@ -41,7 +41,7 @@ const EducationSection: React.FC = () => {
               <span className="text-xs font-mono text-slate-400 border border-slate-400 px-2 py-0.5 rounded">PLANNED</span>
             </div>
             <h4 className="font-bold text-slate-900 dark:text-white mb-1">Phase 3: Devices</h4>
-            <p className="text-sm text-slate-600 dark:text-slate-400 leading-snug">Providing mobile tablets for every class. Implementing WiFi Mesh Secure network with Firewall Hardware for individual monitoring.</p>
+            <p className="text-sm text-slate-500 leading-snug">Providing mobile tablets for every class. Implementing WiFi Mesh Secure network with Firewall Hardware for individual monitoring.</p>
           </div>
 
           {/* Goal */}
@@ -51,7 +51,7 @@ const EducationSection: React.FC = () => {
               <span className="text-xs font-mono text-slate-400 border border-slate-400 px-2 py-0.5 rounded">GOAL</span>
             </div>
             <h4 className="font-bold text-slate-900 dark:text-white mb-1">Student Success</h4>
-            <p className="text-sm text-slate-600 dark:text-slate-400 leading-snug">Ensuring every student has a competitive edge in the job market with intermediate to advanced tech skills.</p>
+            <p className="text-sm text-slate-500 leading-snug">Ensuring every student has a competitive edge in the job market with intermediate to advanced tech skills.</p>
           </div>
         </div>
       </div>
