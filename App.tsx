@@ -1,5 +1,5 @@
 
-import { useState, useEffect, type FC } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import InfoSection from './components/InfoSection';
@@ -9,7 +9,6 @@ import ValueSection from './components/ValueSection';
 import EducationSection from './components/EducationSection';
 import FounderSection from './components/FounderSection';
 import DirectorsPage from './components/DirectorsPage';
-import EventsSection from './components/EventsSection';
 import Footer from './components/Footer';
 import AuditDashboard from './components/AuditDashboard';
 import SitemapView from './components/SitemapView';
@@ -17,13 +16,12 @@ import AIAssistant from './components/AIAssistant';
 import ParticleBackground from './components/ParticleBackground';
 import { ShieldCheck } from 'lucide-react';
 
-const App: FC = () => {
+const App: React.FC = () => {
   const [showAudit, setShowAudit] = useState(false);
   const [showSitemap, setShowSitemap] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
   const [currentRoute, setCurrentRoute] = useState<'landing' | 'directors'>('landing');
 
-  // Initialize Dark Mode based on preference or system
   useEffect(() => {
     const isDark = localStorage.getItem('theme') === 'dark' || 
                   (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
@@ -34,18 +32,9 @@ const App: FC = () => {
       document.documentElement.classList.remove('dark');
     }
 
-    // Handle initial routing and back button
-    const handleInitialRouting = () => {
-      if (window.location.pathname === '/directors') {
-        setCurrentRoute('directors');
-      } else {
-        setCurrentRoute('landing');
-      }
-    };
-
-    handleInitialRouting();
-    window.addEventListener('popstate', handleInitialRouting);
-    return () => window.removeEventListener('popstate', handleInitialRouting);
+    if (window.location.pathname === '/directors') {
+      setCurrentRoute('directors');
+    }
   }, []);
 
   const toggleTheme = () => {
@@ -63,14 +52,11 @@ const App: FC = () => {
     if (id === 'directors') {
       setCurrentRoute('directors');
       window.scrollTo(0, 0);
-      window.history.pushState({}, '', '/directors');
       return;
     }
     
     if (currentRoute !== 'landing') {
       setCurrentRoute('landing');
-      window.history.pushState({}, '', '/');
-      // Delay scroll to allow render
       setTimeout(() => {
         const element = document.getElementById(id);
         if (element) element.scrollIntoView({ behavior: 'smooth' });
@@ -82,6 +68,8 @@ const App: FC = () => {
       }
     }
   };
+
+  const isModalOpen = showAudit || showSitemap;
 
   if (currentRoute === 'directors') {
     return (
@@ -95,7 +83,7 @@ const App: FC = () => {
   }
 
   return (
-    <div className={`min-h-screen relative transition-all duration-500 ${showSitemap ? 'blur-md brightness-50' : ''}`}>
+    <div className={`min-h-screen relative transition-all duration-700 ${isModalOpen ? 'blur-md' : ''}`}>
       <ParticleBackground />
       <Header darkMode={darkMode} toggleTheme={toggleTheme} onNavigate={handleNavigate} />
       
@@ -103,7 +91,6 @@ const App: FC = () => {
         <Hero onNavigate={handleNavigate} />
         <InfoSection />
         <PartnersSection />
-        <EventsSection />
         <CtaSection />
         <ValueSection />
         <EducationSection />
@@ -112,12 +99,10 @@ const App: FC = () => {
 
       <Footer onSitemapClick={() => setShowSitemap(true)} />
 
-      {/* Floating UI Containers */}
       <div className="fixed bottom-6 left-6 z-[60] flex flex-col gap-3">
         <button 
-          type="button"
           onClick={() => setShowAudit(true)}
-          className="p-3 bg-npc-blue dark:bg-primary text-white rounded-full hover:scale-110 transition-transform shadow-lg border border-white/10"
+          className="p-3 bg-black/80 dark:bg-white/10 text-white rounded-full hover:scale-110 transition-transform shadow-lg border border-white/10"
           title="Compliance Dashboard"
         >
           <ShieldCheck size={20} />

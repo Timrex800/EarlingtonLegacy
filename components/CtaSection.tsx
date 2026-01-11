@@ -48,9 +48,9 @@ const CtaSection: React.FC = () => {
             </div>
             <div className="p-8">
               <h3 className="font-display text-2xl font-bold mb-2 text-slate-900 dark:text-white">Fundraising Market</h3>
-              <p className="text-primary font-bold text-sm mb-4 uppercase tracking-widest">Late April - Early May 2026</p>
-              <p className="text-slate-700 dark:text-slate-300 mb-6">Experience 100-120 stalls featuring local vendors, food, and crafts. All proceeds contribute to project initiatives.</p>
-              <button className="w-full py-3 bg-primary text-white rounded font-bold shadow-lg hover:bg-gold-dark transition-all">Vendor Registration</button>
+              <p className="text-primary font-medium text-sm mb-4">Last week April - First week May</p>
+              <p className="text-slate-600 dark:text-slate-300 mb-6">Experience 100-120 stalls featuring local vendors, food, and crafts. All proceeds contribute to project initiatives.</p>
+              <button className="w-full py-3 bg-primary text-white rounded font-bold shadow-lg hover:bg-opacity-90 transition-all">Vendor Registration</button>
             </div>
           </div>
 

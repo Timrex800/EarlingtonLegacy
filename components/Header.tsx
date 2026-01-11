@@ -19,7 +19,7 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleTheme, onNavigate }) =>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20 items-center">
           <a href="https://www.earlingtonlegacy.org.za/" className="flex-shrink-0 flex flex-col justify-center cursor-pointer group">
-            <span className="font-display font-bold text-lg md:text-xl tracking-wider text-npc-blue dark:text-white transition-colors group-hover:text-primary">
+            <span className="font-display font-bold text-lg md:text-xl tracking-wider text-npc-blue dark:text-primary transition-colors group-hover:text-primary dark:group-hover:text-white">
               EARLINGTON LEGACY INITIATIVE NPC
             </span>
             <span className="font-mono text-[10px] text-slate-500 dark:text-slate-400 tracking-wider">
@@ -33,7 +33,7 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleTheme, onNavigate }) =>
                 key={item}
                 href={`#${item}`}
                 onClick={(e) => handleLinkClick(e, item)}
-                className="text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-primary transition-colors capitalize"
+                className="text-sm font-medium hover:text-primary transition-colors capitalize"
               >
                 {item}
               </a>
@@ -41,41 +41,25 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleTheme, onNavigate }) =>
             <a 
               href="#directors" 
               onClick={(e) => handleLinkClick(e, 'directors')}
-              className="text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-primary transition-colors"
+              className="text-sm font-medium hover:text-primary transition-colors"
             >
               Board of Directors
             </a>
             
-            <button 
-              type="button"
-              className="bg-primary hover:bg-gold-dark text-white px-5 py-2 rounded-full text-sm font-bold transition-all transform hover:scale-105 shadow-lg shadow-primary/30"
-            >
+            <button className="bg-primary hover:bg-opacity-90 text-white px-5 py-2 rounded-full text-sm font-bold transition-all transform hover:scale-105 shadow-lg shadow-primary/30">
               Get Involved
             </button>
             
             <button 
-              type="button"
-              className="border border-primary text-primary hover:bg-primary/10 px-5 py-2 rounded-full text-sm font-bold transition-all transform hover:scale-105"
-              title="Member Portal Coming Soon"
-              disabled
-            >
-              Portal
-            </button>
-            
-            <button 
-              type="button"
               onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-white/10 transition-colors text-slate-700 dark:text-white"
+              className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-white/10 transition-colors"
             >
               {darkMode ? <Sun size={20} /> : <Moon size={20} />}
             </button>
           </div>
 
           <div className="md:hidden flex items-center">
-            <button 
-              type="button"
-              className="text-slate-800 dark:text-slate-200 hover:text-primary"
-            >
+            <button className="text-slate-800 dark:text-slate-200 hover:text-primary">
               <Menu size={28} />
             </button>
           </div>

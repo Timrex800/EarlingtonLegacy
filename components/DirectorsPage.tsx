@@ -8,29 +8,29 @@ interface DirectorsPageProps {
 
 const DirectorsPage: React.FC<DirectorsPageProps> = ({ onBack }) => {
   return (
-    <div className="min-h-screen bg-slate-900 dark:bg-black overflow-hidden flex flex-col relative transition-colors duration-700">
+    <div className="min-h-screen bg-black overflow-hidden flex flex-col relative">
       {/* Background Hero Image - Boardroom */}
       <div className="absolute inset-0 z-0">
         <img 
           src="https://images.unsplash.com/photo-1431540015161-0bf868a2d407?q=80&w=2070&auto=format&fit=crop" 
           alt="Boardroom Background" 
-          className="w-full h-full object-cover opacity-30 dark:opacity-20 grayscale"
+          className="w-full h-full object-cover opacity-30 grayscale"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 via-slate-900/60 to-slate-900 dark:from-black dark:via-black/60 dark:to-black"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/60 to-black"></div>
       </div>
 
       {/* Navigation Header for Subpage */}
-      <nav className="relative z-20 p-6 flex justify-between items-center bg-white/5 dark:bg-black/40 backdrop-blur-md border-b border-white/10">
+      <nav className="relative z-20 p-6 flex justify-between items-center bg-black/40 backdrop-blur-md border-b border-white/5">
         <button 
           onClick={onBack}
-          className="flex items-center gap-2 text-white/80 dark:text-white/70 hover:text-primary transition-all group font-mono text-xs uppercase tracking-[0.2em]"
+          className="flex items-center gap-2 text-white/70 hover:text-primary transition-all group font-mono text-xs uppercase tracking-widest"
         >
           <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
           Back to Initiative
         </button>
         <div className="text-right">
           <span className="block font-display font-bold text-white text-sm tracking-tighter">ELI DIRECTORS PORTAL</span>
-          <span className="block font-mono text-[9px] text-primary uppercase font-black">Secure Access Node v1.0</span>
+          <span className="block font-mono text-[9px] text-primary uppercase">Secure Access Node v1.0</span>
         </div>
       </nav>
 
