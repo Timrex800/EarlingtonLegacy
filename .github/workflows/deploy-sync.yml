@@ -36,6 +36,7 @@ jobs:
         run: npm run build
         env:
           NEXT_PUBLIC_SITE_URL: "${{ secrets.SITE_URL }}"
+          GEMINI_API_KEY: "${{ secrets.GEMINI_API_KEY }}"
 
       - name: 🚀 FTP Deploy to Afrihost
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
