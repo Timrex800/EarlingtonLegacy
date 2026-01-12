@@ -14,21 +14,33 @@ const ParticleBackground: React.FC = () => {
     let particles: Particle[] = [];
     let animationFrameId: number;
     
-    // Updated configuration based on request
-    const pCount = 100; 
+    // Configuration
+    const pCount = 120; // Slightly increased for longer pages
     const baseSpeed = 0.5; 
     const trail = 0.3; 
-    const mouseRadius = 100; 
+    const mouseRadius = 150; 
     const mouseInfluence = 2.5; 
 
     const pointer = { x: -2000, y: -2000 };
 
-    // Log for verification
-    console.log(`[System] Particle Background Reloaded: ${pCount} entities active (Squares).`);
-
     const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      // Set canvas to full document height and width to ensure it reaches the footer
+      const width = window.innerWidth;
+      const height = Math.max(
+        document.body.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.clientHeight,
+        document.documentElement.scrollHeight,
+        document.documentElement.offsetHeight
+      );
+      
+      canvas.width = width;
+      canvas.height = height;
+      
+      // Re-init particles if height significantly changed to redistribute
+      if (particles.length > 0) {
+        init();
+      }
     };
 
     class Particle {
@@ -51,22 +63,21 @@ const ParticleBackground: React.FC = () => {
         this.vx = Math.cos(angle) * baseSpeed * speedMultiplier;
         this.vy = Math.sin(angle) * baseSpeed * speedMultiplier;
         
-        // Updated Color Palette
         const isAmber = Math.random() > 0.6;
         if (isAmber) {
-          const r = 255;
-          const g = 234;
-          const b = 167;
-          this.opacity = Math.random() * 0.4 + 0.3;
-          this.color = `rgba(${r}, ${g}, ${b}, ${this.opacity})`;
-          this.borderColor = `rgba(${r}, ${g}, ${b}, ${this.opacity + 0.2})`;
-        } else {
-          const r = 201;
-          const g = 147;
-          const b = 135;
-          this.opacity = Math.random() * 0.3 + 0.2;
+          const r = 217;
+          const g = 119;
+          const b = 6;
+          this.opacity = Math.random() * 0.2 + 0.1;
           this.color = `rgba(${r}, ${g}, ${b}, ${this.opacity})`;
           this.borderColor = `rgba(${r}, ${g}, ${b}, ${this.opacity + 0.1})`;
+        } else {
+          const r = 0;
+          const g = 51;
+          const b = 102;
+          this.opacity = Math.random() * 0.15 + 0.05;
+          this.color = `rgba(${r}, ${g}, ${b}, ${this.opacity})`;
+          this.borderColor = `rgba(${r}, ${g}, ${b}, ${this.opacity + 0.05})`;
         }
       }
 
@@ -74,20 +85,21 @@ const ParticleBackground: React.FC = () => {
         this.x += this.vx;
         this.y += this.vy;
 
+        // Interaction with mouse (considering scroll offset)
         const dx = pointer.x - this.x;
         const dy = pointer.y - this.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         if (distance < mouseRadius) {
           const force = (mouseRadius - distance) / mouseRadius;
-          const moveX = (dx / distance) * force * mouseInfluence * 8;
-          const moveY = (dy / distance) * force * mouseInfluence * 8;
+          const moveX = (dx / distance) * force * mouseInfluence * 5;
+          const moveY = (dy / distance) * force * mouseInfluence * 5;
           
           this.x -= moveX;
           this.y -= moveY;
         }
 
-        // Wrap around screen
+        // Wrap around screen dimensions
         if (this.x > canvas!.width) this.x = 0;
         else if (this.x < 0) this.x = canvas!.width;
         if (this.y > canvas!.height) this.y = 0;
@@ -101,7 +113,6 @@ const ParticleBackground: React.FC = () => {
         ctx.translate(this.x, this.y);
         ctx.rotate(Math.atan2(this.vy, this.vx));
         
-        // Square shape
         ctx.fillStyle = this.color;
         ctx.fillRect(-this.size, -this.size, this.size * 2, this.size * 2);
         
@@ -124,8 +135,8 @@ const ParticleBackground: React.FC = () => {
       if (!ctx || !canvas) return;
       
       const isDark = document.documentElement.classList.contains('dark');
-      // Using colors consistent with existing theme but applying trail
       const bgColor = isDark ? `rgba(15, 15, 15, ${trail})` : `rgba(253, 251, 247, ${trail})`;
+      
       ctx.fillStyle = bgColor;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -137,8 +148,9 @@ const ParticleBackground: React.FC = () => {
     };
 
     const handleMouseMove = (e: MouseEvent) => {
-      pointer.x = e.clientX;
-      pointer.y = e.clientY;
+      // Must account for vertical scroll since canvas is absolute
+      pointer.x = e.pageX;
+      pointer.y = e.pageY;
     };
 
     const handleMouseLeave = () => {
@@ -150,22 +162,28 @@ const ParticleBackground: React.FC = () => {
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseleave', handleMouseLeave);
 
+    // Initial setup
     resize();
     init();
     animate();
+
+    // Secondary resize check after images/content might have loaded
+    const timer = setTimeout(resize, 2000);
 
     return () => {
       window.removeEventListener('resize', resize);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseleave', handleMouseLeave);
       cancelAnimationFrame(animationFrameId);
+      clearTimeout(timer);
     };
   }, []);
 
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0 opacity-80 transition-opacity duration-1000 bg-transparent"
+      className="absolute inset-0 pointer-events-none z-0 opacity-60 dark:opacity-40 transition-opacity duration-1000 bg-transparent"
+      style={{ minHeight: '100%' }}
     />
   );
 };

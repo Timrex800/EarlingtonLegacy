@@ -7,42 +7,60 @@ interface FooterProps {
   onSitemapClick: () => void;
 }
 
-const PolicyModal: React.FC<{ title: string; onClose: () => void }> = ({ title, onClose }) => (
-  <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 bg-black/90 backdrop-blur-xl animate-fade-in">
-    <div className="bg-white dark:bg-[#0f0f0f] border border-slate-200 dark:border-white/10 rounded-[2.5rem] w-full max-w-lg p-8 shadow-2xl">
-      <div className="flex justify-between items-center mb-6">
-        <div className="flex items-center gap-3">
-          <div className="p-2 bg-primary/10 rounded-xl text-primary">
-            <ShieldCheck size={20} />
+const PolicyComingSoon: React.FC<{ title: string; onClose: () => void }> = ({ title, onClose }) => (
+  <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 bg-black/95 backdrop-blur-2xl animate-fade-in">
+    <div className="bg-white dark:bg-[#0f0f0f] border border-slate-200 dark:border-white/10 rounded-[2.5rem] w-full max-w-lg p-10 shadow-2xl relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50"></div>
+      
+      <div className="flex justify-between items-center mb-8">
+        <div className="flex items-center gap-4">
+          <div className="p-3 bg-primary/10 rounded-2xl text-primary">
+            <ShieldCheck size={24} />
           </div>
-          <h3 className="font-display font-bold text-xl text-slate-900 dark:text-white uppercase tracking-tight">{title}</h3>
+          <div>
+            <h3 className="font-display font-bold text-xl text-slate-900 dark:text-white uppercase tracking-tight">{title}</h3>
+            <p className="text-[9px] font-mono text-primary uppercase tracking-widest mt-0.5">Governance Protocol</p>
+          </div>
         </div>
-        <button onClick={onClose} className="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full text-slate-400">
+        <button onClick={onClose} className="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full text-slate-400 transition-colors">
           <X size={20} />
         </button>
       </div>
-      <div className="space-y-4">
-        <div className="p-4 bg-primary/5 border border-primary/20 rounded-2xl flex items-start gap-4">
-          <Info size={18} className="text-primary shrink-0 mt-1" />
-          <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-            This document is currently undergoing final verification by the Earlington Legacy Initiative Board of Directors to ensure 100% compliance with South African NPO regulations and POPIA standards.
-          </p>
+
+      <div className="space-y-6">
+        <div className="p-6 bg-primary/5 border border-primary/20 rounded-3xl flex items-start gap-5">
+          <div className="mt-1">
+            <Info size={20} className="text-primary shrink-0" />
+          </div>
+          <div className="space-y-2">
+            <p className="text-sm text-slate-700 dark:text-slate-300 font-bold leading-snug">
+              Document Verification in Progress
+            </p>
+            <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              The {title} for Earlington Legacy Initiative is currently being finalized by our Board of Directors to ensure absolute alignment with South African NPO standards and POPIA compliance.
+            </p>
+          </div>
         </div>
-        <p className="text-xs text-slate-500 font-mono uppercase tracking-widest text-center mt-6">
-          Expected Publication: Q1 2026
-        </p>
+
+        <div className="text-center py-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-slate-100 dark:bg-white/5 rounded-full border border-slate-200 dark:border-white/10">
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+            <span className="text-[10px] text-slate-500 font-mono uppercase tracking-widest">Expected Release: Q1 2026</span>
+          </div>
+        </div>
       </div>
+
       <button 
         onClick={onClose}
-        className="w-full mt-8 py-4 bg-slate-900 dark:bg-primary text-white text-xs font-black uppercase tracking-widest rounded-xl hover:opacity-90 transition-opacity"
+        className="w-full mt-6 py-4 bg-primary text-white text-xs font-black uppercase tracking-[0.2em] rounded-2xl hover:bg-opacity-90 transition-all shadow-lg shadow-primary/20"
       >
-        Acknowledge
+        Close Terminal
       </button>
     </div>
   </div>
 );
 
-const Footer: React.FC<FooterProps> = () => {
+const Footer: React.FC<FooterProps> = ({ onSitemapClick }) => {
   const [showConduct, setShowConduct] = useState(false);
   const [activePolicy, setActivePolicy] = useState<string | null>(null);
 
@@ -54,98 +72,104 @@ const Footer: React.FC<FooterProps> = () => {
   ];
 
   return (
-    <footer className="relative z-10 bg-background-light dark:bg-background-dark border-t border-slate-200 dark:border-white/10 py-16 px-6">
+    <footer className="relative z-10 bg-background-light dark:bg-background-dark border-t border-slate-200 dark:border-white/10 py-20 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 mb-20">
           {/* Brand Identity */}
-          <div className="space-y-6">
+          <div className="space-y-8">
             <div className="flex flex-col">
-              <span className="font-display font-bold text-xl tracking-wider text-npc-blue dark:text-primary">
+              <span className="font-display font-bold text-2xl tracking-wider text-npc-blue dark:text-primary">
                 EARLINGTON LEGACY INITIATIVE NPC
               </span>
-              <span className="font-mono text-[10px] text-slate-500 uppercase tracking-widest mt-1">
+              <span className="font-mono text-[11px] text-slate-500 uppercase tracking-[0.3em] mt-1.5 font-bold">
                 REG: 2025/931583/08
               </span>
             </div>
             <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-sm">
-              Dedicated to transforming Earlington Secondary School into a center of innovation. Join us in creating a brighter future for our students through technology and heritage.
+              Architecting the digital future for Earlington Secondary School. We integrate advanced educational technologies to empower students and preserve our heritage.
             </p>
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/20 rounded-full">
-              <ShieldCheck size={14} className="text-primary" />
-              <span className="text-[9px] font-black uppercase tracking-widest text-primary">Approved by Google Non-Profit</span>
+            <div className="inline-flex items-center gap-3 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full">
+              <ShieldCheck size={16} className="text-primary" />
+              <span className="text-[10px] font-black uppercase tracking-widest text-primary">Certified Google Non-Profit Partner</span>
             </div>
           </div>
 
           {/* Contact Details */}
-          <div className="space-y-6">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 dark:text-slate-500">Contact Terminal</h4>
-            <div className="space-y-4">
-              <div className="flex items-center gap-4 group">
-                <div className="p-2.5 bg-slate-100 dark:bg-white/5 rounded-xl text-primary">
-                  <Mail size={18} />
+          <div className="space-y-8">
+            <h4 className="text-[11px] font-black uppercase tracking-[0.5em] text-slate-400 dark:text-slate-500">Contact Node</h4>
+            <div className="space-y-5">
+              <div className="flex items-center gap-5 group">
+                <div className="p-3 bg-slate-100 dark:bg-white/5 rounded-2xl text-primary transition-transform group-hover:scale-110">
+                  <Mail size={20} />
                 </div>
-                <a href="mailto:info@earlingtonlegacy.org.za" className="text-sm font-bold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors">
+                <a href="mailto:info@earlingtonlegacy.org.za" className="text-sm font-bold text-slate-800 dark:text-slate-200 hover:text-primary transition-colors">
                   info@earlingtonlegacy.org.za
                 </a>
               </div>
-              <div className="flex items-center gap-4">
-                <div className="p-2.5 bg-slate-100 dark:bg-white/5 rounded-xl text-primary">
-                  <MapPin size={18} />
+              <div className="flex items-center gap-5">
+                <div className="p-3 bg-slate-100 dark:bg-white/5 rounded-2xl text-primary">
+                  <MapPin size={20} />
                 </div>
-                <span className="text-sm font-bold text-slate-700 dark:text-slate-300">
+                <span className="text-sm font-bold text-slate-800 dark:text-slate-200">
                   Phoenix, KwaZulu-Natal, South Africa
                 </span>
               </div>
-              <div className="flex items-center gap-4">
-                <div className="p-2.5 bg-slate-100 dark:bg-white/5 rounded-xl text-primary">
-                  <Globe size={18} />
+              <div className="flex items-center gap-5">
+                <div className="p-3 bg-slate-100 dark:bg-white/5 rounded-2xl text-primary">
+                  <Globe size={20} />
                 </div>
-                <a href="https://www.earlingtonlegacy.org.za" target="_blank" className="text-sm font-bold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors">
-                  www.earlingtonlegacy.org.za
-                </a>
+                <button 
+                  onClick={onSitemapClick}
+                  className="text-sm font-bold text-slate-800 dark:text-slate-200 hover:text-primary transition-colors flex items-center gap-2"
+                >
+                  Global Sitemap Viewer <ShieldCheck size={14} className="text-emerald-500" />
+                </button>
               </div>
             </div>
           </div>
 
           {/* LEGAL AND GOVERNANCE */}
-          <div className="space-y-6">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 dark:text-slate-500">LEGAL AND GOVERNANCE</h4>
-            <div className="grid grid-cols-1 gap-4">
+          <div className="space-y-8">
+            <h4 className="text-[11px] font-black uppercase tracking-[0.5em] text-slate-400 dark:text-slate-500">Legal Architecture</h4>
+            <div className="grid grid-cols-1 gap-5">
               {legalLinks.map((link, idx) => (
                 <button 
                   key={idx}
                   onClick={link.action}
-                  className="text-left text-xs font-bold text-slate-500 hover:text-primary transition-colors flex items-center gap-2 group"
+                  className="text-left text-xs font-black uppercase tracking-widest text-slate-500 hover:text-primary transition-all flex items-center gap-4 group"
                 >
-                  <link.icon size={12} className="group-hover:scale-110 transition-transform" /> {link.title}
+                  <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-white/5 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <link.icon size={14} className="group-hover:scale-110 transition-transform" />
+                  </div>
+                  {link.title}
                 </button>
               ))}
               
-              <div className="pt-4 border-t border-slate-200 dark:border-white/5">
-                <div className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
-                  <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Section 18A Compliance Active</span>
+              <div className="pt-6 border-t border-slate-200 dark:border-white/5">
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                  <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest font-bold">Section 18A Tax Compliance Active</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Legal & Signature */}
-        <div className="pt-8 border-t border-slate-200 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="text-[10px] font-mono text-slate-400 uppercase tracking-widest leading-relaxed max-w-2xl text-center md:text-left">
-            <p>© 2026 Earlington Legacy Initiative NPC (Registration No. 2025/931583/08).</p>
-            <p className="mt-1">A registered nonprofit organisation supporting education and community development. Approved by Google for Nonprofits.</p>
+        {/* Final Branding & Copyright */}
+        <div className="pt-10 border-t border-slate-200 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="text-[11px] font-mono text-slate-400 uppercase tracking-widest leading-relaxed max-w-2xl text-center md:text-left font-bold">
+            <p>© 2026 Earlington Legacy Initiative NPC • Reg: 2025/931583/08</p>
+            <p className="mt-1.5 opacity-60">Architected for Heritage Preservation and Technological Empowerment. All Rights Reserved.</p>
           </div>
-          <div className="flex items-center gap-3 shrink-0">
-            <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Built for the students</span>
-            <div className="w-1 h-1 bg-primary rounded-full animate-pulse"></div>
+          <div className="flex items-center gap-4 shrink-0 bg-slate-100 dark:bg-white/5 px-6 py-3 rounded-2xl border border-slate-200 dark:border-white/10">
+            <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Built with Purpose</span>
+            <div className="w-2 h-2 bg-primary rounded-full animate-pulse shadow-[0_0_10px_rgba(217,119,6,0.6)]"></div>
           </div>
         </div>
       </div>
 
       {showConduct && <ConductView onClose={() => setShowConduct(false)} />}
-      {activePolicy && <PolicyModal title={activePolicy} onClose={() => setActivePolicy(null)} />}
+      {activePolicy && <PolicyComingSoon title={activePolicy} onClose={() => setActivePolicy(null)} />}
     </footer>
   );
 };
