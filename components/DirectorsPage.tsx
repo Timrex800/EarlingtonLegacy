@@ -7,6 +7,8 @@ interface DirectorsPageProps {
 }
 
 const DirectorsPage: React.FC<DirectorsPageProps> = ({ onBack }) => {
+  const silverLogo = "https://res.cloudinary.com/drj03twbh/image/upload/v1765921600/ELI_Silver_Transparent_zch6yh.png";
+
   return (
     <div className="min-h-screen bg-black overflow-hidden flex flex-col relative">
       {/* Background Hero Image - Boardroom */}
@@ -21,15 +23,23 @@ const DirectorsPage: React.FC<DirectorsPageProps> = ({ onBack }) => {
 
       {/* Navigation Header for Subpage */}
       <nav className="relative z-20 p-6 flex justify-between items-center bg-black/40 backdrop-blur-md border-b border-white/5">
-        <button 
-          onClick={onBack}
-          className="flex items-center gap-2 text-white/70 hover:text-primary transition-all group font-mono text-xs uppercase tracking-widest"
-        >
-          <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-          Back to Initiative
-        </button>
+        <div className="flex items-center gap-6">
+          <button 
+            onClick={onBack}
+            className="flex items-center gap-2 text-white/70 hover:text-primary transition-all group font-mono text-xs uppercase tracking-widest"
+          >
+            <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
+            Back to Initiative
+          </button>
+          <div className="h-6 w-px bg-white/10 hidden md:block"></div>
+          <img 
+            src={silverLogo} 
+            alt="ELI Silver Logo" 
+            className="h-10 w-auto object-contain brightness-125 drop-shadow-[0_0_10px_rgba(255,255,255,0.1)]"
+          />
+        </div>
         <div className="text-right">
-          <span className="block font-display font-bold text-white text-sm tracking-tighter">ELI DIRECTORS PORTAL</span>
+          <span className="block font-display font-bold text-white text-sm tracking-tighter uppercase">ELI Directors Portal</span>
           <span className="block font-mono text-[9px] text-primary uppercase">Secure Access Node v1.0</span>
         </div>
       </nav>
@@ -40,9 +50,9 @@ const DirectorsPage: React.FC<DirectorsPageProps> = ({ onBack }) => {
           <div className="relative group">
             <div className="absolute inset-0 bg-white/10 rounded-full blur-[100px] group-hover:bg-primary/20 transition-all duration-1000"></div>
             <img 
-              src="https://res.cloudinary.com/drj03twbh/image/upload/v1765921600/ELI_Silver_Transparent_zch6yh.png" 
-              alt="ELI Silver Logo" 
-              className="w-48 h-48 md:w-80 md:h-80 object-contain relative z-10 drop-shadow-[0_0_30px_rgba(255,255,255,0.15)] animate-float"
+              src={silverLogo} 
+              alt="ELI Silver Logo Large" 
+              className="w-48 h-48 md:w-80 md:h-80 object-contain relative z-10 drop-shadow-[0_0_40px_rgba(255,255,255,0.2)] animate-float"
             />
           </div>
         </div>
@@ -72,11 +82,13 @@ const DirectorsPage: React.FC<DirectorsPageProps> = ({ onBack }) => {
 
           <div className="pt-12 flex flex-col md:flex-row items-center justify-center gap-6">
             <div className="flex items-center gap-2 text-slate-500 text-[10px] uppercase font-bold tracking-widest">
-              <Info size={14} />
+              <span className="p-1.5 bg-white/5 rounded-lg inline-block">
+                <Info size={14} />
+              </span>
               <span>Selection process in final verification</span>
             </div>
             <div className="h-px w-12 bg-white/10 hidden md:block"></div>
-            <span className="text-white/50 text-[10px] font-mono tracking-widest flex items-center gap-2 border border-white/5 px-4 py-2 rounded-lg">
+            <span className="text-white/50 text-[10px] font-mono tracking-widest flex items-center gap-2 border border-white/5 px-4 py-2 rounded-lg bg-white/5">
               ELI-DIR-SEC-45.0
             </span>
           </div>
