@@ -7,39 +7,10 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Dependencies
 node_modules
-# Build outputs
 dist
 dist-ssr
-.next
-out
-build
-web-app
-earlington-legacy-react
-CascadeProjects
-
-# Environment files (SECURITY: Never commit these)
-.env
-.env.local
-.env.*.local
-.env.development
-.env.production
-.env.test
 *.local
-
-# Secrets and credentials (SECURITY: Never commit these)
-secrets/
-credentials/
-*.key
-*.pem
-*.p12
-*.pfx
-*.cer
-*.crt
-serviceAccountKey.json
-firebase-adminsdk-*.json
-*.config.local.*
 
 # Editor directories and files
 .vscode/*
@@ -51,24 +22,3 @@ firebase-adminsdk-*.json
 *.njsproj
 *.sln
 *.sw?
-
-# OS files
-Thumbs.db
-Desktop.ini
-
-# Temporary files
-*.tmp
-*.temp
-*.swp
-*.swo
-*~
-
-# Coverage reports
-coverage/
-*.lcov
-.nyc_output/
-
-# Cache directories
-.cache/
-.parcel-cache/
-.turbo/

@@ -12,7 +12,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
   };
 
   return (
-    <header className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden pt-20">
+    <header className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden pt-28">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-[400px] h-[500px] bg-[radial-gradient(circle_at_30%_30%,rgba(217,119,6,0.3),transparent_60%)] blur-[60px] animate-float opacity-50"></div>
