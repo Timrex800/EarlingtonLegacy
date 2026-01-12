@@ -73,7 +73,7 @@ const App: React.FC = () => {
 
   if (currentRoute === 'directors') {
     return (
-      <div className="min-h-screen relative">
+      <div className="min-h-screen relative overflow-x-hidden">
         <DirectorsPage onBack={() => setCurrentRoute('landing')} />
         <AIAssistant />
         <Footer onSitemapClick={() => setShowSitemap(true)} />
