@@ -1,0 +1,34 @@
+# DNS Configuration for Earlington Legacy
+# Registrar: Afrihost
+# Hosting: Vercel
+
+# ------------------------------------------------------------------------------
+# INSTRUCTIONS:
+# Login to Afrihost ClientZone -> Domain Management -> DNS Management
+# Delete any existing 'A' records for @ and 'CNAME' for www if they point elsewhere.
+# Add the following records:
+# ------------------------------------------------------------------------------
+
+# 1. Root Domain (@) - Pointing to Vercel's Anycast IP
+# record_type  host   value            ttl
+A              @      76.76.21.21      3600
+
+# 2. Subdomain (www) - Pointing to Vercel CNAME
+# record_type  host   value                     ttl
+CNAME          www    cname.vercel-dns.com.     3600
+
+# 3. Email Forwarding (Optional - if using Afrihost mail or external)
+# MX Records remain default unless you are using Gmail/Outlook.
+# If using Afrihost default mail:
+MX             @      mail.earlingtonlegacy.com. 14400
+A              mail   <AFRIHOST_SERVER_IP>       14400
+
+# 4. Security Verification (if needed for Google/Vercel ownership)
+# TXT            @      vercel-domain-verification=...
+
+
+# ------------------------------------------------------------------------------
+# VERIFICATION:
+# After updating, propagate can take 24-48 hours, though usually < 1 hour.
+# Check status using: https://whatsmydns.net/#A/earlingtonlegacy.com
+# ------------------------------------------------------------------------------

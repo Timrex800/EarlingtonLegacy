@@ -1,0 +1,44 @@
+name: AI Merge Workflow
+
+on:
+  push:
+    branches: [ai-updates]
+
+jobs:
+  merge-to-dev:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ai-updates
+
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Validate Build
+        run: npm run build
+
+      - name: Merge Changes to Dev
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Configure git
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Create PR (fails harmlessly if exists)
+          gh pr create --base dev --head ai-updates --title "🤖 AI Updates" --body "Automated PR verified by CI" || echo "PR may already exist"
+          
+          # Merge PR
+          gh pr merge ai-updates --squash --delete-branch

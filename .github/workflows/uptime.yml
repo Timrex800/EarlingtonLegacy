@@ -1,0 +1,20 @@
+name: Uptime Monitor
+
+on:
+  schedule:
+    - cron: '0 */6 * * *' # Run every 6 hours
+  workflow_dispatch:
+
+jobs:
+  check-uptime:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Website Status
+        run: |
+          response=$(curl -s -o /dev/null -w "%{http_code}" https://earlingtonlegacy.com)
+          if [ "$response" != "200" ]; then
+            echo "::error::Website is DOWN! Status code: $response"
+            exit 1
+          else
+            echo "Website is UP. Status code: $response"
+          fi

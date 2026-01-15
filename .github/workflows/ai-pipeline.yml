@@ -1,0 +1,68 @@
+name: AI Pipeline & CI/CD
+
+on:
+  push:
+    branches: [ "main", "dev", "ai-updates" ]
+  pull_request:
+    branches: [ "main", "dev" ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  checks: write
+
+jobs:
+  # 1. VALIDATION & SECURITY CHECK
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          
+      - name: Install Dependencies
+        run: npm ci
+        
+      - name: Type Check & Lint
+        run: |
+          # If you have lint scripts configured
+          # npm run lint
+          echo "Linting skipped (add script to package.json)"
+
+      - name: Build Verification
+        run: npm run build
+
+  # 2. AI AUTO-MERGE (Runs only on ai-updates branch)
+  ai-automerge:
+    needs: validate
+    if: github.ref == 'refs/heads/ai-updates'
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Create & Merge PR
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          # Create PR if not exists
+          gh pr create --base dev --head ai-updates --title "🤖 AI Autonomous Update" --body "Automated changes passed CI validation." || echo "PR exists"
+          
+          # Merge PR
+          gh pr merge ai-updates --squash --delete-branch
+
+  # 3. DEPLOYMENT NOTIFICATION (Optional - real deploy is handled by Vercel Integration)
+  notify-deploy:
+    needs: validate
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log Deployment
+        run: echo "Code pushed to main. Vercel should pick this up automatically."

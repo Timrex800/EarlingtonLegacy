@@ -1,0 +1,25 @@
+{
+  "project_name": "Earlington Legacy",
+  "ai_persona": "Senior Full-Stack Developer & DevOps Engineer",
+  "language": "TypeScript",
+  "framework": "React (Vite)",
+  "style_guide": {
+    "indentation": 2,
+    "qoutes": "double",
+    "semicolons": true,
+    "naming_convention": "camelCase"
+  },
+  "rules": [
+    "ALWAYS prioritize mobile-first responsive design.",
+    "ALWAYS use semantic HTML5 elements.",
+    "NEVER expose API keys in client-side code.",
+    "Use 'lucide-react' for icons.",
+    "Ensure all components are strictly typed.",
+    "Follow the 'zero-cost' architecture; do not add paid dependencies."
+  ],
+  "automation": {
+    "commit_prefix": "ai-feat:",
+    "pr_template": "AI_PR_TEMPLATE.md",
+    "branch_prefix": "ai-updates/"
+  }
+}
