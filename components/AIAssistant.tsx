@@ -4,21 +4,21 @@ import { Send, X, Bot, Sparkles, Loader2, Info } from 'lucide-react';
 import { GoogleGenAI } from "@google/genai";
 
 const AI_CONTEXT = `
-You are the Earlington Legacy Heritage Assistant. 
-Initiative: Earlington Legacy Initiative NPC (Reg: 2025/931583/08).
-Mission: Transforming Earlington Secondary School into a center of advanced learning and innovation.
-Infrastructure: 1GBPS Fibre installed via Afrihost & Vumatel.
-Governance: The Board of Directors directory is currently UNDER CONSTRUCTION.
-Key URL: https://www.earlingtonlegacy.org.za/directors (Directors Portal - Secure Node).
-Event: Earlington Day 2026 (Late April). 45th Anniversary Celebration.
-Goal: Bridge the digital divide for Phoenix students.
-Tone: Community-focused, technically precise, and professional.
+You are the Earlington Legacy Heritage Assistant (ELI-CORE).
+Entity: Earlington Legacy Initiative NPC (Registration: 2025/931583/08).
+Context: A non-profit bridging the digital divide for Earlington Secondary School (Phoenix, KZN).
+Key Facts:
+- Infrastructure: 1GBPS Fibre via Afrihost/Vumatel is LIVE.
+- Fundraising Goal: Earlington Day 2026 (April 18th) - 45th Anniversary.
+- Board: The Directors directory is currently in VERIFICATION stage (Coming Q1 2026).
+- Location: https://www.earlingtonlegacy.org.za/directors
+Guidelines: Be inspiring, professional, and emphasize the "Heritage meets Innovation" philosophy. If asked about technical specs, mention our G-Cloud topology.
 `;
 
 const AIAssistant: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<{role: 'user' | 'ai', text: string}[]>([
-    { role: 'ai', text: "Hello! I'm the Earlington Heritage AI. I can assist with info on our school transformation or the upcoming 2026 Anniversary. Our Directors Portal (under construction) is at /directors." }
+    { role: 'ai', text: "Welcome to the ELI Heritage Hub. How can I assist with your legacy contribution or technical inquiries today?" }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -26,10 +26,7 @@ const AIAssistant: React.FC = () => {
 
   useEffect(() => {
     if (scrollRef.current) {
-      scrollRef.current.scrollTo({
-        top: scrollRef.current.scrollHeight,
-        behavior: 'smooth'
-      });
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
   }, [messages, isLoading]);
 
@@ -48,15 +45,15 @@ const AIAssistant: React.FC = () => {
         contents: userMessage,
         config: {
           systemInstruction: AI_CONTEXT,
-          temperature: 0.7,
+          temperature: 0.6,
           thinkingConfig: { thinkingBudget: 0 } 
         },
       });
 
-      const aiText = response.text || "I apologize, my legacy data links are momentary offline. Please contact us at info@earlingtonlegacy.org.za.";
+      const aiText = response.text || "Connection to heritage core interrupted. Please retry in a few moments.";
       setMessages(prev => [...prev, { role: 'ai', text: aiText }]);
     } catch (error) {
-      setMessages(prev => [...prev, { role: 'ai', text: "Connectivity lost. I'm unable to reach the knowledge base right now." }]);
+      setMessages(prev => [...prev, { role: 'ai', text: "System is undergoing scheduled maintenance. Please email info@earlingtonlegacy.org.za." }]);
     } finally {
       setIsLoading(false);
     }
@@ -67,50 +64,65 @@ const AIAssistant: React.FC = () => {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="group relative flex items-center justify-center w-20 h-20 bg-primary rounded-full shadow-[0_20px_50px_rgba(217,119,6,0.3)] hover:scale-105 transition-all duration-500 overflow-hidden border-2 border-white/20"
+          className="group relative flex items-center justify-center w-16 h-16 bg-primary rounded-full shadow-[0_15px_35px_rgba(217,119,6,0.3)] hover:scale-110 transition-all duration-300 border-2 border-white/20"
         >
-          <div className="absolute inset-0 bg-gradient-to-tr from-primary to-yellow-500 animate-pulse-slow opacity-90"></div>
-          <Sparkles className="text-white relative z-10 animate-float" size={32} />
+          <Sparkles className="text-white relative z-10 animate-pulse" size={24} />
+          <div className="absolute inset-0 bg-white/20 scale-0 group-hover:scale-100 rounded-full transition-transform"></div>
         </button>
       )}
 
       {isOpen && (
-        <div className="bg-white dark:bg-[#0f0f0f] border border-slate-200 dark:border-white/10 w-[92vw] md:w-[420px] h-[600px] rounded-[2.5rem] shadow-[0_30px_100px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden animate-fade-in glass-panel transition-all">
-          <div className="p-6 bg-gradient-to-r from-npc-blue to-blue-900 flex justify-between items-center">
-            <div className="flex items-center gap-4 text-white">
-              <Bot size={24} className="text-primary" />
-              <div>
-                <h3 className="text-sm font-black uppercase tracking-widest">Heritage AI</h3>
-                <p className="text-[9px] opacity-60 font-mono">ELI-CORE v2.0</p>
+        <div className="bg-white dark:bg-[#0f0f0f] border border-slate-200 dark:border-white/10 w-[90vw] md:w-[400px] h-[550px] rounded-[2rem] shadow-2xl flex flex-col overflow-hidden animate-fade-in glass-panel">
+          <div className="p-5 bg-gradient-to-r from-npc-blue to-blue-900 flex justify-between items-center shrink-0">
+            <div className="flex items-center gap-3 text-white">
+              <Bot size={20} className="text-primary" />
+              <div className="leading-none">
+                <h3 className="text-xs font-black uppercase tracking-widest">Heritage AI</h3>
+                <span className="text-[8px] opacity-60 font-mono">NODE: ELI-2026-X</span>
               </div>
             </div>
-            <button onClick={() => setIsOpen(false)} className="text-white/50 hover:text-white"><X size={24} /></button>
+            <button onClick={() => setIsOpen(false)} className="text-white/50 hover:text-white p-1"><X size={20} /></button>
           </div>
-          <div className="bg-primary/5 px-6 py-2 border-b border-primary/10 flex items-center gap-2">
-            <Info size={12} className="text-primary" />
-            <span className="text-[10px] text-primary font-bold uppercase">Official ELI Database Grounding</span>
+          
+          <div className="bg-primary/5 px-5 py-2 border-b border-primary/10 flex items-center gap-2">
+            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+            <span className="text-[9px] text-primary font-bold uppercase tracking-widest">Live Knowledge Base Sync</span>
           </div>
-          <div ref={scrollRef} className="flex-1 overflow-y-auto p-6 space-y-6 bg-[radial-gradient(circle_at_bottom_left,rgba(217,119,6,0.03),transparent_40%)]">
+
+          <div ref={scrollRef} className="flex-1 overflow-y-auto p-5 space-y-4 bg-slate-50/30 dark:bg-transparent">
             {messages.map((m, idx) => (
               <div key={idx} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`max-w-[85%] p-4 rounded-3xl text-sm ${m.role === 'user' ? 'bg-primary text-white rounded-tr-none' : 'bg-slate-100 dark:bg-white/5 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-white/5 rounded-tl-none'}`}>
+                <div className={`max-w-[85%] p-3.5 rounded-2xl text-[13px] leading-relaxed ${m.role === 'user' ? 'bg-primary text-white rounded-tr-none' : 'bg-white dark:bg-white/5 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-white/5 rounded-tl-none shadow-sm'}`}>
                   {m.text}
                 </div>
               </div>
             ))}
-            {isLoading && <Loader2 size={16} className="animate-spin text-primary ml-4" />}
+            {isLoading && (
+              <div className="flex justify-start">
+                <div className="bg-white dark:bg-white/5 p-3 rounded-2xl border border-slate-200 dark:border-white/5">
+                  <Loader2 size={14} className="animate-spin text-primary" />
+                </div>
+              </div>
+            )}
           </div>
-          <div className="p-6 border-t border-slate-200 dark:border-white/10">
+
+          <div className="p-4 border-t border-slate-200 dark:border-white/10 bg-white dark:bg-[#0f0f0f]">
             <div className="relative flex items-center">
               <input 
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                placeholder="Ask about our legacy..."
-                className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl py-4 pl-5 pr-14 text-sm focus:outline-none dark:text-white"
+                placeholder="Ask ELI-CORE..."
+                className="w-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl py-3 pl-4 pr-12 text-sm focus:outline-none dark:text-white"
               />
-              <button onClick={handleSend} className="absolute right-2 p-3 bg-primary text-white rounded-xl"><Send size={18} /></button>
+              <button 
+                onClick={handleSend} 
+                disabled={isLoading}
+                className="absolute right-1.5 p-2.5 bg-primary text-white rounded-lg hover:opacity-90 disabled:opacity-50"
+              >
+                <Send size={16} />
+              </button>
             </div>
           </div>
         </div>
