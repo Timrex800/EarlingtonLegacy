@@ -14,7 +14,7 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleTheme, onNavigate }) =>
     onNavigate(id);
   };
 
-  // Define logos for different themes
+  // Logos mapped to specific Cloudinary production URLs
   const colorLogo = "https://res.cloudinary.com/drj03twbh/image/upload/v1761950572/Earlington%20Legacy%20Initiative%20LOGO.png";
   const silverLogo = "https://res.cloudinary.com/drj03twbh/image/upload/v1765921600/ELI_Silver_Transparent_zch6yh.png";
 
@@ -24,22 +24,22 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleTheme, onNavigate }) =>
         <div className="flex justify-between h-24 items-center">
           <a 
             href="https://www.earlingtonlegacy.org.za/" 
+            onClick={(e) => { e.preventDefault(); onNavigate('landing'); }}
             className="flex-shrink-0 flex items-center gap-5 cursor-pointer group"
           >
             <div className="relative">
-              {/* Dynamic Logo Container */}
               <img 
                 src={darkMode ? silverLogo : colorLogo} 
                 alt="ELI Logo" 
-                className={`h-14 w-auto object-contain transition-all duration-500 group-hover:scale-105 ${darkMode ? 'drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]' : ''}`}
+                className={`h-14 w-auto object-contain transition-all duration-500 group-hover:scale-105 ${darkMode ? 'drop-shadow-[0_0_12px_rgba(255,255,255,0.15)]' : 'drop-shadow-[0_4px_6px_rgba(0,0,0,0.05)]'}`}
               />
             </div>
             
             <div className="flex flex-col justify-center border-l border-slate-200 dark:border-white/20 pl-5">
-              <span className="font-display font-bold text-base md:text-lg tracking-wider text-npc-blue dark:text-primary transition-colors group-hover:text-primary dark:group-hover:text-white leading-tight">
+              <span className="font-display font-bold text-base md:text-lg tracking-wider text-npc-blue dark:text-primary transition-colors group-hover:text-primary leading-tight">
                 EARLINGTON LEGACY INITIATIVE
               </span>
-              <span className="font-mono text-[10px] text-slate-500 dark:text-slate-400 tracking-widest mt-0.5">
+              <span className="font-mono text-[10px] text-slate-500 dark:text-slate-400 tracking-widest mt-0.5 uppercase">
                 REG: 2025/931583/08
               </span>
             </div>
@@ -51,7 +51,7 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleTheme, onNavigate }) =>
                 key={item}
                 href={`#${item}`}
                 onClick={(e) => handleLinkClick(e, item)}
-                className="text-sm font-medium hover:text-primary transition-colors capitalize"
+                className="text-[11px] font-black uppercase tracking-widest hover:text-primary transition-colors"
               >
                 {item}
               </a>
@@ -59,12 +59,12 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleTheme, onNavigate }) =>
             <a 
               href="#directors" 
               onClick={(e) => handleLinkClick(e, 'directors')}
-              className="text-sm font-medium hover:text-primary transition-colors"
+              className="text-[11px] font-black uppercase tracking-widest text-slate-400 hover:text-primary transition-colors"
             >
-              Board of Directors
+              Directors Portal
             </a>
             
-            <button className="bg-primary hover:bg-opacity-90 text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all transform hover:scale-105 shadow-lg shadow-primary/30">
+            <button className="bg-primary hover:bg-opacity-90 text-white px-6 py-2.5 rounded-full text-[11px] font-black uppercase tracking-widest transition-all transform hover:scale-105 shadow-lg shadow-primary/30">
               Get Involved
             </button>
             
@@ -73,13 +73,13 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleTheme, onNavigate }) =>
               className="p-2.5 rounded-full hover:bg-gray-200 dark:hover:bg-white/10 transition-colors"
               aria-label="Toggle dark mode"
             >
-              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+              {darkMode ? <Sun size={18} /> : <Moon size={18} />}
             </button>
           </div>
 
           <div className="md:hidden flex items-center">
             <button className="text-slate-800 dark:text-slate-200 hover:text-primary p-2">
-              <Menu size={32} />
+              <Menu size={28} />
             </button>
           </div>
         </div>
