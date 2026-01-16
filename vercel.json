@@ -1,29 +1,13 @@
-# Vercel Configuration
-# Optimized for Performance & Free Tier Limits
-
 {
   "version": 2,
   "name": "earlington-legacy",
   "framework": "vite",
   "cleanUrls": true,
   "trailingSlash": false,
-  "regions": ["sfo1"], 
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/assets/(.*)",
-      "headers": { "cache-control": "public, max-age=31536000, immutable" },
-      "continue": true
-    },
-    { "src": "/(.*)", "dest": "/index.html" }
+  "regions": ["sfo1"],
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/index.py" },
+    { "source": "/((?!api/.*).*)", "destination": "/index.html" }
   ],
   "headers": [
     {
