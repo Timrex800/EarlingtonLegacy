@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Check Website Status
         run: |
-          response=$(curl -s -o /dev/null -w "%{http_code}" https://earlingtonlegacy.com)
+          response=$(curl -s -o /dev/null -w "%{http_code}" https://earlingtonlegacy.org.za)
           if [ "$response" != "200" ]; then
             echo "::error::Website is DOWN! Status code: $response"
             exit 1
