@@ -52,11 +52,23 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
-          # Create PR if not exists
-          gh pr create --base dev --head ai-updates --title "🤖 AI Autonomous Update" --body "Automated changes passed CI validation." || echo "PR exists"
+          # Check if PR already exists
+          PR_URL=$(gh pr list --head ai-updates --base dev --json url --jq '.[0].url')
           
-          # Merge PR
-          gh pr merge ai-updates --squash --delete-branch
+          if [ -z "$PR_URL" ]; then
+            echo "Creating new PR..."
+            PR_URL=$(gh pr create --base dev --head ai-updates --title "🤖 AI Autonomous Update" --body "Automated changes passed CI validation.")
+          else
+            echo "PR already exists: $PR_URL"
+          fi
+          
+          # Merge PR if URL exists
+          if [ -n "$PR_URL" ]; then
+            gh pr merge "$PR_URL" --squash --delete-branch
+          else
+            echo "Error: Could not identify PR URL to merge."
+            exit 1
+          fi
 
   # 3. DEPLOYMENT NOTIFICATION (Optional - real deploy is handled by Vercel Integration)
   notify-deploy:

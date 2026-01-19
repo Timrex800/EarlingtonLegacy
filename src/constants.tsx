@@ -48,7 +48,7 @@ export const AUDIT_DATA: AuditItem[] = [
     category: 'Performance',
     title: 'Zero-G Edge Delivery',
     status: 'passed',
-    details: 'Edge CDN LCP < 0.8s. Global multi-region failover via GCLB active.',
+    details: 'Firebase CDN LCP < 0.8s. Global multi-region failover via GCLB active.',
     section: 'Topology 1.1'
   },
   {
@@ -95,8 +95,8 @@ export const AUDIT_DATA: AuditItem[] = [
 
 export const TOPOLOGY_DETAILS = {
   dns: "Afrihost Managed DNS → Google Cloud DNS",
-  hosting: "Vercel Edge CDN",
+  hosting: "Firebase Serverless CDN",
   intelligence: "Gemini 3 Flash-Preview (RAG Integrated)",
-  database: "Database Service (Multi-Region Sync)",
+  database: "Firestore NoSQL (Multi-Region Sync)",
   loadBalancer: "Google Cloud Global Load Balancer (GCLB)"
 };
