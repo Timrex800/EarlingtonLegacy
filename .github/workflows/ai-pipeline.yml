@@ -52,6 +52,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
+          # Ensure local runner is aware of remote branches
+          git fetch origin --unshallow || git fetch origin
+          
           # Check if PR already exists
           PR_URL=$(gh pr list --head ai-updates --base dev --json url --jq '.[0].url')
           
