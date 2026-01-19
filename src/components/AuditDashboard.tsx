@@ -118,7 +118,7 @@ const AuditDashboard: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   {[
-                    { title: "CDN & Edge", value: TOPOLOGY_DETAILS.hosting, icon: Globe, detail: "Vercel Edge PoPs" },
+                    { title: "CDN & Edge", value: TOPOLOGY_DETAILS.hosting, icon: Globe, detail: "Firebase Global PoPs" },
                     { title: "Persistence", value: TOPOLOGY_DETAILS.database, icon: Database, detail: "Firestore Real-time Sync" },
                     { title: "Intelligence", value: TOPOLOGY_DETAILS.intelligence, icon: Cpu, detail: "Gemini 3 Integration" },
                     { title: "Routing", value: TOPOLOGY_DETAILS.dns, icon: Network, detail: "Anycast Latency Routing" }
