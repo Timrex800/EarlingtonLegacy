@@ -1,0 +1,36 @@
+{
+  "project": "Earlington Legacy",
+  "version": "4.0.2",
+  "agents": {
+    "A1": {
+      "name": "Optimizer",
+      "specialization": "Structural Integrity",
+      "learned_patterns": [
+        {
+          "pattern": "AI-Studio-Flattened-Export",
+          "action": "Restore /src structure and move App.tsx back",
+          "confidence": 0.98,
+          "last_used": "2026-01-19T20:51:00Z"
+        }
+      ]
+    },
+    "A2": {
+      "name": "Verifier",
+      "specialization": "Build Validation",
+      "learned_patterns": [
+        {
+          "pattern": "Missing-Script-Tag-Index",
+          "action": "Inject module script Type: Vite",
+          "confidence": 0.95,
+          "last_used": "2026-01-19T20:51:00Z"
+        }
+      ]
+    }
+  },
+  "platform_links": {
+    "github": "Timrex800/EarlingtonLegacy",
+    "vercel": "earlington-legacy",
+    "firebase": "earlingtonlegacy-f0a99",
+    "afrihost": "earlingtonlegacy.org.za"
+  }
+}

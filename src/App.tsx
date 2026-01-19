@@ -13,11 +13,13 @@ import Footer from './components/Footer';
 import AuditDashboard from './components/AuditDashboard';
 import SitemapView from './components/SitemapView';
 import AIAssistant from './components/AIAssistant';
+import SyncConsole from './components/SyncConsole';
 import ParticleBackground from './components/ParticleBackground';
-import { ShieldCheck } from 'lucide-react';
+import { ShieldCheck, Cpu } from 'lucide-react';
 
 const App: React.FC = () => {
   const [showAudit, setShowAudit] = useState(false);
+  const [showSync, setShowSync] = useState(false);
   const [showSitemap, setShowSitemap] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
   const [currentRoute, setCurrentRoute] = useState<'landing' | 'directors'>('landing');
@@ -69,7 +71,7 @@ const App: React.FC = () => {
     }
   };
 
-  const isModalOpen = showAudit || showSitemap;
+  const isModalOpen = showAudit || showSitemap || showSync;
 
   if (currentRoute === 'directors') {
     return (
@@ -99,7 +101,14 @@ const App: React.FC = () => {
 
       <Footer onSitemapClick={() => setShowSitemap(true)} />
 
-      <div className="fixed bottom-6 left-6 z-[60] flex flex-col gap-3">
+      <div className="fixed bottom-6 left-6 z-[60] flex flex-col gap-4">
+        <button 
+          onClick={() => setShowSync(true)}
+          className="p-3 bg-primary/90 text-white rounded-full hover:scale-110 transition-transform shadow-lg border border-primary/20 animate-pulse-slow"
+          title="Antigravity Neural Sync"
+        >
+          <Cpu size={20} />
+        </button>
         <button 
           onClick={() => setShowAudit(true)}
           className="p-3 bg-black/80 dark:bg-white/10 text-white rounded-full hover:scale-110 transition-transform shadow-lg border border-white/10"
@@ -112,6 +121,7 @@ const App: React.FC = () => {
       <AIAssistant />
 
       {showAudit && <AuditDashboard onClose={() => setShowAudit(false)} />}
+      {showSync && <SyncConsole onClose={() => setShowSync(false)} />}
       {showSitemap && <SitemapView onClose={() => setShowSitemap(false)} />}
     </div>
   );
