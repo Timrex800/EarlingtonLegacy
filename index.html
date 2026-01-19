@@ -7,6 +7,29 @@
     <meta name="description" content="Transforming Earlington Secondary School into a center of advanced learning and innovation. Bridging the digital divide via https://www.earlingtonlegacy.org.za/">
     <link rel="canonical" href="https://www.earlingtonlegacy.org.za/" />
     
+    <!-- Tailwind CDN for parity with AI Studio design if needed, but Vite will handle production build -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#D97706",
+                        secondary: "#78350F",
+                        "npc-blue": "#003366",
+                        "background-light": "#FDFBF7",
+                        "background-dark": "#0F0F0F",
+                    },
+                    fontFamily: {
+                        display: ["Cinzel", "serif"],
+                        body: ["Inter", "sans-serif"],
+                    }
+                }
+            }
+        };
+    </script>
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,8 +42,9 @@
         }
     </style>
 </head>
-<body class="bg-slate-50 dark:bg-[#0f0f0f] text-slate-800 dark:text-slate-200 font-body antialiased transition-colors duration-300">
-    <div id="app"></div>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 font-body antialiased transition-colors duration-300">
+    <div id="root"></div>
+    <!-- CRITICAL: Vite main entry point -->
     <script type="module" src="/src/main.tsx"></script>
 </body>
 </html>
