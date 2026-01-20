@@ -1,49 +1,20 @@
-# Earlington Legacy Initiative (ELI)
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+</div>
 
-[![AI Pipeline & CI/CD](https://github.com/Timrex800/EarlingtonLegacy/actions/workflows/ai-pipeline.yml/badge.svg)](https://github.com/Timrex800/EarlingtonLegacy/actions/workflows/ai-pipeline.yml)
-[![Uptime Monitoring](https://github.com/Timrex800/EarlingtonLegacy/actions/workflows/uptime.yml/badge.svg)](https://github.com/Timrex800/EarlingtonLegacy/actions/workflows/uptime.yml)
+# Run and deploy your AI Studio app
 
-The official landing page and digital infrastructure hub for the **Earlington Legacy Initiative NPC** (Registration: 2025/931583/08). ELI is a non-profit organization dedicated to bridging the digital divide for Earlington Secondary School in Phoenix, KZN, South Africa.
+This contains everything you need to run your app locally.
 
-## 🚀 Vision
+View your app in AI Studio: https://ai.studio/apps/drive/1XyzbQ8xUqInykIu-GiqVoVZIG3YZmao0
 
-Transforming heritage into innovation by creating a high-performance, Google Ad Grants compliant platform for heritage conservation and educational innovation.
+## Run Locally
 
-## 🏗️ Technology Stack
+**Prerequisites:**  Node.js
 
-- **Framework**: React 19 (Vite)
-- **Styling**: Tailwind CSS
-- **Intelligence**: Gemini 1.5 (ELI-CORE Heritage AI)
-- **Monitoring**: Vercel Speed Insights & GitHub Actions Uptime
-- **Hosting**: Vercel Edge Network
-- **Infrastructure**: G-Cloud Topology (1GBPS Fibre integrated)
 
-## 🛠️ Automated Documentation
-
-The project includes specialized documentation for the autonomous pipeline:
-
-- **[AUTOMATION_SETUP.md](./AUTOMATION_SETUP.md)**: Details on the Google AI Studio -> GitHub -> Vercel loop.
-- **[PIPELINE.md](./PIPELINE.md)**: Technical breakdown of CI/CD workflows and security protocols.
-- **[REPOSITORY_TREE.md](./REPOSITORY_TREE.md)**: Comprehensive mapping of the system architecture and components.
-- **[DNS_RECORDS.txt](./dns-records.txt)**: Managed DNS configuration for Afrihost/Vumatel.
-
-## 📜 Development Rules
-
-- **[Build Constitution](./governance/build-constitution/BUILD_CONSTITUTION.md)**: The mandatory framework for all coding activity. **All AI and developers must read this first.**
-- **Single Source of Truth**: GitHub is the sole authoritative repository.
-- **Review Required**: All logic changes require a Pull Request and review.
-
-## 🤖 Heritage AI (ELI-CORE)
-
-Integrated with Gemini-3-Flash-Preview, our Heritage AI provides real-time information about the NPC's mission, the upcoming **Earlington Day 2026** (45th Anniversary), and technical specifications of our topology.
-
-## 🔒 Security & Compliance
-
-- **Zero-Cost Architecture**: Leveraging free tiers of elite services.
-- **Strict Environment Isolation**: API keys managed via Vercel Secrets.
-- **Automated Quality Score**: Integrated Ad Grant scripts to maintain platform compliance.
-
----
-**Status**: ACTIVE & PRODUCTION READY  
-**Contact**: [info@earlingtonlegacy.org.za](mailto:info@earlingtonlegacy.org.za)  
-**NPC Registration**: 2025/931583/08
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`

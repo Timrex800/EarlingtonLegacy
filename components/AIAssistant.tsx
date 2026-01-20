@@ -4,7 +4,7 @@ import { Send, X, Bot, Sparkles, Loader2, Info } from 'lucide-react';
 import { GoogleGenAI } from "@google/genai";
 
 const AI_CONTEXT = `
-You are the Earlington Legacy Heritage Assistant (ELI-CORE).
+You are the TIMREX AI, the advanced intelligence core for the Earlington Legacy Initiative.
 Entity: Earlington Legacy Initiative NPC (Registration: 2025/931583/08).
 Context: A non-profit bridging the digital divide for Earlington Secondary School (Phoenix, KZN).
 Key Facts:
@@ -12,13 +12,13 @@ Key Facts:
 - Fundraising Goal: Earlington Day 2026 (April 18th) - 45th Anniversary.
 - Board: The Directors directory is currently in VERIFICATION stage (Coming Q1 2026).
 - Location: https://www.earlingtonlegacy.org.za/directors
-Guidelines: Be inspiring, professional, and emphasize the "Heritage meets Innovation" philosophy. If asked about technical specs, mention our G-Cloud topology.
+Guidelines: Your name is TIMREX AI. Be inspiring, professional, and emphasize the "Heritage meets Innovation" philosophy. If asked about technical specs, mention our G-Cloud topology.
 `;
 
 const AIAssistant: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<{role: 'user' | 'ai', text: string}[]>([
-    { role: 'ai', text: "Welcome to the ELI Heritage Hub. How can I assist with your legacy contribution or technical inquiries today?" }
+    { role: 'ai', text: "Welcome to TIMREX AI. I am the intelligence core for the Earlington Legacy Initiative. How can I assist with your legacy contribution or technical inquiries today?" }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -50,10 +50,10 @@ const AIAssistant: React.FC = () => {
         },
       });
 
-      const aiText = response.text || "Connection to heritage core interrupted. Please retry in a few moments.";
+      const aiText = response.text || "Connection to TIMREX core interrupted. Please retry in a few moments.";
       setMessages(prev => [...prev, { role: 'ai', text: aiText }]);
     } catch (error) {
-      setMessages(prev => [...prev, { role: 'ai', text: "System is undergoing scheduled maintenance. Please email info@earlingtonlegacy.org.za." }]);
+      setMessages(prev => [...prev, { role: 'ai', text: "TIMREX AI is undergoing scheduled maintenance. Please email info@earlingtonlegacy.org.za for urgent queries." }]);
     } finally {
       setIsLoading(false);
     }
@@ -77,8 +77,8 @@ const AIAssistant: React.FC = () => {
             <div className="flex items-center gap-3 text-white">
               <Bot size={20} className="text-primary" />
               <div className="leading-none">
-                <h3 className="text-xs font-black uppercase tracking-widest">Heritage AI</h3>
-                <span className="text-[8px] opacity-60 font-mono">NODE: ELI-2026-X</span>
+                <h3 className="text-xs font-black uppercase tracking-widest">TIMREX AI</h3>
+                <span className="text-[8px] opacity-60 font-mono">NODE: TX-2026-PRO</span>
               </div>
             </div>
             <button onClick={() => setIsOpen(false)} className="text-white/50 hover:text-white p-1"><X size={20} /></button>
@@ -86,7 +86,7 @@ const AIAssistant: React.FC = () => {
           
           <div className="bg-primary/5 px-5 py-2 border-b border-primary/10 flex items-center gap-2">
             <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
-            <span className="text-[9px] text-primary font-bold uppercase tracking-widest">Live Knowledge Base Sync</span>
+            <span className="text-[9px] text-primary font-bold uppercase tracking-widest">Global Legacy Sync Active</span>
           </div>
 
           <div ref={scrollRef} className="flex-1 overflow-y-auto p-5 space-y-4 bg-slate-50/30 dark:bg-transparent">
@@ -113,7 +113,7 @@ const AIAssistant: React.FC = () => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                placeholder="Ask ELI-CORE..."
+                placeholder="Ask TIMREX AI..."
                 className="w-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl py-3 pl-4 pr-12 text-sm focus:outline-none dark:text-white"
               />
               <button 
