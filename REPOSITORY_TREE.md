@@ -2,38 +2,50 @@
 
 ```text
 .
-├── index.html                # Main entry point (HTML5 + Tailwind + ESM Imports)
-├── index.tsx                 # React DOM mount point
-├── App.tsx                   # Core Application Logic, Theme Engine & Router
-├── types.ts                  # TypeScript Interface Definitions (Audit, Views)
-├── constants.tsx             # Verbatim Text, Ad Scripts, and Audit Log Data
-├── metadata.json             # App Metadata & Platform Permissions
-├── firebase.json             # Firebase Hosting & SPA Rewrite Rules
-├── netlify.toml              # Netlify Edge Redirects & Build Config
-├── _headers                  # Production Security Headers (HSTS, XSS)
-├── .gitignore                # AI Development & Environment Exclusion Rules
-└── components/               # UI Component Architecture
-    ├── Header.tsx            # Theme-Aware Navigation & Brand Identity
-    ├── Hero.tsx              # Splash Section with Floating Animations
-    ├── InfoSection.tsx       # Primary Mission & Heritage Content
-    ├── PartnersSection.tsx   # Stakeholder Logos & Metrics
-    ├── CtaSection.tsx        # Event-Based Call to Action (Earlington Day 2026)
-    ├── ValueSection.tsx      # Community & Parent-Focused Value Proposition
-    ├── EducationSection.tsx  # Project Roadmap & Implementation Phases
-    ├── FounderSection.tsx    # Governance Gateway (Directors Portal Preview)
-    ├── DirectorsPage.tsx     # Specialized Subpage (Under Construction State)
-    ├── Footer.tsx            # Global Legal, Contact, and Policy Hub
-    ├── AIAssistant.tsx       # ELI-CORE Heritage AI (Gemini 3 Integration)
-    ├── ParticleBackground.tsx # High-Performance Global Canvas FX
-    ├── AuditDashboard.tsx    # Compliance & G-Cloud Topology Console
-    ├── SitemapView.tsx       # Verbatim Content Mapping & Directory Tree
-    ├── ConductView.tsx       # Official Code of Conduct (Legal Node)
-    └── PolicyComingSoon.tsx  # Dynamic Placeholder for Verified Governance
+├── index.html                # Main entry point (Vite + React 19)
+├── package.json              # Project dependencies and build scripts
+├── vercel.json               # Vercel deployment configuration & rewrites
+├── firebase.json             # Firebase Hosting configuration
+├── vite.config.ts            # Vite bundler configuration
+├── tailwind.config.js        # Tailwind CSS configuration
+├── tsconfig.json             # TypeScript configuration
+├── _headers                  # Production security headers
+├── .gitignore                # Git exclusion rules
+├── REPOSITORY_TREE.md        # This file
+└── src/                      # Source code directory
+    ├── main.tsx              # React mounting logic
+    ├── App.tsx               # Root application component
+    ├── index.css             # Global Tailwind directives
+    ├── constants.tsx         # Shared text, scripts, and audit data
+    ├── types.ts              # TypeScript interface definitions
+    ├── metadata.json         # Site metadata & platform permissions
+    ├── components/           # Modular UI components
+    │   ├── AIAssistant.tsx   # ELI-CORE Heritage AI (Gemini 3)
+    │   ├── AboutPage.tsx     # Extended organization mission & history
+    │   ├── AuditDashboard.tsx # Compliance & G-Cloud topology console
+    │   ├── ConductView.tsx   # Official Code of Conduct
+    │   ├── CtaSection.tsx    # Targeted call-to-action sections
+    │   ├── DirectorsPage.tsx # Governance & leadership details
+    │   ├── EducationSection.tsx # Digital divide & education roadmap
+    │   ├── Footer.tsx        # Global legal, contact, and policy hub
+    │   ├── FounderSection.tsx # Historical context & founder message
+    │   ├── Header.tsx        # Responsive theme-aware navigation
+    │   ├── Hero.tsx          # Splash section with floating animations
+    │   ├── InfoSection.tsx   # Core mission & initiative pillars
+    │   ├── ParticleBackground.tsx # High-performance canvas FX
+    │   ├── PartnersSection.tsx # Stakeholder & collaborative metrics
+    │   ├── PrivacyPolicyView.tsx # Legally verified privacy disclosure
+    │   ├── SitemapView.tsx   # Directory tree and content map
+    │   ├── SyncConsole.tsx   # Antigravity Neural Sync OS (Agent Framework)
+    │   └── ValueSection.tsx  # Strategic value & initiative impact
+    └── data/                 # Dynamic data stores
+        └── learning-memory.json # Agent persistent pattern memory
 ```
 
 ## System Integration
+
 - **Framework**: React 19 (ESM) + Tailwind CSS
 - **Intelligence**: Gemini-3-Flash-Preview (RAG Integrated)
-- **Deployment**: Multi-node (Firebase CDN + Netlify Edge)
+- **Deployment**: Multi-node (Vercel Primary + Firebase CDN)
 - **Legacy Domain**: [www.earlingtonlegacy.org.za](https://www.earlingtonlegacy.org.za/)
 - **Registration**: NPC 2025/931583/08
