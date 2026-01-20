@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Mail, ShieldCheck, MapPin, Globe, Scale, ShieldAlert, FileText, Lock, X, Info } from 'lucide-react';
 import ConductView from './ConductView';
+import PrivacyPolicyView from './PrivacyPolicyView';
 
 interface FooterProps {
   onSitemapClick: () => void;
@@ -62,10 +63,11 @@ const PolicyComingSoon: React.FC<{ title: string; onClose: () => void }> = ({ ti
 
 const Footer: React.FC<FooterProps> = ({ onSitemapClick }) => {
   const [showConduct, setShowConduct] = useState(false);
+  const [showPrivacy, setShowPrivacy] = useState(false);
   const [activePolicy, setActivePolicy] = useState<string | null>(null);
 
   const legalLinks = [
-    { title: "Privacy Policy", icon: Lock, action: () => setActivePolicy("Privacy Policy") },
+    { title: "Privacy Policy", icon: Lock, action: () => setShowPrivacy(true) },
     { title: "Terms of Use", icon: FileText, action: () => setActivePolicy("Terms of Use") },
     { title: "Code of Conduct", icon: Scale, action: () => setShowConduct(true) },
     { title: "Safeguarding Policy", icon: ShieldAlert, action: () => setActivePolicy("Safeguarding Policy") }
@@ -169,6 +171,7 @@ const Footer: React.FC<FooterProps> = ({ onSitemapClick }) => {
       </div>
 
       {showConduct && <ConductView onClose={() => setShowConduct(false)} />}
+      {showPrivacy && <PrivacyPolicyView onClose={() => setShowPrivacy(false)} />}
       {activePolicy && <PolicyComingSoon title={activePolicy} onClose={() => setActivePolicy(null)} />}
     </footer>
   );
