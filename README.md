@@ -1,41 +1,9 @@
-# Earlington Legacy
+# Earlington Legacy Initiative
 
-![GHBanner](https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6)
+The Earlington Legacy Initiative is a non‑profit organization dedicated to preserving and promoting the cultural, historical, and environmental heritage of the Earlington region. Its mission is to empower local communities through education, advocacy, and sustainable development projects that safeguard the legacy for future generations.
 
-The official website for the Earlington Legacy Initiative.
+The initiative focuses on three core areas: heritage conservation, community capacity building, and environmental stewardship. By collaborating with municipal authorities, academic institutions, and civil society, it seeks measurable social impact, including increased public awareness, restored historic sites, and improved ecological resilience.
 
-## Tech Stack
+The official website serves as the digital platform for the organization, providing transparent information about its programs, publishing research and reports, and offering channels for stakeholder engagement and donations. It is intended to be an accessible, trustworthy resource for policymakers, donors, and the public.
 
-- **React 19** - UI Framework
-- **Vite** - Build Tool
-- **Tailwind CSS** - Styling
-- **TypeScript** - Type Safety
-- **Vercel** - Deployment
-
-## Run Locally
-
-**Prerequisites:** Node.js (v18+)
-
-1. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-2. Create a `.env.local` file with required environment variables (see `.env.example`)
-
-3. Run the development server:
-
-   ```bash
-   npm run dev
-   ```
-
-## Build for Production
-
-```bash
-npm run build
-```
-
-## License
-
-© Earlington Legacy Initiative. All rights reserved.
+The initiative operates under principles of ethical governance, inclusivity, and long‑term sustainability, aligning its activities with international standards for non‑profit accountability and community‑driven development.
