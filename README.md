@@ -1,20 +1,41 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Earlington Legacy
 
-# Run and deploy your AI Studio app
+![GHBanner](https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6)
 
-This contains everything you need to run your app locally.
+The official website for the Earlington Legacy Initiative.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1XyzbQ8xUqInykIu-GiqVoVZIG3YZmao0
+## Tech Stack
+
+- **React 19** - UI Framework
+- **Vite** - Build Tool
+- **Tailwind CSS** - Styling
+- **TypeScript** - Type Safety
+- **Vercel** - Deployment
 
 ## Run Locally
 
-**Prerequisites:**  Node.js
-
+**Prerequisites:** Node.js (v18+)
 
 1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+
+   ```bash
+   npm install
+   ```
+
+2. Create a `.env.local` file with required environment variables (see `.env.example`)
+
+3. Run the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+## Build for Production
+
+```bash
+npm run build
+```
+
+## License
+
+© Earlington Legacy Initiative. All rights reserved.
