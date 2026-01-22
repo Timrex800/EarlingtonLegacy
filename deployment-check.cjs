@@ -43,8 +43,8 @@ console.log('══════════════════════�
 console.log('📊 GitHub Branch Comparison:\n');
 
 ['main', 'dev', 'active-dev'].forEach(branch => {
-  const localCommit = gitCommand(`git rev-parse ${branch} 2>/dev/null`);
-  const remoteCommit = gitCommand(`git rev-parse origin/${branch} 2>/dev/null`);
+  const localCommit = gitCommand(`git rev-parse ${branch} 2>NUL`);
+  const remoteCommit = gitCommand(`git rev-parse origin/${branch} 2>NUL`);
   
   if (localCommit && remoteCommit) {
     if (localCommit === remoteCommit) {
