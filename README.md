@@ -7,3 +7,5 @@ The initiative focuses on three core areas: heritage conservation, community cap
 The official website serves as the digital platform for the organization, providing transparent information about its programs, publishing research and reports, and offering channels for stakeholder engagement and donations. It is intended to be an accessible, trustworthy resource for policymakers, donors, and the public.
 
 The initiative operates under principles of ethical governance, inclusivity, and long‑term sustainability, aligning its activities with international standards for non‑profit accountability and community‑driven development.
+
+<!-- Deployment Test: 2026-01-22 -->
