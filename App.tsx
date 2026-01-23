@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import InfoSection from './components/InfoSection';
@@ -87,6 +88,7 @@ const App: React.FC = () => {
         <AIAssistant />
         <Footer onSitemapClick={() => setShowSitemap(true)} />
         {showSitemap && <SitemapView onClose={() => setShowSitemap(false)} />}
+        <Analytics />
       </div>
     );
   }
@@ -98,6 +100,7 @@ const App: React.FC = () => {
         <AIAssistant />
         <Footer onSitemapClick={() => setShowSitemap(true)} />
         {showSitemap && <SitemapView onClose={() => setShowSitemap(false)} />}
+        <Analytics />
       </div>
     );
   }
@@ -133,6 +136,7 @@ const App: React.FC = () => {
 
       {showAudit && <AuditDashboard onClose={() => setShowAudit(false)} />}
       {showSitemap && <SitemapView onClose={() => setShowSitemap(false)} />}
+      <Analytics />
     </div>
   );
 };
