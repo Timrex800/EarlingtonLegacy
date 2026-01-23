@@ -1,19 +1,25 @@
 {
-  "name": "earlingtonlegacy---21/01/26-production",
+  "name": "earlington-legacy-production",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "verify:build": "bash .build-tools/verify-build-stack.sh",
+    "verify:ports": "bash .build-tools/port-kill.sh",
+    "monitor:deploy": "node .build-tools/deployment-monitor.js",
+    "monitor:watch": "node .build-tools/deployment-monitor.js --watch",
+    "fix:git-author": "bash .build-tools/git-author-rewrite.sh"
   },
   "dependencies": {
+    "@google/genai": "^1.34.0",
+    "@vercel/analytics": "^1.6.1",
+    "framer-motion": "^12.24.7",
     "lucide-react": "^0.561.0",
     "react": "^19.2.3",
-    "react-dom": "^19.2.3",
-    "@google/genai": "^1.34.0",
-    "framer-motion": "^12.24.7"
+    "react-dom": "^19.2.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.18",
