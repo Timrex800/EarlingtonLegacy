@@ -1,11 +1,20 @@
-# Earlington Legacy Initiative
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+</div>
 
-The Earlington Legacy Initiative is a non‑profit organization dedicated to preserving and promoting the cultural, historical, and environmental heritage of the Earlington region. Its mission is to empower local communities through education, advocacy, and sustainable development projects that safeguard the legacy for future generations.
+# Run and deploy your AI Studio app
 
-The initiative focuses on three core areas: heritage conservation, community capacity building, and environmental stewardship. By collaborating with municipal authorities, academic institutions, and civil society, it seeks measurable social impact, including increased public awareness, restored historic sites, and improved ecological resilience.
+This contains everything you need to run your app locally.
 
-The official website serves as the digital platform for the organization, providing transparent information about its programs, publishing research and reports, and offering channels for stakeholder engagement and donations. It is intended to be an accessible, trustworthy resource for policymakers, donors, and the public.
+View your app in AI Studio: https://ai.studio/apps/drive/1XyzbQ8xUqInykIu-GiqVoVZIG3YZmao0
 
-The initiative operates under principles of ethical governance, inclusivity, and long‑term sustainability, aligning its activities with international standards for non‑profit accountability and community‑driven development.
+## Run Locally
 
-<!-- Deployment Test: 2026-01-22 -->
+**Prerequisites:**  Node.js
+
+
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`
