@@ -1,7 +1,7 @@
 {
   "version": 2,
   "name": "earlington-legacy",
-  "buildCommand": "npm run build && npx tailwindcss -i ./src/input.css -o ./dist/output.css",
+  "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "vite",
   "cleanUrls": true,
@@ -41,5 +41,8 @@
   ],
   "env": {
     "Example_Env_Var": "Set_In_Vercel_Dashboard_Not_Here"
+  },
+  "github": {
+    "silent": true
   }
 }
