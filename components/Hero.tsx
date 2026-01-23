@@ -21,16 +21,30 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
         <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-primary/10 rounded-full animate-spin-slow"></div>
       </div>
 
-      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto space-y-12">
+      <div className="relative z-10 text-center px-4 max-w-6xl mx-auto space-y-12">
         <div className="inline-block mb-4 animate-fade-in">
           <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary font-black bg-primary/5 border border-primary/20 px-4 py-1.5 rounded-full">
-            Heritage Restoration • Est. 2025
+            NURTURING MINDS - BUILDING FUTURES • Est. 2025
           </span>
         </div>
         
-        <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight animate-slide-up">
-          Earlington Legacy Initiative
-          <span className="block text-xl md:text-3xl lg:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-primary via-yellow-500 to-amber-700 mt-4 font-mono tracking-[0.3em] font-black uppercase">
+        {/* ENHANCED TITLE: Deep Glass Effect + Thick Gold Foil Outline */}
+        <h1 className="font-display text-4xl md:text-6xl lg:text-8xl font-bold tracking-tight leading-[1.1] animate-slide-up">
+          <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-br from-slate-950 via-white/40 to-slate-900 filter 
+            drop-shadow-[0_2px_0_#BF953F] 
+            drop-shadow-[0_-2px_0_#BF953F] 
+            drop-shadow-[2px_0_0_#BF953F] 
+            drop-shadow-[-2px_0_0_#BF953F]
+            drop-shadow-[1.5px_1.5px_0_#B38728]
+            drop-shadow-[-1.5px_-1.5px_0_#B38728]
+            drop-shadow-[0_15px_30px_rgba(0,0,0,0.3)]
+            px-6 py-2">
+            Earlington Legacy Initiative
+          </span>
+          
+          <span className="block text-3xl md:text-5xl lg:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-[#8A6E2F] via-[#FCF6BA] to-[#BF953F] mt-8 font-mono tracking-[0.6em] font-black uppercase filter 
+            drop-shadow-[0_2px_0_rgba(0,0,0,0.5)]
+            drop-shadow-[0_10px_20px_rgba(191,149,63,0.4)]">
             NPC
           </span>
         </h1>
