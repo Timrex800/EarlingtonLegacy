@@ -242,8 +242,8 @@ const AboutPage: React.FC<AboutPageProps> = ({ onBack, onNavigateToDirectors }) 
       </section>
       
       <footer className="p-12 border-t border-slate-200 dark:border-white/5 text-center">
-        <p className="text-[10px] font-mono text-slate-500 uppercase tracking-[0.5em] font-bold">
-          © 2026 Earlington Legacy Initiative NPC • Heritage Meets Innovation
+        <p className="text-xs md:text-sm text-slate-600 dark:text-slate-400 font-body italic max-w-3xl mx-auto leading-relaxed">
+          "Once an Earlingtonian, always an Earlingtonian. Their appointment to the Board marks a significant milestone in our evolution, bringing together institutional memory, professional acumen, and a deeply rooted commitment to the Earlington community."
         </p>
       </footer>
     </div>
