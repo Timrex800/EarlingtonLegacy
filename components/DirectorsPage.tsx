@@ -16,6 +16,75 @@ interface DirectorsPageProps {
   onBack: () => void;
 }
 
+// Fix: Explicitly use React.FC to allow reserved props like 'key' when mapping over directors
+const DirectorCard: React.FC<{ director: Director }> = ({ director }) => (
+  <div className="bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-[3rem] p-8 md:p-12 shadow-xl hover:shadow-2xl hover:border-primary/40 transition-all duration-500 group relative overflow-hidden h-full">
+    <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors duration-700"></div>
+    
+    <div className="relative z-10 block">
+      <div className="md:float-left md:mr-12 mb-8 md:mb-6">
+        <div className="relative w-44 h-44 md:w-64 md:h-64 group-hover:scale-105 transition-transform duration-700">
+          {/* Outer Gold Foil Glow - Enhanced */}
+          <div className="absolute -inset-1.5 bg-gradient-to-tr from-[#BF953F] via-[#FCF6BA] to-[#B38728] rounded-[3rem] opacity-30 blur-xl group-hover:opacity-70 transition-opacity"></div>
+          
+          {/* Gold Foil Border Frame - Premium Quality */}
+          <div className="absolute inset-0 p-[4px] bg-gradient-to-tr from-[#8A6E2F] via-[#FCF6BA] to-[#BF953F] rounded-[3rem] shadow-[0_15px_40px_rgba(191,149,63,0.4)]">
+            {/* High Color Glass Inner Container */}
+            <div className="relative h-full w-full rounded-[2.8rem] overflow-hidden bg-white/10 backdrop-blur-2xl">
+              {director.image ? (
+                <img 
+                  src={director.image} 
+                  alt={director.name} 
+                  className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-110"
+                />
+              ) : (
+                <div className="flex items-center justify-center h-full w-full bg-slate-50 dark:bg-white/5 text-primary">
+                  {React.isValidElement(director.icon) 
+                    ? React.cloneElement(director.icon as React.ReactElement<any>, { size: 72 }) 
+                    : director.icon}
+                </div>
+              )}
+              {/* High Color Glossy Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 via-transparent to-white/20 mix-blend-overlay"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60"></div>
+              {/* Dynamic Reflection */}
+              <div className="absolute top-0 left-[-150%] w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-30deg] group-hover:left-[150%] transition-all duration-1500 ease-in-out"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div className="flex flex-col">
+        <div className="mb-6">
+          <h3 className={`text-3xl md:text-5xl font-display font-bold uppercase tracking-tight leading-none transition-all duration-500
+            ${director.name === "Timothy Padayachee" 
+              ? "text-transparent bg-clip-text bg-gradient-to-br from-slate-950 via-slate-800 to-slate-900 filter drop-shadow-[0_1px_0_#BF953F] drop-shadow-[0_-1px_0_#BF953F] drop-shadow-[1px_0_0_#BF953F] drop-shadow-[-1px_0_0_#BF953F] drop-shadow-[0.5px_0.5px_0_#B38728] py-1" 
+              : "text-slate-900 dark:text-white group-hover:text-primary"}`}>
+            {director.name}
+          </h3>
+          <div className="flex flex-wrap items-center gap-3 mt-4">
+            <span className="text-[11px] md:text-[12px] font-black uppercase text-primary tracking-widest bg-primary/5 px-4 py-1.5 rounded-full border border-primary/20">
+              {director.role}
+            </span>
+            {director.focus && (
+              <span className="text-[10px] md:text-[11px] font-mono text-amber-700 dark:text-amber-500 uppercase tracking-widest font-bold bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">
+                Focus: {director.focus}
+              </span>
+            )}
+            <span className="w-1.5 h-1.5 bg-slate-300 dark:bg-white/20 rounded-full hidden md:block"></span>
+            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest font-bold">Class of 1994</span>
+          </div>
+        </div>
+        <div className="h-1.5 w-24 bg-gradient-to-r from-primary via-amber-500 to-amber-700 rounded-full mb-8 opacity-70"></div>
+        <p className="text-base md:text-xl text-slate-700 dark:text-slate-300 leading-relaxed font-body text-justify whitespace-pre-line">
+          {director.bio}
+        </p>
+      </div>
+      <div className="clear-both"></div>
+    </div>
+  </div>
+);
+
 const DirectorsPage: React.FC<DirectorsPageProps> = ({ onBack }) => {
   const directors: Director[] = [
     {
@@ -61,69 +130,6 @@ Vanessa is proud to contribute to building a legacy of educational empowerment, 
   const otherExecutives = directors.filter(d => d.type === 'Executive' && d.name !== "Timothy Padayachee");
   const nonExecutives = directors.filter(d => d.type === 'Non-Executive');
 
-  const DirectorCard = ({ director }: { director: Director }) => (
-    <div className="bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-[3rem] p-8 md:p-12 shadow-xl hover:shadow-2xl hover:border-primary/40 transition-all duration-500 group relative overflow-hidden h-full">
-      <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors duration-700"></div>
-      
-      <div className="relative z-10 block">
-        <div className="md:float-left md:mr-12 mb-8 md:mb-6">
-          <div className="relative w-44 h-44 md:w-64 md:h-64 group-hover:scale-105 transition-transform duration-700">
-            {/* Outer Gold Foil Glow - Enhanced */}
-            <div className="absolute -inset-1.5 bg-gradient-to-tr from-[#BF953F] via-[#FCF6BA] to-[#B38728] rounded-[3rem] opacity-30 blur-xl group-hover:opacity-70 transition-opacity"></div>
-            
-            {/* Gold Foil Border Frame - Premium Quality */}
-            <div className="absolute inset-0 p-[4px] bg-gradient-to-tr from-[#8A6E2F] via-[#FCF6BA] to-[#BF953F] rounded-[3rem] shadow-[0_15px_40px_rgba(191,149,63,0.4)]">
-              {/* High Color Glass Inner Container */}
-              <div className="relative h-full w-full rounded-[2.8rem] overflow-hidden bg-white/10 backdrop-blur-2xl">
-                {director.image ? (
-                  <img 
-                    src={director.image} 
-                    alt={director.name} 
-                    className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-110"
-                  />
-                ) : (
-                  <div className="flex items-center justify-center h-full w-full bg-slate-50 dark:bg-white/5 text-primary">
-                    {React.isValidElement(director.icon) 
-                      ? React.cloneElement(director.icon as React.ReactElement<any>, { size: 72 }) 
-                      : director.icon}
-                  </div>
-                )}
-                {/* High Color Glossy Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 via-transparent to-white/20 mix-blend-overlay"></div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60"></div>
-                {/* Dynamic Reflection */}
-                <div className="absolute top-0 left-[-150%] w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-30deg] group-hover:left-[150%] transition-all duration-1500 ease-in-out"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div className="flex flex-col">
-          <div className="mb-6">
-            <h3 className="text-3xl md:text-5xl font-display font-bold text-slate-900 dark:text-white uppercase tracking-tight leading-none group-hover:text-primary transition-colors">{director.name}</h3>
-            <div className="flex flex-wrap items-center gap-3 mt-4">
-              <span className="text-[11px] md:text-[12px] font-black uppercase text-primary tracking-widest bg-primary/5 px-4 py-1.5 rounded-full border border-primary/20">
-                {director.role}
-              </span>
-              {director.focus && (
-                <span className="text-[10px] md:text-[11px] font-mono text-amber-700 dark:text-amber-500 uppercase tracking-widest font-bold bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">
-                  Focus: {director.focus}
-                </span>
-              )}
-              <span className="w-1.5 h-1.5 bg-slate-300 dark:bg-white/20 rounded-full hidden md:block"></span>
-              <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest font-bold">Class of 1994</span>
-            </div>
-          </div>
-          <div className="h-1.5 w-24 bg-gradient-to-r from-primary via-amber-500 to-amber-700 rounded-full mb-8 opacity-70"></div>
-          <p className="text-base md:text-xl text-slate-700 dark:text-slate-300 leading-relaxed font-body text-justify whitespace-pre-line">
-            {director.bio}
-          </p>
-        </div>
-        <div className="clear-both"></div>
-      </div>
-    </div>
-  );
-
   return (
     <div className="min-h-screen bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 font-body transition-colors duration-500">
       <nav className="fixed w-full z-50 top-0 glass-panel bg-white/80 dark:bg-black/80 border-b border-slate-200 dark:border-white/10">
@@ -157,7 +163,7 @@ Vanessa is proud to contribute to building a legacy of educational empowerment, 
               Accountability • Transparency • Impact
             </span>
           </div>
-          <h1 className="font-display text-6xl md:text-9xl font-bold tracking-tighter uppercase leading-none">
+          <h1 className="font-display text-6xl md:text-9xl font-bold tracking-tighter uppercase leading-none text-white">
             Board of <span className="text-primary italic">Directors</span>
           </h1>
           <p className="text-slate-400 text-lg md:text-2xl max-w-3xl mx-auto font-body italic leading-relaxed">
@@ -175,13 +181,13 @@ Vanessa is proud to contribute to building a legacy of educational empowerment, 
 
       {/* Executive Directors Section Header & Members */}
       <section className="py-24 px-6 max-w-7xl mx-auto">
-        <div className="flex flex-col items-center mb-16 space-y-4">
+        <div className="flex flex-col items-center mb-16 space-y-4 text-center">
           <div className="flex items-center gap-4 text-primary">
-            <div className="h-[2px] w-12 bg-gradient-to-r from-transparent to-primary"></div>
-            <span className="text-[12px] md:text-[14px] font-black uppercase tracking-[0.6em]">Strategic Leadership</span>
-            <div className="h-[2px] w-12 bg-gradient-to-l from-transparent to-primary"></div>
+            <div className="h-[2px] w-8 bg-gradient-to-r from-transparent to-primary"></div>
+            <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.5em]">Strategic Leadership</span>
+            <div className="h-[2px] w-8 bg-gradient-to-l from-transparent to-primary"></div>
           </div>
-          <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 dark:text-white uppercase tracking-tight text-center">Executive Directors</h2>
+          <h2 className="text-xl md:text-3xl font-display font-bold text-slate-900 dark:text-white uppercase tracking-widest">Executive Directors</h2>
         </div>
         
         <div className="grid grid-cols-1 gap-16">
@@ -193,13 +199,13 @@ Vanessa is proud to contribute to building a legacy of educational empowerment, 
 
       {/* Non-Executive Directors Section Header & Members */}
       <section className="py-24 px-6 max-w-7xl mx-auto border-t border-slate-200 dark:border-white/5">
-        <div className="flex flex-col items-center mb-16 space-y-4">
+        <div className="flex flex-col items-center mb-16 space-y-4 text-center">
           <div className="flex items-center gap-4 text-slate-400">
-            <div className="h-[2px] w-12 bg-gradient-to-r from-transparent to-slate-400/30"></div>
-            <span className="text-[12px] md:text-[14px] font-black uppercase tracking-[0.6em]">Governance & Oversight</span>
-            <div className="h-[2px] w-12 bg-gradient-to-l from-transparent to-slate-400/30"></div>
+            <div className="h-[2px] w-8 bg-gradient-to-r from-transparent to-slate-400/30"></div>
+            <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.5em]">Governance & Oversight</span>
+            <div className="h-[2px] w-8 bg-gradient-to-l from-transparent to-slate-400/30"></div>
           </div>
-          <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 dark:text-white uppercase tracking-tight text-center">Non-Executive Directors</h2>
+          <h2 className="text-xl md:text-3xl font-display font-bold text-slate-900 dark:text-white uppercase tracking-widest">Non-Executive Directors</h2>
         </div>
         
         <div className="grid grid-cols-1 gap-16">

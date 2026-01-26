@@ -1,19 +1,8 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, X, Bot, Sparkles, Loader2, Info } from 'lucide-react';
+import { Send, X, Bot, Sparkles, Loader2 } from 'lucide-react';
 import { GoogleGenAI } from "@google/genai";
-
-const AI_CONTEXT = `
-You are the TIMREX AI, the advanced intelligence core for the Earlington Legacy Initiative.
-Entity: Earlington Legacy Initiative NPC (Registration: 2025/931583/08).
-Context: A non-profit bridging the digital divide for Earlington Secondary School (Phoenix, KZN).
-Key Facts:
-- Infrastructure: 1GBPS Fibre via Afrihost/Vumatel is LIVE.
-- Fundraising Goal: Earlington Day 2026 (April 18th) - 45th Anniversary.
-- Board: The Directors directory is currently in VERIFICATION stage (Coming Q1 2026).
-- Location: https://www.earlingtonlegacy.org.za/directors
-Guidelines: Your name is TIMREX AI. Be inspiring, professional, and emphasize the "Heritage meets Innovation" philosophy. If asked about technical specs, mention our G-Cloud topology.
-`;
+import { AI_SYSTEM_INSTRUCTION } from '../constants';
 
 const AIAssistant: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,7 +33,7 @@ const AIAssistant: React.FC = () => {
         model: 'gemini-3-flash-preview',
         contents: userMessage,
         config: {
-          systemInstruction: AI_CONTEXT,
+          systemInstruction: AI_SYSTEM_INSTRUCTION,
           temperature: 0.6,
           thinkingConfig: { thinkingBudget: 0 } 
         },
@@ -64,6 +53,7 @@ const AIAssistant: React.FC = () => {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
+          aria-label="Open TIMREX AI Assistant"
           className="group relative flex items-center justify-center w-16 h-16 bg-primary rounded-full shadow-[0_15px_35px_rgba(217,119,6,0.3)] hover:scale-110 transition-all duration-300 border-2 border-white/20"
         >
           <Sparkles className="text-white relative z-10 animate-pulse" size={24} />
@@ -81,7 +71,13 @@ const AIAssistant: React.FC = () => {
                 <span className="text-[8px] opacity-60 font-mono">NODE: TX-2026-PRO</span>
               </div>
             </div>
-            <button onClick={() => setIsOpen(false)} className="text-white/50 hover:text-white p-1"><X size={20} /></button>
+            <button 
+              onClick={() => setIsOpen(false)} 
+              aria-label="Close AI Assistant"
+              className="text-white/50 hover:text-white p-1"
+            >
+              <X size={20} />
+            </button>
           </div>
           
           <div className="bg-primary/5 px-5 py-2 border-b border-primary/10 flex items-center gap-2">
@@ -119,6 +115,7 @@ const AIAssistant: React.FC = () => {
               <button 
                 onClick={handleSend} 
                 disabled={isLoading}
+                aria-label="Send message"
                 className="absolute right-1.5 p-2.5 bg-primary text-white rounded-lg hover:opacity-90 disabled:opacity-50"
               >
                 <Send size={16} />

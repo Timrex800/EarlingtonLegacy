@@ -28,9 +28,9 @@ const AuditDashboard: React.FC<{ onClose: () => void }> = ({ onClose }) => {
           </div>
           <button 
             onClick={onClose}
+            aria-label="Close compliance dashboard"
             className="p-3 bg-white/5 hover:bg-white/10 rounded-2xl transition-all text-gray-400 hover:text-white border border-white/10"
           >
-            <span className="sr-only">Close</span>
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
@@ -169,8 +169,8 @@ const AuditDashboard: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                     <button 
                       onClick={() => {
                         navigator.clipboard.writeText(ADS_SCRIPT);
-                        alert("Script copied to clipboard!");
                       }}
+                      aria-label="Copy automation script to clipboard"
                       className="p-3 bg-white/10 hover:bg-white/20 rounded-xl text-white transition-all backdrop-blur-md border border-white/10 flex items-center gap-2 text-xs font-bold shadow-2xl"
                     >
                       <Copy size={16} /> COPY SOURCE

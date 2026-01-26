@@ -16,7 +16,6 @@ import SitemapView from './components/SitemapView';
 import AIAssistant from './components/AIAssistant';
 import ParticleBackground from './components/ParticleBackground';
 import { ShieldCheck } from 'lucide-react';
-import { Analytics } from '@vercel/analytics/react';
 
 const App: React.FC = () => {
   const [showAudit, setShowAudit] = useState(false);
@@ -88,7 +87,6 @@ const App: React.FC = () => {
         <AIAssistant />
         <Footer onSitemapClick={() => setShowSitemap(true)} />
         {showSitemap && <SitemapView onClose={() => setShowSitemap(false)} />}
-        <Analytics />
       </div>
     );
   }
@@ -100,7 +98,6 @@ const App: React.FC = () => {
         <AIAssistant />
         <Footer onSitemapClick={() => setShowSitemap(true)} />
         {showSitemap && <SitemapView onClose={() => setShowSitemap(false)} />}
-        <Analytics />
       </div>
     );
   }
@@ -136,7 +133,6 @@ const App: React.FC = () => {
 
       {showAudit && <AuditDashboard onClose={() => setShowAudit(false)} />}
       {showSitemap && <SitemapView onClose={() => setShowSitemap(false)} />}
-      <Analytics />
     </div>
   );
 };
