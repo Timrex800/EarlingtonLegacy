@@ -71,14 +71,17 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleTheme, onNavigate }) =>
             <button 
               onClick={toggleTheme}
               className="p-2.5 rounded-full hover:bg-gray-200 dark:hover:bg-white/10 transition-colors"
-              aria-label="Toggle dark mode"
+              aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
             >
               {darkMode ? <Sun size={18} /> : <Moon size={18} />}
             </button>
           </div>
 
           <div className="md:hidden flex items-center">
-            <button className="text-slate-800 dark:text-slate-200 hover:text-primary p-2">
+            <button 
+              className="text-slate-800 dark:text-slate-200 hover:text-primary p-2"
+              aria-label="Open mobile menu"
+            >
               <Menu size={28} />
             </button>
           </div>

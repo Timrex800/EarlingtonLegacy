@@ -19,6 +19,7 @@ const ConductView: React.FC<{ onClose: () => void }> = ({ onClose }) => {
           </div>
           <button 
             onClick={onClose}
+            aria-label="Close code of conduct"
             className="p-2 hover:bg-slate-200 dark:hover:bg-white/10 rounded-full transition-colors text-slate-400 hover:text-slate-900 dark:hover:text-white"
           >
             <X size={24} />

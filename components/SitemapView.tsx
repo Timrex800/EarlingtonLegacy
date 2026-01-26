@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { FolderTree, TextCursor, MapPin, X, Link } from 'lucide-react';
+import { FolderTree, MapPin, X, Link } from 'lucide-react';
 
 const SITEMAP_DATA = [
   {
@@ -85,6 +85,7 @@ const SitemapView: React.FC<{ onClose: () => void }> = ({ onClose }) => {
           </div>
           <button 
             onClick={onClose}
+            aria-label="Close sitemap viewer"
             className="p-2 hover:bg-white/10 rounded-full transition-colors text-slate-400 hover:text-white"
           >
             <X size={24} />

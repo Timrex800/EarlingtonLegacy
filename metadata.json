@@ -1,7 +1,5 @@
 {
   "name": "EarlingtonLegacy - 21/01/26 Production",
   "description": "The official landing page for https://www.earlingtonlegacy.org.za/. A high-performance, Google Ad Grants compliant platform for heritage conservation and educational innovation in South Africa.",
-  "requestFramePermissions": [
-    "microphone"
-  ]
+  "requestFramePermissions": []
 }
